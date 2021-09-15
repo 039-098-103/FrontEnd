@@ -1,5 +1,6 @@
 <template>
   <navAdmin></navAdmin>
+  <logIn></logIn>
   
 </template>
 
