@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AdminHome from '../views/AdminHome.vue'
+import Admin from '../views/Admin.vue'
 
 const routes = [
   {
@@ -7,6 +8,11 @@ const routes = [
     name: 'AdminHome',
     component: AdminHome
   },
+  {
+    path: '/admin',
+    name: '/admin',
+    component: Admin
+  }
   // {
   //   path: '/about',
   //   name: 'About',
