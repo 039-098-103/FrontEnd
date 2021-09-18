@@ -1,0 +1,25 @@
+{
+  "staffs": [
+    {
+      "firstName": "Athena",
+      "lastName": "Smith",
+      "DOB": "1990-01-05",
+      "username": "AthenaSmith",
+      "password": "Adminathena"
+    },
+    {
+      "firstName": "Cara",
+      "lastName": "Johnson",
+      "DOB": "1995-12-30",
+      "username": "CaraJohnson",
+      "password": "Staffcara"
+    },
+    {
+      "firstName": "Addison",
+      "lastName": "Williams",
+      "DOB": "1990-01-05",
+      "username": "AddisonWilliams",
+      "password": "Staffaddison"
+    }
+  ]
+}

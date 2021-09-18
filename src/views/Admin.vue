@@ -1,3 +1,0 @@
-<template>
-  <navAdmin></navAdmin>
-</template>

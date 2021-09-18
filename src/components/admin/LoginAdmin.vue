@@ -12,7 +12,7 @@
       <input class="" />
     </div>
     <div class="mt-8">
-        <router-link to='/admin'>
+        <router-link to='/adminHome'>
       <button class="bg-skylight px-4 py-2 rounded-xl">
         SIGN IN 
       </button>
