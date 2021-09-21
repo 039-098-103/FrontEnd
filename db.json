@@ -1,25 +1,76 @@
 {
   "staffs": [
     {
-      "firstName": "Athena",
-      "lastName": "Smith",
-      "DOB": "1990-01-05",
-      "username": "AthenaSmith",
-      "password": "Adminathena"
-    },
-    {
       "firstName": "Cara",
       "lastName": "Johnson",
       "DOB": "1995-12-30",
       "username": "CaraJohnson",
-      "password": "Staffcara"
+      "password": "Staffcara",
+      "id": 1
     },
     {
       "firstName": "Addison",
       "lastName": "Williams",
       "DOB": "1990-01-05",
       "username": "AddisonWilliams",
-      "password": "Staffaddison"
+      "password": "Staffaddison",
+      "id": 2
+    },
+    {
+      "firstName": "Athena",
+      "lastName": "Smith",
+      "DOB": "1990-01-05",
+      "username": "AthenaSmith",
+      "password": "Adminathena",
+      "id": 3
+    },
+    {
+      "firstName": "Addison",
+      "lastName": "Williams",
+      "DOB": "1990-01-05",
+      "username": "AddisonWilliams",
+      "password": "Staffaddison",
+      "id": 4
+    },
+    {
+      "firstName": "Adword",
+      "lastName": "Williams",
+      "DOB": "1990-01-05",
+      "username": "AddisonWilliams",
+      "password": "Staffaddison",
+      "id": 5
+    },
+    {
+      "firstName": "Athena",
+      "lastName": "Smith",
+      "DOB": "1990-01-05",
+      "username": "AthenaSmith",
+      "password": "Adminathena",
+      "id": 6
+    },
+    {
+      "firstName": "Addison",
+      "lastName": "Williams",
+      "DOB": "1990-01-05",
+      "username": "AddisonWilliams",
+      "password": "Staffaddison",
+      "id": 7
+    },
+    {
+      "firstName": "Adword",
+      "lastName": "Williams",
+      "DOB": "1990-01-05",
+      "username": "AddisonWilliams",
+      "password": "Staffaddison",
+      "id": 8
+    },
+    {
+      "firstName": "Adword",
+      "lastName": "Williams",
+      "DOB": "1990-01-05",
+      "username": "AddisonWilliams",
+      "password": "Staffaddison",
+      "id": 9
     }
   ]
 }

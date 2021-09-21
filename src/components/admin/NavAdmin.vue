@@ -12,8 +12,12 @@
   </div>
   
   <div v-if="hamburgerBar" class="menuNav bg-babyblue">
-    <p class="pb-5 pt-10">Staff List</p>
-    <p class="py-5">Register Staff</p>
+    <router-link to="/adminHome">
+      <p class="pb-5 pt-10">Staff List</p>
+    </router-link>
+    <router-link to="/register">
+      <p class="py-5">Register Staff</p>
+    </router-link>
     <div class="py-5" @click="showHamburger()">
       <i class="iconNav fas fa-angle-up fa-2x"></i>
     </div>
