@@ -1,38 +1,38 @@
 <template>
   <navAdmin></navAdmin>
 
-  <div class="bg-babyblue my-12 mx-80">
-    <div class="header pt-10">
+  <div class="bg-babyblue my-12 mx-96">
+    <div class="header pt-10 flex justify-center">
       <p>Create Account</p>
     </div>
 
-    <div class="my-2">
-      <p>Firstname</p>
-      <input v-model="firstName"/>
+    <div class="my-2 mx-60 justify-center">
+      <p class="flex justify-start">Firstname</p>
+      <input v-model="firstName" class="w-auto"/>
     </div>
-    <div class="my-2">
-      <p>Lastname</p>
+    <div class="my-2 mx-60 justify-center">
+      <p class="flex justify-start">Lastname</p>
       <input v-model="lastName"/>
     </div>
-    <div class="my-2">
-      <p>Birthday</p>
-      <input type="date" v-model="DOB"/>
+    <div class="my-2 mx-60 justify-center">
+      <p class="flex justify-start">Birthday</p>
+      <input type="date" class="px-4" v-model="DOB"/>
     </div>
-    <div class="my-2">
-      <p>Username</p>
+    <div class="my-2 mx-60 justify-center">
+      <p class="flex justify-start">Username</p>
       <input v-model="username"/>
     </div>
-    <div class="my-2">
-      <p>Set password</p>
+    <div class="my-2 mx-60 justify-center">
+      <p class="flex justify-start">Set password</p>
       <input v-model="password"/>
     </div>
-    <div class="my-2 pb-12">
-      <p>Confirm password</p>
+    <div class="mx-60 justify-center">
+      <p class="flex justify-start">Confirm password</p>
       <input v-model="confirmPassword"/>
     </div>
 
-    <div >
-        <button class="bg-white" @click="submitStaff">SUBMIT</button>
+    <div class="py-4">
+        <button class="bg-white" @click="submitAccount">SUBMIT</button>
     </div>
   </div>
 
@@ -101,9 +101,10 @@ export default {
         this.staffs = [...this.staffs, data];
         this.firstName = "";
         this.lastName = "";
-        
+        this.username = "";
         this.password = "";
         this.confirmPassword = "";
+        this.DOB = "";
       } catch (error) {
         console.log(`Could not save! ${error}`);
       }

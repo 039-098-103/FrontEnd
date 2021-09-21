@@ -4,8 +4,14 @@
       <i class="icons fas fa-bars fa-lg"></i>
     </div>
 
-    <p class="brand justify-center flex">JWPEI</p>
-
+    
+      <p class="brand justify-center flex">
+       <router-link to="/adminHome"> 
+        JWPEI
+        </router-link>
+        </p>
+    
+    
     <div class="items-end justify-end flex mr-20">
       <i class="icons fas fa-user fa-lg"></i>
     </div>
