@@ -25,18 +25,18 @@
       "id": 3
     },
     {
-      "firstName": "Addison",
-      "lastName": "Williams",
-      "DOB": "1990-01-05",
-      "username": "AddisonWilliams",
+      "firstName": "Sunanta",
+      "lastName": "Singka",
+      "DOB": "2000-08-21",
+      "username": "SunantaSingka",
       "password": "Staffaddison",
       "id": 4
     },
     {
-      "firstName": "Adword",
-      "lastName": "Williams",
-      "DOB": "1990-01-05",
-      "username": "AddisonWilliams",
+      "firstName": "Apisara",
+      "lastName": "Ngakor",
+      "DOB": "2000-10-19",
+      "username": "ApisaraNgakor",
       "password": "Staffaddison",
       "id": 5
     },

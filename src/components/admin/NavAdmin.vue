@@ -11,7 +11,6 @@
         </router-link>
         </p>
     
-    
     <div class="items-end justify-end flex mr-20">
       <i class="icons fas fa-user fa-lg"></i>
     </div>
