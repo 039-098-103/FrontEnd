@@ -12,7 +12,10 @@
         </p>
     
     <div class="items-end justify-end flex mr-20">
-      <i class="icons fas fa-user fa-lg"></i>
+      <router-link to="/accountAdmin">
+        <i class="icons fas fa-user fa-lg"></i>
+      </router-link>
+      
     </div>
   </div>
   

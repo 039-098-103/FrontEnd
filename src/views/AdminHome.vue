@@ -21,7 +21,7 @@
       <div
         class="bg-blue-100 shadow-md py-5 pl-10"
         
-        v-for="list in staffs"
+        v-for="list in searching"
         :key="list.id"
       >
         <div class="flex justify-start mb-1">
@@ -44,7 +44,6 @@
       </div>
     </div>
 
-    <div>5555</div>
     <addStaff></addStaff>
   </div>
 </template>
@@ -91,7 +90,7 @@ export default {
   computed: {
         searching(){
             return this.staffs.filter(showResult => {
-                return showResult.firstName.toLowerCase().includes(this.search.toLowerCase())
+                return showResult.username.toLowerCase().includes(this.search.toLowerCase())
             })
         }
     },

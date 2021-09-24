@@ -6,6 +6,8 @@ module.exports = {
       colors: {
         babyblue : '#759FD0',
         skylight : '#ABC3C7',
+        grayblue: '#809AB9',
+
     },
   }
   },

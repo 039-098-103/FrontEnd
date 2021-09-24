@@ -1,4 +1,14 @@
 {
+  "admin":[
+    {
+      "firstName": "Athena",
+      "lastName": "Smith",
+      "DOB": "1995-12-30",
+      "username": "Athena",
+      "password": "123",
+      "id": 1
+    }
+  ],
   "staffs": [
     {
       "firstName": "Cara",
