@@ -6,10 +6,10 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import NavAdmin from '@/components/admin/NavAdmin.vue'
 import AddStaff from '@/components/admin/AddStaffButtom.vue'
-import Search from '@/components/admin/Search.vue'
+import EditProfile from '@/components/admin/EditProfile.vue'
 
 const app = createApp(App).use(router)
 app.component('navAdmin', NavAdmin)
 app.component('addStaff', AddStaff)
-app.component('search', Search)
+app.component('edit', EditProfile)
 app.mount('#app')

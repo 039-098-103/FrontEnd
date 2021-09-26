@@ -1,11 +1,6 @@
 {
-  "admin":[
+  "admin": [
     {
-      "firstName": "Athena",
-      "lastName": "Smith",
-      "DOB": "1995-12-30",
-      "username": "Athena",
-      "password": "123",
       "id": 1
     }
   ],
@@ -81,6 +76,15 @@
       "username": "AddisonWilliams",
       "password": "Staffaddison",
       "id": 9
+    },
+    {
+      "firstName": "dsfv",
+      "lastName": "ds",
+      "DOB": "2021-09-04",
+      "username": "asd",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 10
     }
   ]
 }
