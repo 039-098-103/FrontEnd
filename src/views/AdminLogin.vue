@@ -37,23 +37,12 @@ export default {
       user: "",
       pass: "",
       showError: false,
-      url: "http://localhost:3000/auth",
-      // username: "Athena",
-      // password: "123",
+      url: "http://52.187.115.71/backend/auth",
     };
   },
 
   methods: {
     async login() {
-      // if (this.user === this.username && this.pass === this.password) {
-      //   return this.$router.push('/adminHome');
-      // }
-      // else if(this.user === this.user || this.pass === this.pass){
-      //   alert("Plase enter your username or password")
-      // }
-      // else {
-      //   alert("Invalid username or password");
-      // }
       if (!this.user || !this.pass) {
         alert("Username and Password can't be empty!");
       } else {

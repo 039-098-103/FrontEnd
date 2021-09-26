@@ -9,7 +9,7 @@
 
   <div class="flex justify-center">
     <div class="mt-20 mx-20 bg-blue-100 shadow-md py-5 px-10 w-1/4">
-      <div v-for="admin in admin" :key="admin.id">
+      <div v-for="admin in admin" :key="admin.username">
         <div v-if="hiddenEdit == false" >
           <div class="flex justify-start mb-1">
             <i class="username far fa-user-circle items-center"></i>
@@ -23,9 +23,9 @@
           <div class="flex justify-start">
             <p class="">Username : {{ admin.username }}</p>
           </div>
-          <div class="flex justify-start">
+          <!-- <div class="flex justify-start">
             <p class="inline">Password : {{ admin.password }}</p>
-          </div>
+          </div> -->
           <div class="flex justify-end">
             <button @click="hiddenEdit = !hiddenEdit ">
               <i class="fas fa-user-edit"></i>
@@ -34,7 +34,7 @@
         </div>
 
         <div v-else>
-          <edit  :adminId = "admin.id" :editAdmin = "admin" @toggleOpen = "toggleOpen" @toggleDone = "toggleDone"
+          <edit  :adminUsername = "admin.username" :editAdmin = "admin" @toggleOpen = "toggleOpen" @toggleDone = "toggleDone"
           :fn="firstName" :ln="lastName" :DOB="bt"></edit>
         </div>
       </div>
@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       admin: [],
-      url: "http://localhost:3000/admin/getInfo",
+      url: "http://52.187.115.71/backend/admin/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,
@@ -79,11 +79,10 @@ export default {
             Authorization: localStorage.getItem('token')
           }
         }).then((res)=>{
-          return res.data
+          this.admin = res.data
+        }).catch((err)=>{
+          alert(err.response.data)
         })
-        // const res = await fetch(this.url);
-        // const data = await res.json();
-        // return data;
       } catch (error) {
         console.log(`Could not get! ${error}`);
       }

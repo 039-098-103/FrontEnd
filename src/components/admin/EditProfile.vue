@@ -22,51 +22,47 @@
         <input v-model="password" type="text" placeholder="Change password" />
       </div>
       <div class="mt-4">
-          <button
+        <button
           class="bg-green-400 px-4 py-1 rounded-sm ml-4 mr-4"
-          type="submit" 
+          type="submit"
         >
           Submit
         </button>
-        
+
         <button class="bg-red-400 px-4 py-1 rounded-sm" @click="cancel">
           Cancel
         </button>
       </div>
     </form>
 
-    <div v-else>
-
-    </div>
+    <div v-else></div>
   </div>
-
-
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "admin",
   components: {},
 
   props: {
-    editAdmin:{
+    editAdmin: {
       type: Object,
     },
   },
 
-  emits: ['editAc'],
+  emits: ["editAc"],
 
   data() {
     return {
       admin: [],
       firstName: "",
       lastName: "",
-      DOB:null,
+      DOB: null,
       username: "",
       password: "",
-      url: "http://localhost:5000/admin",
+      url: "http://52.187.115.71/backend/admin",
       show: true,
       hiddenEdit: true,
-
     };
   },
 
@@ -74,67 +70,65 @@ export default {
     cancel() {
       // อันนี้ไว้สำหรับไว้ลองเเก้อีกหน้านึงที่เรียกใช้ compo นี้
       // <edit @handleCancel="ชื่อ method ที่ไว้ใช่เปลี่ยนค่า true false ในการเเสดง ไม่เเสดง"></edit>
-      this.$emit('toggleOpen')
-
+      this.$emit("toggleOpen");
     },
 
     // done(){
-      
+
     //   alert(`Edit Success`)
     // },
 
-    async getData() {
-      try {
-        const res = await fetch(this.url);
-        const data = await res.json();
-        return data;
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
-    },
 
     async submitEdit() {
-      const res = await fetch(`${this.url}/${this.editAdmin.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName: this.firstName,
-          lastName: this.lastName,
-          DOB: this.DOB,
-          username: this.username,
-          password: this.password,
-        }),
+      const formData = new FormData();
+      let data = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        DOB: this.DOB,
+        username: this.username,
+        password: this.password,
+      };
+      const json = JSON.stringify(data);
+      const blob = new Blob([json], {
+        type: "application/json",
       });
-      const data = await res.json();
-      this.admin = this.admin.map((adminEdit) =>
-        adminEdit.id === data.id
-          ? {
-              ...adminEdit,
-              firstName: data.firstName,
-              lastName: data.lastName,
-              DOB: data.DOB,
-              username: data.username,
-              password: data.password,
-            }
-          : adminEdit
-      );
-      (this.firstName = ""),
-        (this.lastName = ""),
-        (this.DOB = null),
-        (this.password = ""),
-        (this.username = ""),
-        (this.submitEdit = null);
-
-        console.log('submit')
-        this.$emit('toggleDone')
+      formData.append("data", blob);
+      axios
+        .patch(`${this.url}/update`, formData, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            this.admin = this.admin.map((adminEdit) =>
+              adminEdit.username === this.username
+                ? {
+                    ...adminEdit,
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    DOB: this.DOB,
+                    username: this.username,
+                  }
+                : adminEdit
+            );
+            (this.firstName = ""),
+              (this.lastName = ""),
+              (this.DOB = null),
+              (this.password = ""),
+              (this.username = ""),
+              (this.submitEdit = null);
+            this.$emit("toggleDone");
+          }
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
     },
-
   },
 
   async created() {
-    this.admin = await this.getData();
+    // this.admin = await this.getData();
     this.firstName = this.editAdmin.firstName;
     this.lastName = this.editAdmin.lastName;
     this.DOB = this.editAdmin.DOB;

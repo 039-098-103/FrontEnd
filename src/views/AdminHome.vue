@@ -47,7 +47,7 @@
           <p>{{ list.DOB }}</p>
         </div>
 
-        <div class="flex justify-end pr-8" @click="deleteStaff(list.id)">
+        <div class="flex justify-end pr-8" @click="deleteStaff(list.username)">
           <i class="far fa-trash-alt"></i>
         </div>
       </div>
@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       staffs: [],
-      url: "http://localhost:3000/admin/getStaffList",
+      url: "http://localhost:3000/admin",
       search: "",
     };
   },
@@ -74,33 +74,37 @@ export default {
     async getStaffs() {
       try {
         axios
-          .get(this.url, {
+          .get(`${this.url}/getStaffList`, {
             headers: {
-              Authorization: localStorage.getItem("token"),
+              Authorization: localStorage.getItem("token")
             },
           })
           .then((res) => {
             this.staffs = res.data
-            return res.data;
+          }).catch((err)=>{
+            alert(err.response.data)
           });
-        // const res = await fetch(this.url);
-        // const data = await res.json();
-        // return data;
       } catch (error) {
         console.log(`Could not get! ${error}`);
       }
     },
 
-    // async deleteStaff(id) {
-    //   if (confirm(`Are you sure to delete ?`)) {
-    //     const res = await fetch(`${this.url}/${id}`, {
-    //       method: "DELETE",
-    //     });
-    //     res.status === 200
-    //       ? (this.staffs = this.staffs.filter((list) => list.id !== id))
-    //       : alert("Error to delete product");
-    //   }
-    // },
+    async deleteStaff(username) {
+      if (confirm(`Are you sure to delete ?`)) {
+        axios.delete(`${this.url}/delete/${username}`, {
+          headers:{
+            Authorization: localStorage.getItem("token")
+          }
+        }).then((res)=>{
+          if(res.status === 200){
+            this.staffs = this.staffs.filter((list) => list.username !== username)
+          }
+        }).catch((err)=>{
+          alert(err.response.data)
+        })
+        
+      }
+    },
   },
 
   async created() {

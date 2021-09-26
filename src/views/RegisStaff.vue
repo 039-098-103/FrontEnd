@@ -9,24 +9,28 @@
     <div class="mt-10 grid grid-cols-2">
       <div class="ml-20">
         <div>
-         <p class="flex justify-start">Firstname</p>
-        <input
-          v-model="firstName"
-          class="w-auto rounded-sm py-1 px-2 flex justify-start"
-        /> 
-        </div> 
-        <sup v-show="inputFirstname" class="text-red-500 justify-start"> Please enter firstname!</sup>
+          <p class="flex justify-start">Firstname</p>
+          <input
+            v-model="firstName"
+            class="w-auto rounded-sm py-1 px-2 flex justify-start"
+          />
+        </div>
+        <sup v-show="inputFirstname" class="text-red-500 justify-start">
+          Please enter firstname!</sup
+        >
       </div>
 
       <div class="ml-10">
         <div>
-         <p class="flex justify-start">Lastname</p>
-        <input
-          v-model="lastName"
-          class="rounded-sm py-1 px-2 flex justify-start"
-        /> 
+          <p class="flex justify-start">Lastname</p>
+          <input
+            v-model="lastName"
+            class="rounded-sm py-1 px-2 flex justify-start"
+          />
         </div>
-        <sup v-show="inputLastname" class="text-red-500 justify-start"> Please enter lastname!</sup>
+        <sup v-show="inputLastname" class="text-red-500 justify-start">
+          Please enter lastname!</sup
+        >
       </div>
 
       <div class="ml-20 mt-4">
@@ -36,7 +40,9 @@
           class="rounded-sm py-1 px-2 flex justify-start w-52"
           v-model="DOB"
         />
-        <sup v-show="inputBOD" class="text-red-500 justify-start"> Please enter birthday!</sup>
+        <sup v-show="inputBOD" class="text-red-500 justify-start">
+          Please enter birthday!</sup
+        >
       </div>
     </div>
 
@@ -47,23 +53,36 @@
     <div class="grid grid-cols-2">
       <div class="ml-20">
         <p class="flex justify-start">Username</p>
-        <input v-model="username" class="rounded-sm py-1 px-2  flex justify-start" />
-        <sup v-show="inputUsername" class="text-red-500 justify-start"> Please enter username!</sup>
+        <input
+          v-model="username"
+          class="rounded-sm py-1 px-2 flex justify-start"
+        />
+        <sup v-show="inputUsername" class="text-red-500 justify-start">
+          Please enter username!</sup
+        >
       </div>
 
       <div class="ml-10">
         <p class="flex justify-start">Set password</p>
-        <input v-model="password" class="rounded-sm py-1 px-2  flex justify-start" />
-        <sup v-show="inputPassword" class="text-red-500 justify-start"> Please enter password!</sup>
+        <input
+          v-model="password"
+          class="rounded-sm py-1 px-2 flex justify-start"
+        />
+        <sup v-show="inputPassword" class="text-red-500 justify-start">
+          Please enter password!</sup
+        >
       </div>
-      <div>
-
-      </div>
+      <div></div>
 
       <div class="ml-10 mt-4">
         <p class="flex justify-start">Confirm password</p>
-        <input v-model="confirmPassword" class="rounded-sm py-1 px-2  flex justify-start" />
-        <sup v-show="inputConfirm" class="text-red-500 justify-start"> Please confirm password!</sup>
+        <input
+          v-model="confirmPassword"
+          class="rounded-sm py-1 px-2 flex justify-start"
+        />
+        <sup v-show="inputConfirm" class="text-red-500 justify-start">
+          Please confirm password!</sup
+        >
       </div>
     </div>
 
@@ -76,6 +95,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "staffs",
   components: {},
@@ -94,7 +114,7 @@ export default {
       username: "",
       password: "",
       confirmPassword: "",
-      url: "http://localhost:5000/staffs",
+      url: "http://52.187.115.71/backend/admin",
       staffs: [],
     };
   },
@@ -122,26 +142,40 @@ export default {
 
     async addStaff() {
       try {
-        const res = await fetch(this.url, {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify({
-            firstName: this.firstName,
-            lastName: this.lastName,
-            DOB: this.DOB,
-            username: this.username,
-            password: this.password,
-            confirmPassword: this.confirmPassword,
-          }),
+        const formData = new FormData();
+        let data = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          DOB: this.DOB,
+          username: this.username,
+          password: this.password
+        };
+        const json = JSON.stringify(data);
+        const blob = new Blob([json], {
+          type: "application/json",
         });
-        const data = await res.json();
-        this.staffs = [...this.staffs, data];
-        this.firstName = "";
-        this.lastName = "";
-        this.username = "";
-        this.password = "";
-        this.confirmPassword = "";
-        this.DOB = "";
+        formData.append("data", blob);
+
+        axios
+          .post(`${this.url}/addStaff`, formData, {
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              this.staffs = [...this.staffs, data];
+              this.firstName = "";
+              this.lastName = "";
+              this.username = "";
+              this.password = "";
+              this.confirmPassword = "";
+              this.DOB = "";
+              alert("Staff added!")
+            }
+          }).catch((err)=>{
+            alert(err.response.data)
+          });
       } catch (error) {
         console.log(`Could not save! ${error}`);
       }
