@@ -1,6 +1,6 @@
 <template>
   <div class="bg-blue-100">
-    <form @submit.prevent="submitEdit">
+    <form @submit.prevent="submitEdit" v-if="hiddenEdit == true">
       <div>
         <p>Firstname</p>
         <input v-model="firstName" type="text" placeholder="Change username" />
@@ -22,19 +22,25 @@
         <input v-model="password" type="text" placeholder="Change password" />
       </div>
       <div class="mt-4">
-        <button
+          <button
           class="bg-green-400 px-4 py-1 rounded-sm ml-4 mr-4"
-          type="submit"
+          type="submit" 
         >
           Submit
         </button>
+        
         <button class="bg-red-400 px-4 py-1 rounded-sm" @click="cancel">
           Cancel
         </button>
       </div>
-
     </form>
+
+    <div v-else>
+
+    </div>
   </div>
+
+
 </template>
 <script>
 export default {
@@ -44,30 +50,38 @@ export default {
   props: {
     editAdmin:{
       type: Object,
-    }
+    },
   },
+
+  emits: ['editAc'],
 
   data() {
     return {
       admin: [],
       firstName: "",
       lastName: "",
-      DOB: null,
+      DOB:null,
       username: "",
       password: "",
       url: "http://localhost:5000/admin",
       show: true,
+      hiddenEdit: true,
+
     };
   },
 
   methods: {
-
     cancel() {
       // อันนี้ไว้สำหรับไว้ลองเเก้อีกหน้านึงที่เรียกใช้ compo นี้
       // <edit @handleCancel="ชื่อ method ที่ไว้ใช่เปลี่ยนค่า true false ในการเเสดง ไม่เเสดง"></edit>
-      this.$emit('toggleOpen');
+      this.$emit('toggleOpen')
 
     },
+
+    // done(){
+      
+    //   alert(`Edit Success`)
+    // },
 
     async getData() {
       try {
@@ -114,16 +128,18 @@ export default {
         (this.submitEdit = null);
 
         console.log('submit')
+        this.$emit('toggleDone')
     },
+
   },
 
   async created() {
     this.admin = await this.getData();
-    this.firstName = this.admin.firstName;
-    this.lastName = this.admin.lastName;
-    this.DOB = this.admin.DOB;
-    this.password = this.admin.password;
-    this.username = this.admin.username;
+    this.firstName = this.editAdmin.firstName;
+    this.lastName = this.editAdmin.lastName;
+    this.DOB = this.editAdmin.DOB;
+    // this.password = this.editAdmin.password;
+    this.username = this.editAdmin.username;
   },
 };
 </script>

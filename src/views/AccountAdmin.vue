@@ -10,7 +10,7 @@
   <div class="flex justify-center">
     <div class="mt-20 mx-20 bg-blue-100 shadow-md py-5 px-10 w-1/4">
       <div v-for="admin in admin" :key="admin.id">
-        <div v-if="hiddenEdit == false">
+        <div v-if="hiddenEdit == false" >
           <div class="flex justify-start mb-1">
             <i class="username far fa-user-circle items-center"></i>
             <p class="font-bold ml-1">
@@ -34,7 +34,8 @@
         </div>
 
         <div v-else>
-          <edit :adminId = "admin.id" :editAdmin = "admin" @toggleOpen = "toggleOpen"></edit>
+          <edit  :adminId = "admin.id" :editAdmin = "admin" @toggleOpen = "toggleOpen" @toggleDone = "toggleDone"
+          :fn="firstName" :ln="lastName" :DOB="bt"></edit>
         </div>
       </div>
     </div>
@@ -45,8 +46,6 @@
 export default {
   name: "admin",
   components: {},
-
-
 
   data() {
     return {
@@ -63,10 +62,13 @@ export default {
   },
 
   methods: {
-
     toggleOpen(){
       this.hiddenEdit = false;
       
+    },
+
+    toggleDone(){
+      this.hiddenEdit = false;
     },
 
     async getAdmin() {
