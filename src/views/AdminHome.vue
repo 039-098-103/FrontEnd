@@ -12,21 +12,30 @@
     <div class="mb-5 flex justify-end mx-20 items-center">
       <i class="fas fa-search self-center"></i>
       <input
-        class="ml-2 p-1 w-80 placeholder-gray-500 placeholder-opacity-50
-        focus:outline-none text-blackrounded border-b-2" type="text" placeholder="search"
-        v-model="search" />
+        class="
+          ml-2
+          p-1
+          w-80
+          placeholder-gray-500 placeholder-opacity-50
+          focus:outline-none
+          text-blackrounded
+          border-b-2
+        "
+        type="text"
+        placeholder="search"
+        v-model="search"
+      />
     </div>
 
     <div class="grid grid-cols-4 gap-x-6 gap-y-8 mx-20">
       <div
         class="bg-blue-100 shadow-md py-5 pl-10"
-        
         v-for="list in searching"
-        :key="list.id"
+        :key="list.username"
       >
         <div class="flex justify-start mb-1">
-            <i class="username far fa-user-circle items-center"></i>
-          <p class="font-bold ml-1 ">  
+          <i class="username far fa-user-circle items-center"></i>
+          <p class="font-bold ml-1">
             {{ list.username }}
           </p>
         </div>
@@ -48,6 +57,7 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "staffs",
   components: {},
@@ -55,7 +65,7 @@ export default {
   data() {
     return {
       staffs: [],
-      url: "http://localhost:5000/staffs",
+      url: "http://localhost:3000/admin/getStaffList",
       search: "",
     };
   },
@@ -63,24 +73,34 @@ export default {
   methods: {
     async getStaffs() {
       try {
-        const res = await fetch(this.url);
-        const data = await res.json();
-        return data;
+        axios
+          .get(this.url, {
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          })
+          .then((res) => {
+            this.staffs = res.data
+            return res.data;
+          });
+        // const res = await fetch(this.url);
+        // const data = await res.json();
+        // return data;
       } catch (error) {
         console.log(`Could not get! ${error}`);
       }
     },
 
-    async deleteStaff(id) {
-      if (confirm(`Are you sure to delete ?`)) {
-        const res = await fetch(`${this.url}/${id}`, {
-          method: "DELETE",
-        });
-        res.status === 200
-          ? (this.staffs = this.staffs.filter((list) => list.id !== id))
-          : alert("Error to delete product");
-      }
-    },
+    // async deleteStaff(id) {
+    //   if (confirm(`Are you sure to delete ?`)) {
+    //     const res = await fetch(`${this.url}/${id}`, {
+    //       method: "DELETE",
+    //     });
+    //     res.status === 200
+    //       ? (this.staffs = this.staffs.filter((list) => list.id !== id))
+    //       : alert("Error to delete product");
+    //   }
+    // },
   },
 
   async created() {
@@ -88,12 +108,14 @@ export default {
   },
 
   computed: {
-        searching(){
-            return this.staffs.filter(showResult => {
-                return showResult.username.toLowerCase().includes(this.search.toLowerCase())
-            })
-        }
+    searching() {
+      return this.staffs.filter((showResult) => {
+        return showResult.username
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
+      });
     },
+  },
 };
 </script>
 
@@ -101,7 +123,7 @@ export default {
 .head {
   @apply lg:text-3xl;
 }
-.username{
+.username {
   @apply lg:text-xl;
 }
 </style>

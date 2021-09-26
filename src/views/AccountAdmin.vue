@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
   name: "admin",
   components: {},
@@ -50,7 +51,7 @@ export default {
   data() {
     return {
       admin: [],
-      url: "http://localhost:5000/admin",
+      url: "http://localhost:3000/admin/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,
@@ -73,9 +74,16 @@ export default {
 
     async getAdmin() {
       try {
-        const res = await fetch(this.url);
-        const data = await res.json();
-        return data;
+        axios.get(this.url, {
+          headers:{
+            Authorization: localStorage.getItem('token')
+          }
+        }).then((res)=>{
+          return res.data
+        })
+        // const res = await fetch(this.url);
+        // const data = await res.json();
+        // return data;
       } catch (error) {
         console.log(`Could not get! ${error}`);
       }
