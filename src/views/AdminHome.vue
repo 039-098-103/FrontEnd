@@ -5,7 +5,7 @@
     <div class="mb-2 mx-20">
       <div>
         <p class="head font-bold text-left">Officer</p>
-        <p class="text opacity-25 text-left">List of officer on the platform</p>
+        <p class="text opacity-50 text-left">List of officer on the platform</p>
       </div>
     </div>
 
@@ -53,7 +53,14 @@
       </div>
     </div>
 
-    <addStaff></addStaff>
+ 
+    <div class="flex justify-end sticky bottom-8 mr-12 items-end">
+      <div class="rounded-full w-12 h-12 items-center flex justify-center bg-babyblue button ">
+      <router-link to="/register">
+        <i class="icon fas fa-plus"></i>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -65,7 +72,8 @@ export default {
   data() {
     return {
       staffs: [],
-      url: "http://localhost:3000/admin",
+      // url: "http://localhost:3000/admin",
+      url: "http://52.187.115.71/backend/admin",
       search: "",
     };
   },
@@ -129,5 +137,16 @@ export default {
 }
 .username {
   @apply lg:text-xl;
+}
+.icon{
+    font-size: 20px;
+    color: white;
+}
+.button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: .4s;
+  box-shadow: 1px 1px 8px 0 lightblue;
+  
 }
 </style>

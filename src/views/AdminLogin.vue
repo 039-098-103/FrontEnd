@@ -15,7 +15,7 @@
       </div>
       <div class="mt-10 px-80">
         <p class="text-sm pl-4 justify-start flex">Password</p>
-        <input v-model="pass" class="rounded-sm py-1 px-2" />
+        <input v-model="pass" class="rounded-sm py-1 px-2" type="password"/>
       </div>
       <div class="mt-16 submit" v-if="login">
         <button type="submit" class="bg-skylight px-4 py-2 rounded-md">
@@ -38,6 +38,7 @@ export default {
       pass: "",
       showError: false,
       url: "http://52.187.115.71/backend/auth",
+      // url: "http://localhost:3000/auth"
     };
   },
 

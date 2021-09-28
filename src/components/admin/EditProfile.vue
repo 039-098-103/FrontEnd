@@ -1,36 +1,37 @@
 <template>
   <div class="bg-blue-100">
+  <p class="mb-5 mt-5 text-2xl">Edit profile</p>
     <form @submit.prevent="submitEdit" v-if="hiddenEdit == true">
-      <div>
-        <p>Firstname</p>
-        <input v-model="firstName" type="text" placeholder="Change username" />
+
+      <div class="flex justify-center">
+        <p class="flex mr-10 items-center">Firstname</p>
+        <input v-model="firstName" type="text" placeholder="Change firstname" class="px-2 py-1 inline my-2"/>
       </div>
-      <div>
-        <p>Lastname</p>
-        <input v-model="lastName" type="text" placeholder="Change username" />
+      <div class="flex justify-center">
+        <p class="flex items-center mr-10">Lastname</p>
+        <input v-model="lastName" type="text" placeholder="Change lastname" class="px-1 py-1 inline my-2"/>
       </div>
-      <div>
-        <p>Birthday</p>
-        <input v-model="DOB" type="date" placeholder="Change username" />
+      <div class="flex justify-center">
+        <p class="flex items-center mr-12">Birthday</p>
+        <input v-model="DOB" type="date" placeholder="Change birthday" class="px-5 py-1 inline my-2" />
       </div>
-      <div>
-        <p>username</p>
-        <input v-model="username" type="text" placeholder="Change username" />
+      <div class="flex justify-center">
+        <p class="flex items-center mr-10">Username</p>
+        <input v-model="username" type="text" placeholder="Change username" class="px-1 py-1 inline my-2"/>
       </div>
-      <div>
-        <p>Password</p>
-        <input v-model="password" type="text" placeholder="Change password" />
+      <div class="flex justify-center">
+        <p class="flex items-center mr-10">Password</p>
+        <input v-model="password" type="text" placeholder="Change password" class="px-1 py-1 inline my-2" />
       </div>
-      <div class="mt-4">
+      <div class="mt-5">
+      <button class="border-black border px-4 py-1 rounded-sm mr-8 buttoncan" @click="cancel">
+          CANCEL
+        </button>
         <button
-          class="bg-green-400 px-4 py-1 rounded-sm ml-4 mr-4"
+          class="bg-blue-500 text-white px-4 py-1 rounded-sm ml-4 border-2 border-blue-500 button "
           type="submit"
         >
-          Submit
-        </button>
-
-        <button class="bg-red-400 px-4 py-1 rounded-sm" @click="cancel">
-          Cancel
+          SUBMIT
         </button>
       </div>
     </form>
@@ -137,3 +138,19 @@ export default {
   },
 };
 </script>
+
+
+<style>
+.button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: .4s;
+  box-shadow: 1px 1px 8px 0 lightblue;
+}
+.button{
+  font-size: 14.5px;
+}
+.buttoncan{
+  font-size: 14.5px;
+}
+</style>

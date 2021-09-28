@@ -3,12 +3,12 @@
 
   <div class="mb-2 mx-20 mt-12 flex justify-center">
     <div>
-      <p class="head font-bold text-left">Admin profile</p>
+      <p class="head font-bold text-left mt-5">Admin profile</p>
     </div>
   </div>
 
   <div class="flex justify-center">
-    <div class="mt-20 mx-20 bg-blue-100 shadow-md py-5 px-10 w-1/4">
+    <div class="mt-14 mx-20 bg-blue-100 shadow-md py-5 px-10 w-1/4">
       <div v-for="admin in admin" :key="admin.username">
         <div v-if="hiddenEdit == false" >
           <div class="flex justify-start mb-1">
@@ -52,6 +52,7 @@ export default {
     return {
       admin: [],
       url: "http://52.187.115.71/backend/admin/getInfo",
+      // url: "http://localhost:3000/admin/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,

@@ -1,18 +1,18 @@
 <template>
   <navAdmin></navAdmin>
 
-  <div class="bg-grayblue my-12 mx-96">
+  <div class="bg-blue-100 my-12 mx-96">
     <div class="header pt-10 flex justify-center">
       <p>Create Account</p>
     </div>
 
-    <div class="mt-10 grid grid-cols-2">
-      <div class="ml-20">
+      <div class="justify-center mt-12">
         <div>
-          <p class="flex justify-start">Firstname</p>
-          <input
+          <p class="mr-20 inline">Firstname</p> 
+        <input
             v-model="firstName"
-            class="w-auto rounded-sm py-1 px-2 flex justify-start"
+            class="w-auto rounded-sm py-1 px-2 justify-start inline"
+            placeholder=""
           />
         </div>
         <sup v-show="inputFirstname" class="text-red-500 justify-start">
@@ -20,12 +20,12 @@
         >
       </div>
 
-      <div class="ml-10">
+      <div class="flex justify-center my-5">
         <div>
-          <p class="flex justify-start">Lastname</p>
+          <p class="mr-20 inline">Lastname</p>
           <input
             v-model="lastName"
-            class="rounded-sm py-1 px-2 flex justify-start"
+            class="rounded-sm py-1 px-2 justify-start inline"
           />
         </div>
         <sup v-show="inputLastname" class="text-red-500 justify-start">
@@ -33,40 +33,34 @@
         >
       </div>
 
-      <div class="ml-20 mt-4">
-        <p class="flex justify-start">Birthday</p>
+      <div class="flex justify-center my-5">
+        <p class="mr-24 inline">Birthday</p>
         <input
           type="date"
-          class="rounded-sm py-1 px-2 flex justify-start w-52"
+          class="rounded-sm py-1 px-2 inline justify-start w-52"
           v-model="DOB"
         />
         <sup v-show="inputBOD" class="text-red-500 justify-start">
           Please enter birthday!</sup
         >
       </div>
-    </div>
 
-    <div class="flex justify-center my-10">
-      <hr style="width: 90%" />
-    </div>
-
-    <div class="grid grid-cols-2">
-      <div class="ml-20">
-        <p class="flex justify-start">Username</p>
+      <div class="flex justify-center my-5">
+        <p class="mr-20 inline">Username</p>
         <input
           v-model="username"
-          class="rounded-sm py-1 px-2 flex justify-start"
+          class="rounded-sm py-1 px-2 inline justify-start"
         />
         <sup v-show="inputUsername" class="text-red-500 justify-start">
           Please enter username!</sup
         >
       </div>
 
-      <div class="ml-10">
-        <p class="flex justify-start">Set password</p>
+      <div class="flex justify-center my-5">
+        <p class="mr-16 inline">Set password</p>
         <input
           v-model="password"
-          class="rounded-sm py-1 px-2 flex justify-start"
+          class="rounded-sm py-1 px-2 inline justify-start"
         />
         <sup v-show="inputPassword" class="text-red-500 justify-start">
           Please enter password!</sup
@@ -74,20 +68,19 @@
       </div>
       <div></div>
 
-      <div class="ml-10 mt-4">
-        <p class="flex justify-start">Confirm password</p>
+      <div class="flex justify-center my-5">
+        <p class="mr-8 inline">Confirm password</p>
         <input
           v-model="confirmPassword"
-          class="rounded-sm py-1 px-2 flex justify-start"
+          class="rounded-sm py-1 px-2 inline justify-start"
         />
         <sup v-show="inputConfirm" class="text-red-500 justify-start">
           Please confirm password!</sup
         >
       </div>
-    </div>
 
-    <div class="pt-12 pb-12">
-      <button class="bg-white px-4 py-2 rounded-md" @click="submitAccount">
+    <div class="pt-10 pb-12">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded-md button" @click="submitAccount">
         SUBMIT
       </button>
     </div>
@@ -115,6 +108,7 @@ export default {
       password: "",
       confirmPassword: "",
       url: "http://52.187.115.71/backend/admin",
+      // url: "http://localhost:3000/admin",
       staffs: [],
     };
   },
@@ -188,5 +182,12 @@ export default {
 .header {
   font-family: "Roboto Condensed", sans-serif;
   @apply sm:text-sm lg:text-2xl;
+}
+.button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: .4s;
+  box-shadow: 1px 1px 8px 0 lightblue;
+  
 }
 </style>
