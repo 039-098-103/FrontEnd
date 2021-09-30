@@ -44,4 +44,4 @@ jobs:
             docker pull ghcr.io/039-098-103/frontend
             docker images
             docker rm frontend -f
-            docker run -d --name frontend --network bagshop --ip 172.18.0.4 ghcr.io/039-098-103/frontend
+            docker run -p 80:80 -d --name frontend --network bagshop --ip 172.18.0.4 ghcr.io/039-098-103/frontend
