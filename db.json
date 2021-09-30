@@ -1,4 +1,14 @@
 {
+  "admin": [
+    {
+      "firstName": "aaasf",
+      "lastName": "555555",
+      "DOB": "2021-09-02",
+      "username": "0",
+      "password": "",
+      "id": 1
+    }
+  ],
   "staffs": [
     {
       "firstName": "Cara",
@@ -25,18 +35,18 @@
       "id": 3
     },
     {
-      "firstName": "Addison",
-      "lastName": "Williams",
-      "DOB": "1990-01-05",
-      "username": "AddisonWilliams",
+      "firstName": "Sunanta",
+      "lastName": "Singka",
+      "DOB": "2000-08-21",
+      "username": "SunantaSingka",
       "password": "Staffaddison",
       "id": 4
     },
     {
-      "firstName": "Adword",
-      "lastName": "Williams",
-      "DOB": "1990-01-05",
-      "username": "AddisonWilliams",
+      "firstName": "Apisara",
+      "lastName": "Ngakor",
+      "DOB": "2000-10-19",
+      "username": "ApisaraNgakor",
       "password": "Staffaddison",
       "id": 5
     },
@@ -71,6 +81,15 @@
       "username": "AddisonWilliams",
       "password": "Staffaddison",
       "id": 9
+    },
+    {
+      "firstName": "dsfv",
+      "lastName": "ds",
+      "DOB": "2021-09-04",
+      "username": "asd",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 10
     }
   ]
 }
