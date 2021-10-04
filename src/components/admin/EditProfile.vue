@@ -92,8 +92,8 @@ export default {
       DOB: null,
       username: "",
       password: "",
-      // url: "http://52.187.115.71:3000/admin",
-      url: "http://localhost:3000/admin",
+      url: "http://52.187.115.71:3000/admin",
+      // url: "http://localhost:3000/admin",
       show: true,
       hiddenEdit: true,
     };

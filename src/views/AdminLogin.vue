@@ -50,8 +50,8 @@ export default {
       user: "",
       pass: "",
       showError: false,
-      // url: "http://52.187.115.71:3000/auth",
-      url: "http://localhost:3000/auth",
+      url: "http://52.187.115.71:3000/auth",
+      // url: "http://localhost:3000/auth",
     };
   },
 

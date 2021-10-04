@@ -1,16 +1,19 @@
 <template>
   <navAdmin></navAdmin>
 
-  <div class="bg bg-blue-100">
+  <div class="bg bg-blue-100 justify-center">
+    <div>
+
+    
     <div class="header flex justify-center">
       <p>Create Account</p>
     </div>
 
-    <div class="form justify-center grid mx-20">
+    <div class="form justify-center grid mx-10">
         <p class="title md:inline flex justify-start">Firstname</p>
         <input
           v-model="firstName"
-          class="w-auto rounded-sm py-1 px-2 justify-start inline"
+          class="w-52 rounded-sm py-1 px-2 justify-start inline"
           placeholder=""
         /><div></div>
         <sup v-show="inputFirstname" class="text-red-500 flex justify-end mt-4">
@@ -88,6 +91,7 @@
         CREATE
       </button>
     </div>
+    </div>
   </div>
 </template>
 
@@ -111,8 +115,8 @@ export default {
       username: "",
       password: "",
       confirmPassword: "",
-      // url: "http://52.187.115.71:3000/admin",
-      url: "http://localhost:3000/admin",
+      url: "http://52.187.115.71:3000/admin",
+      // url: "http://localhost:3000/admin",
       staffs: [],
     };
   },
@@ -185,8 +189,8 @@ export default {
 
 <style>
 .bg {
-  @apply h-full pb-10
-  xl:my-12 xl:mx-96
+  @apply pb-10
+  xl:my-12  xl:w-1/2
   lg:my-14 lg:mx-60 
   md:mt-10 md:mx-40
   sm:mt-10 sm:mx-20;
