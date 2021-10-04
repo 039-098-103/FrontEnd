@@ -61,6 +61,7 @@
         <input
           v-model="password"
           class="rounded-sm py-1 px-2 inline justify-start"
+          type="password"
         />
         <div></div>
         <sup v-show="inputPassword" class="text-red-500 justify-end flex mt-4">
@@ -74,6 +75,7 @@
         <input
           v-model="confirmPassword"
           class="rounded-sm py-1 px-2 inline justify-start"
+          type="password"
         />
         <div></div>
         <sup v-show="inputConfirm" class="text-red-500 justify-end flex mt-4">
@@ -113,8 +115,8 @@ export default {
       username: "",
       password: "",
       confirmPassword: "",
-      // url: "http://52.187.115.71:3000/admin",
-      url: "http://localhost:3000/admin",
+      url: "http://52.187.115.71:3000/admin",
+      // url: "http://localhost:3000/admin",
       staffs: [],
     };
   },
