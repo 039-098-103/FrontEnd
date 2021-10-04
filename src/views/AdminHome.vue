@@ -2,20 +2,19 @@
   <navAdmin></navAdmin>
 
   <div class="mt-12">
-    <div class="mb-2 mx-20">
+    <div class="title flex justify-center">
       <div>
-        <p class="head font-bold text-left">Officer</p>
-        <p class="text opacity-50 text-left">List of officer on the platform</p>
+        <p class="head font-bold">Officer</p>
+        <p class="subhead opacity-50 ">List of officer on the platform</p>
       </div>
     </div>
 
-    <div class="mb-5 flex justify-end mx-20 items-center">
+    <div class="search flex md:justify-end items-center">
       <i class="fas fa-search self-center"></i>
       <input
         class="
-          ml-2
+          ml-2 lg:w-80
           p-1
-          w-80
           placeholder-gray-500 placeholder-opacity-50
           focus:outline-none
           text-blackrounded
@@ -27,9 +26,9 @@
       />
     </div>
 
-    <div class="grid grid-cols-4 gap-x-6 gap-y-8 mx-20">
+    <div class="gridfetch grid lg:grid-cols-4 xl:gap-x-6 xl:gap-y-8 ">
       <div
-        class="bg-blue-100 shadow-md py-5 pl-10"
+        class="list bg-blue-100 shadow-md"
         v-for="list in searching"
         :key="list.username"
       >
@@ -53,14 +52,8 @@
       </div>
     </div>
 
- 
-    <div class="flex justify-end sticky bottom-8 mr-12 items-end">
-      <div class="rounded-full w-12 h-12 items-center flex justify-center bg-babyblue button ">
-      <router-link to="/register">
-        <i class="icon fas fa-plus"></i>
-        </router-link>
-      </div>
-    </div>
+    <addStaff></addStaff>
+
   </div>
 </template>
 <script>
@@ -72,8 +65,8 @@ export default {
   data() {
     return {
       staffs: [],
-      // url: "http://localhost:3000/admin",
-      url: "http://52.187.115.71:3000/admin",
+      url: "http://localhost:3000/admin",
+      // url: "http://52.187.115.71:3000/admin",
       search: "",
     };
   },
@@ -132,8 +125,23 @@ export default {
 </script>
 
 <style>
+.title{
+  @apply 
+  xl:mb-2 xl:mx-20
+  lg:mx-14 lg:mb-2
+  md:mx-7 md:mb-1
+  sm:flex sm:justify-center;
+}
 .head {
-  @apply lg:text-3xl;
+  @apply text-lg
+  xl:text-3xl
+  lg:text-2xl
+  md:text-2xl
+  sm:text-xl;
+}
+.subhead{
+  @apply text-sm 
+  lg:text-lg;
 }
 .username {
   @apply lg:text-xl;
@@ -141,12 +149,32 @@ export default {
 .icon{
     font-size: 20px;
     color: white;
+  @apply md:text-xs;
 }
 .button:hover{
   cursor: pointer;
   transform: scale(1.1);
   transition: .4s;
   box-shadow: 1px 1px 8px 0 lightblue;
-  
+}
+.gridfetch{
+  @apply mx-12 gap-2
+  xl:mx-20
+  lg:mx-14 lg:gap-x-4 lg:gap-y-6
+  md:mx-7 md:grid-cols-3 md:gap-x-4 md:gap-y-6
+  sm:mx-14 sm:gap-4;
+}
+.list{
+  @apply lg:py-5 lg:pl-10
+  md:py-4 md:pl-8
+  sm:py-3 sm:pl-8 
+  pb-2 pl-6 pt-4;
+}
+.search{
+  @apply 
+  xl:mb-5 xl:mx-20
+  lg:mb-6 lg:mx-14
+  md:mb-5 md:mx-7
+  my-5 mt-10 justify-center;
 }
 </style>

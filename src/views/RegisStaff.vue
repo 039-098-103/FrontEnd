@@ -1,87 +1,91 @@
 <template>
   <navAdmin></navAdmin>
 
-  <div class="bg-blue-100 my-12 mx-96">
-    <div class="header pt-10 flex justify-center">
+  <div class="bg bg-blue-100">
+    <div class="header flex justify-center">
       <p>Create Account</p>
     </div>
 
-      <div class="justify-center mt-12">
-        <div>
-          <p class="mr-20 inline">Firstname</p> 
+    <div class="form justify-center grid mx-20">
+        <p class="title md:inline flex justify-start">Firstname</p>
         <input
-            v-model="firstName"
-            class="w-auto rounded-sm py-1 px-2 justify-start inline"
-            placeholder=""
-          />
-        </div>
-        <sup v-show="inputFirstname" class="text-red-500 justify-start">
-          Please enter firstname!</sup
-        >
-      </div>
+          v-model="firstName"
+          class="w-auto rounded-sm py-1 px-2 justify-start inline"
+          placeholder=""
+        /><div></div>
+        <sup v-show="inputFirstname" class="text-red-500 flex justify-end mt-4">
+        Please enter firstname!</sup
+      >
+    </div>
 
-      <div class="flex justify-center my-5">
-        <div>
-          <p class="mr-20 inline">Lastname</p>
-          <input
-            v-model="lastName"
-            class="rounded-sm py-1 px-2 justify-start inline"
-          />
-        </div>
-        <sup v-show="inputLastname" class="text-red-500 justify-start">
-          Please enter lastname!</sup
-        >
-      </div>
-
-      <div class="flex justify-center my-5">
-        <p class="mr-24 inline">Birthday</p>
+    <div class="form justify-center grid mx-20">
+        <p class="title md:inline flex justify-start">Lastname</p>
         <input
-          type="date"
-          class="rounded-sm py-1 px-2 inline justify-start w-52"
-          v-model="DOB"
+          v-model="lastName"
+          class="rounded-sm py-1 px-2 justify-start inline"
         />
-        <sup v-show="inputBOD" class="text-red-500 justify-start">
-          Please enter birthday!</sup
-        >
-      </div>
-
-      <div class="flex justify-center my-5">
-        <p class="mr-20 inline">Username</p>
-        <input
-          v-model="username"
-          class="rounded-sm py-1 px-2 inline justify-start"
-        />
-        <sup v-show="inputUsername" class="text-red-500 justify-start">
-          Please enter username!</sup
-        >
-      </div>
-
-      <div class="flex justify-center my-5">
-        <p class="mr-16 inline">Set password</p>
-        <input
-          v-model="password"
-          class="rounded-sm py-1 px-2 inline justify-start"
-        />
-        <sup v-show="inputPassword" class="text-red-500 justify-start">
-          Please enter password!</sup
-        >
-      </div>
       <div></div>
+      <sup v-show="inputLastname" class="text-red-500 justify-end mt-4 flex">
+        Please enter lastname!</sup
+      >
+    </div>
 
-      <div class="flex justify-center my-5">
-        <p class="mr-8 inline">Confirm password</p>
-        <input
-          v-model="confirmPassword"
-          class="rounded-sm py-1 px-2 inline justify-start"
-        />
-        <sup v-show="inputConfirm" class="text-red-500 justify-start">
-          Please confirm password!</sup
-        >
-      </div>
+    <div class="form justify-center grid mx-20">
+      <p class="title md:inline flex justify-start">Birthday</p>
+      <input
+        type="date"
+        class="rounded-sm py-1 px-2 inline justify-start w-auto"
+        v-model="DOB"
+      />
+      <div></div>
+      <sup v-show="inputBOD" class="text-red-500 justify-end flex mt-4">
+        Please enter birthday!</sup
+      >
+    </div>
 
-    <div class="pt-10 pb-12">
-      <button class="bg-blue-500 text-white px-4 py-2 rounded-md button" @click="submitAccount">
-        SUBMIT
+    <div class="form justify-center grid mx-20">
+      <p class="title md:inline flex justify-start">Username</p>
+      <input
+        v-model="username"
+        class="rounded-sm py-1 px-2 inline justify-start"
+      />
+      <div></div>
+      <sup v-show="inputUsername" class="text-red-500 justify-end flex mt-4">
+        Please enter username!</sup
+      >
+    </div>
+
+    <div class="form justify-center grid mx-20">
+      <p class="title md:inline flex justify-start">Set password</p>
+      <input
+        v-model="password"
+        class="rounded-sm py-1 px-2 inline justify-start"
+      />
+      <div></div>
+      <sup v-show="inputPassword" class="text-red-500 justify-end flex mt-4">
+        Please enter password!</sup
+      >
+    </div>
+    <div></div>
+
+    <div class="form justify-center grid mx-20">
+      <p class="title md:inline flex justify-start">Confirm password</p>
+      <input
+        v-model="confirmPassword"
+        class="rounded-sm py-1 px-2 inline justify-start"
+      />
+      <div></div>
+      <sup v-show="inputConfirm" class="text-red-500 justify-end flex mt-4">
+        Please confirm password!</sup
+      >
+    </div>
+
+    <div class="submit">
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded-md button"
+        @click="submitAccount"
+      >
+        CREATE
       </button>
     </div>
   </div>
@@ -107,8 +111,8 @@ export default {
       username: "",
       password: "",
       confirmPassword: "",
-      url: "http://52.187.115.71:3000/admin",
-      // url: "http://localhost:3000/admin",
+      // url: "http://52.187.115.71:3000/admin",
+      url: "http://localhost:3000/admin",
       staffs: [],
     };
   },
@@ -142,7 +146,7 @@ export default {
           lastName: this.lastName,
           DOB: this.DOB,
           username: this.username,
-          password: this.password
+          password: this.password,
         };
         const json = JSON.stringify(data);
         const blob = new Blob([json], {
@@ -165,10 +169,11 @@ export default {
               this.password = "";
               this.confirmPassword = "";
               this.DOB = "";
-              alert("Staff added!")
+              alert("Staff added!");
             }
-          }).catch((err)=>{
-            alert(err.response.data)
+          })
+          .catch((err) => {
+            alert(err.response.data);
           });
       } catch (error) {
         console.log(`Could not save! ${error}`);
@@ -179,15 +184,37 @@ export default {
 </script>
 
 <style>
+.bg {
+  @apply h-full pb-10
+  xl:my-12 xl:mx-96
+  lg:my-14 lg:mx-60 
+  md:mt-10 md:mx-40
+  sm:mt-10 sm:mx-20;
+}
 .header {
   font-family: "Roboto Condensed", sans-serif;
-  @apply sm:text-sm lg:text-2xl;
+  @apply text-lg mb-2
+  lg:text-2xl lg:mb-8
+  md:text-xl md:mb-4
+  sm:text-lg;
 }
-.button:hover{
+.button:hover {
   cursor: pointer;
   transform: scale(1.1);
-  transition: .4s;
+  transition: 0.4s;
   box-shadow: 1px 1px 8px 0 lightblue;
-  
+}
+.submit {
+  @apply xl:pb-12;
+}
+.form{
+  @apply
+  sm:grid-cols-2
+  sm:mt-2;
+}
+.title{
+  @apply flex justify-start mt-4
+  lg:mx-5
+  md:mx-1;
 }
 </style>

@@ -1,8 +1,12 @@
 <template>
     <div class="flex justify-end sticky bottom-8 mr-12 items-end">
+<router-link to="/register">
       <div class="rounded-full w-12 h-12 items-center flex justify-center bg-babyblue button " >
+        
         <i class="icon fas fa-plus"></i>
+        
       </div>
+      </router-link>
     </div>
     
 </template>
