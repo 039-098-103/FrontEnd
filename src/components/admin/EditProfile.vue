@@ -1,7 +1,7 @@
 <template>
   <div class="bg-blue-100">
     <p class="header">Edit profile</p>
-    <form @submit.prevent="submitEdit" v-if="hiddenEdit == true">
+    <form @submit.prevent="submitAccount" v-if="hiddenEdit == true">
       <div class="edit flex justify-center">
         <p class="flex mr-10 items-center">Firstname</p>
         <input
@@ -11,6 +11,10 @@
           class="px-2 py-1 inline my-2"
         />
       </div>
+      <sup v-show="inputFirstname" class="text-red-500 flex justify-end mt-4">
+        Please enter firstname!</sup
+      >
+
       <div class="edit flex justify-center">
         <p class="flex items-center mr-10">Lastname</p>
         <input
@@ -20,6 +24,10 @@
           class="px-1 py-1 inline my-2"
         />
       </div>
+      <sup v-show="inputLastname" class="text-red-500 justify-end mt-4 flex">
+        Please enter lastname!</sup
+      >
+
       <div class="edit flex justify-center">
         <p class="flex items-center mr-12">Birthday</p>
         <input
@@ -29,6 +37,10 @@
           class="px-5 py-1 inline my-2 xl:w-56"
         />
       </div>
+      <sup v-show="inputBOD" class="text-red-500 justify-end flex mt-4">
+        Please enter birthday!</sup
+      >
+
       <div class="edit flex justify-center">
         <p class="flex items-center mr-10">Username</p>
         <input
@@ -38,28 +50,25 @@
           class="px-1 py-1 inline my-2"
         />
       </div>
+      <sup v-show="inputUsername" class="text-red-500 justify-end flex mt-4">
+        Please enter username!</sup
+      >
+
       <div class="edit flex justify-center">
         <p class="flex items-center mr-10">Password</p>
         <input
           v-model="password"
-          type="text"
+          type="password"
           placeholder="Change password"
           class="px-1 py-1 inline my-2"
         />
       </div>
       <div class="mt-5">
-        <button
-          class="border-black border buttoncan"
-          @click="cancel"
-        >
+        <button class="border-black border buttoncan" @click="cancel">
           CANCEL
         </button>
         <button
-          class="
-            bg-blue-500
-            text-white
-            border-2 border-blue-500
-          "
+          class="bg-blue-500 text-white border-2 border-blue-500"
           type="submit"
         >
           SUBMIT
@@ -92,10 +101,15 @@ export default {
       DOB: null,
       username: "",
       password: "",
-      url: "http://52.187.115.71:3000/admin",
-      // url: "http://localhost:3000/admin",
+      // url: "http://52.187.115.71:3000/admin",
+      url: "http://localhost:3000/admin",
       show: true,
       hiddenEdit: true,
+      inputFirstname: false,
+      inputLastname: false,
+      inputBOD: false,
+      inputUsername: false,
+      inputPassword: false,
     };
   },
 
@@ -110,6 +124,21 @@ export default {
 
     //   alert(`Edit Success`)
     // },
+    submitAccount() {
+      this.inputFirstname = this.firstName === "" ? true : false;
+      this.inputLastname = this.lastName === "" ? true : false;
+      this.inputBOD = this.DOB === "" ? true : false;
+      this.inputUsername = this.username === "" ? true : false;
+      if (
+        this.inputFirstname ||
+        this.inputLastname ||
+        this.inputBOD ||
+        this.inputUsername
+      ) {
+        return;
+      }
+      this.submitEdit();
+    },
 
     async submitEdit() {
       const formData = new FormData();
@@ -194,6 +223,9 @@ button {
   font-size: 14.5px;
 }
 .edit {
+  @apply text-xs md:text-sm lg:text-base;
+}
+sup {
   @apply text-xs md:text-sm lg:text-base;
 }
 </style>
