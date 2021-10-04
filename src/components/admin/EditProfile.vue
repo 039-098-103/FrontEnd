@@ -1,34 +1,65 @@
 <template>
   <div class="bg-blue-100">
-  <p class="mb-5 mt-5 text-2xl">Edit profile</p>
+    <p class="header">Edit profile</p>
     <form @submit.prevent="submitEdit" v-if="hiddenEdit == true">
-
-      <div class="flex justify-center">
+      <div class="edit flex justify-center">
         <p class="flex mr-10 items-center">Firstname</p>
-        <input v-model="firstName" type="text" placeholder="Change firstname" class="px-2 py-1 inline my-2"/>
+        <input
+          v-model="firstName"
+          type="text"
+          placeholder="Change firstname"
+          class="px-2 py-1 inline my-2"
+        />
       </div>
-      <div class="flex justify-center">
+      <div class="edit flex justify-center">
         <p class="flex items-center mr-10">Lastname</p>
-        <input v-model="lastName" type="text" placeholder="Change lastname" class="px-1 py-1 inline my-2"/>
+        <input
+          v-model="lastName"
+          type="text"
+          placeholder="Change lastname"
+          class="px-1 py-1 inline my-2"
+        />
       </div>
-      <div class="flex justify-center">
+      <div class="edit flex justify-center">
         <p class="flex items-center mr-12">Birthday</p>
-        <input v-model="DOB" type="date" placeholder="Change birthday" class="px-5 py-1 inline my-2" />
+        <input
+          v-model="DOB"
+          type="date"
+          placeholder="Change birthday"
+          class="px-5 py-1 inline my-2 xl:w-56"
+        />
       </div>
-      <div class="flex justify-center">
+      <div class="edit flex justify-center">
         <p class="flex items-center mr-10">Username</p>
-        <input v-model="username" type="text" placeholder="Change username" class="px-1 py-1 inline my-2"/>
+        <input
+          v-model="username"
+          type="text"
+          placeholder="Change username"
+          class="px-1 py-1 inline my-2"
+        />
       </div>
-      <div class="flex justify-center">
+      <div class="edit flex justify-center">
         <p class="flex items-center mr-10">Password</p>
-        <input v-model="password" type="text" placeholder="Change password" class="px-1 py-1 inline my-2" />
+        <input
+          v-model="password"
+          type="text"
+          placeholder="Change password"
+          class="px-1 py-1 inline my-2"
+        />
       </div>
       <div class="mt-5">
-      <button class="border-black border px-4 py-1 rounded-sm mr-8 buttoncan" @click="cancel">
+        <button
+          class="border-black border buttoncan"
+          @click="cancel"
+        >
           CANCEL
         </button>
         <button
-          class="bg-blue-500 text-white px-4 py-1 rounded-sm ml-4 border-2 border-blue-500 button "
+          class="
+            bg-blue-500
+            text-white
+            border-2 border-blue-500
+          "
           type="submit"
         >
           SUBMIT
@@ -61,8 +92,8 @@ export default {
       DOB: null,
       username: "",
       password: "",
-      url: "http://52.187.115.71:3000/admin",
-      // url: "http://localhost:3000/admin",
+      // url: "http://52.187.115.71:3000/admin",
+      url: "http://localhost:3000/admin",
       show: true,
       hiddenEdit: true,
     };
@@ -79,7 +110,6 @@ export default {
 
     //   alert(`Edit Success`)
     // },
-
 
     async submitEdit() {
       const formData = new FormData();
@@ -120,6 +150,7 @@ export default {
               (this.password = ""),
               (this.username = ""),
               (this.submitEdit = null);
+            alert("Edit success");
             this.$emit("toggleDone");
           }
         })
@@ -142,16 +173,27 @@ export default {
 
 
 <style>
-.button:hover{
+.header {
+  @apply xl:mb-5 xl:mt-5 xl:text-2xl
+  lg:text-xl;
+}
+.button:hover {
   cursor: pointer;
   transform: scale(1.1);
-  transition: .4s;
+  transition: 0.4s;
   box-shadow: 1px 1px 8px 0 lightblue;
 }
-.button{
+button {
+  @apply text-xs mr-4 px-1 py-1 rounded
+  lg:px-4 lg:mr-8
+  md:text-sm
+  sm:mr-7 sm:px-3 sm:py-1
+  sm:rounded-md;
+}
+.buttoncan {
   font-size: 14.5px;
 }
-.buttoncan{
-  font-size: 14.5px;
+.edit {
+  @apply text-xs md:text-sm lg:text-base;
 }
 </style>

@@ -2,10 +2,10 @@
   <navAdmin></navAdmin>
 
   <div class="mt-12">
-    <div class="title">
+    <div class="title flex justify-center">
       <div>
-        <p class="head font-bold md:text-left ">Officer</p>
-        <p class="subhead opacity-50 md:text-left">List of officer on the platform</p>
+        <p class="head font-bold">Officer</p>
+        <p class="subhead opacity-50 ">List of officer on the platform</p>
       </div>
     </div>
 
@@ -13,9 +13,8 @@
       <i class="fas fa-search self-center"></i>
       <input
         class="
-          ml-2
+          ml-2 lg:w-80
           p-1
-          w-80
           placeholder-gray-500 placeholder-opacity-50
           focus:outline-none
           text-blackrounded
@@ -66,8 +65,8 @@ export default {
   data() {
     return {
       staffs: [],
-      // url: "http://localhost:3000/admin",
-      url: "http://52.187.115.71:3000/admin",
+      url: "http://localhost:3000/admin",
+      // url: "http://52.187.115.71:3000/admin",
       search: "",
     };
   },
@@ -127,9 +126,11 @@ export default {
 
 <style>
 .title{
-  @apply xl:mb-2 xl:mx-20
+  @apply 
+  xl:mb-2 xl:mx-20
   lg:mx-14 lg:mb-2
-  md:mx-7 md:mb-1;
+  md:mx-7 md:mb-1
+  sm:flex sm:justify-center;
 }
 .head {
   @apply text-lg
@@ -139,7 +140,7 @@ export default {
   sm:text-xl;
 }
 .subhead{
-  @apply text-sm
+  @apply text-sm 
   lg:text-lg;
 }
 .username {
@@ -170,7 +171,8 @@ export default {
   pb-2 pl-6 pt-4;
 }
 .search{
-  @apply xl:mb-5 xl:mx-20 
+  @apply 
+  xl:mb-5 xl:mx-20
   lg:mb-6 lg:mx-14
   md:mb-5 md:mx-7
   my-5 mt-10 justify-center;

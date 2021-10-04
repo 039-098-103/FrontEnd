@@ -19,7 +19,7 @@
     </div>
   </div>
   
-  <div v-if="hamburgerBar" class="menuNav bg-babyblue">
+  <div v-if="hamburgerBar" class="menuNav bg-babyblue sticky">
     <router-link to="/adminHome">
       <p class="pb-5 pt-10">Staff List</p>
     </router-link>
@@ -58,7 +58,10 @@ export default {
   color: white;
   font-size: 25px;
   font-family: "Bebas Neue", cursive;
-  @apply sm:text-xl md:text-4xl lg:text-5xl;
+  @apply text-2xl 
+  sm:text-3xl 
+  md:text-4xl 
+  lg:text-5xl;
 }
 .icons {
   font-size: 2rem;

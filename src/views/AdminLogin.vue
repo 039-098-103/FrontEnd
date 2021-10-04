@@ -50,8 +50,8 @@ export default {
       user: "",
       pass: "",
       showError: false,
-      url: "http://52.187.115.71:3000/auth",
-      // url: "http://localhost:3000/auth",
+      // url: "http://52.187.115.71:3000/auth",
+      url: "http://localhost:3000/auth",
     };
   },
 
@@ -119,7 +119,7 @@ export default {
   box-shadow: 1px 1px 8px 0 lightblue;
 }
 .button{
-  @apply px-1.5 py-1 mt-10 
+  @apply px-1.5 py-1 mt-10 rounded-sm 
   xl:px-4 xl:py-2 xl:rounded-md xl:mt-16 
   lg:px-3 lg:py-1.5 lg:rounded lg:mb-5 lg:mt-16 
   md:px-1.5 md:py-1 md:text-base md:mt-12 md:rounded

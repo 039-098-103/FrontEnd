@@ -111,8 +111,8 @@ export default {
       username: "",
       password: "",
       confirmPassword: "",
-      url: "http://52.187.115.71:3000/admin",
-      // url: "http://localhost:3000/admin",
+      // url: "http://52.187.115.71:3000/admin",
+      url: "http://localhost:3000/admin",
       staffs: [],
     };
   },
@@ -185,7 +185,7 @@ export default {
 
 <style>
 .bg {
-  @apply
+  @apply h-full pb-10
   xl:my-12 xl:mx-96
   lg:my-14 lg:mx-60 
   md:mt-10 md:mx-40
@@ -194,8 +194,8 @@ export default {
 .header {
   font-family: "Roboto Condensed", sans-serif;
   @apply text-lg mb-2
-  lg:text-2xl
-  md:text-xl
+  lg:text-2xl lg:mb-8
+  md:text-xl md:mb-4
   sm:text-lg;
 }
 .button:hover {
@@ -210,9 +210,11 @@ export default {
 .form{
   @apply
   sm:grid-cols-2
-  sm:mt-8;
+  sm:mt-2;
 }
 .title{
-  @apply flex justify-start mt-4;
+  @apply flex justify-start mt-4
+  lg:mx-5
+  md:mx-1;
 }
 </style>
