@@ -3,7 +3,8 @@
     <p class="brand justify-center flex">JW PEI</p>
   </div>
 
-  <div class="bg bg-grayblue">
+<div class="flex justify-center">
+  <div class="bg bg-grayblue ">
     <div class="login">
       <p>Login</p>
     </div>
@@ -37,6 +38,7 @@
       </div>
     </form>
   </div>
+  </div>
 </template>
 
 <script>
@@ -50,8 +52,8 @@ export default {
       user: "",
       pass: "",
       showError: false,
-      url: "http://52.187.115.71:3000/auth",
-      // url: "http://localhost:3000/auth",
+      // url: "http://52.187.115.71:3000/auth",
+      url: "http://localhost:3000/auth",
     };
   },
 
@@ -98,7 +100,7 @@ export default {
   sm:text-xl;
 }
 .bg {
-  @apply pt-20 h-screen
+  @apply
   md:mx-40 lg:mx-64 xl:mx-80
   xl:my-12 xl:pt-12
   lg:my-12 lg:py-7
@@ -127,7 +129,7 @@ export default {
 }
 .signin{
   @apply text-xs
-  sm:text-lg
-  md:text-xl;
+  sm:text-sm
+  md:text-sm;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
   <navAdmin></navAdmin>
 
-  <div class="mt-12">
-    <div class="title flex justify-center">
-      <div>
+  <div class="mt-0">
+    <div class="title flex justify-center md:justify-start">
+      <div class="posit">
         <p class="head font-bold">Officer</p>
-        <p class="subhead opacity-50 ">List of officer on the platform</p>
+        <p class="subhead opacity-50">List of officer on the platform</p>
       </div>
     </div>
 
@@ -65,8 +65,8 @@ export default {
   data() {
     return {
       staffs: [],
-      // url: "http://localhost:3000/admin",
-      url: "http://52.187.115.71:3000/admin",
+      url: "http://localhost:3000/admin",
+      // url: "http://52.187.115.71:3000/admin",
       search: "",
     };
   },
@@ -126,22 +126,25 @@ export default {
 
 <style>
 .title{
-  @apply 
-  xl:mb-2 xl:mx-20
-  lg:mx-14 lg:mb-2
-  md:mx-7 md:mb-1
-  sm:flex sm:justify-center;
+@apply mt-0;
+}
+.posit{
+ @apply 
+  xl:mb-2 xl:mx-16
+  lg:mx-12 lg:mb-2
+  md:mx-7 md:mb-1;
 }
 .head {
-  @apply text-lg
+  @apply text-lg mt-0
   xl:text-3xl
   lg:text-2xl
-  md:text-2xl
-  sm:text-xl;
+  md:text-2xl md:justify-start md:flex
+  sm:text-xl ;
 }
 .subhead{
-  @apply text-sm 
-  lg:text-lg;
+  @apply text-sm
+  lg:text-lg
+  md:justify-start;
 }
 .username {
   @apply lg:text-xl;
