@@ -1,7 +1,7 @@
 <template>
     <div class="mb-5 flex justify-end mx-20">
       <i class="fas fa-search"></i>
-      <input class="ml-2 p-1 w-80 placeholder-gray-500 placeholder-opacity-50 focus:outline-none text-black rounded" 
+      <input class="ml-2 p-1 w-80 placeholder-gray-500 placeholder-opacity-50 focus:outline-none text-white" 
       type="text" placeholder="search" v-model="input"/>
     </div>
 </template>
@@ -27,4 +27,10 @@ export default{
         }
     }
 }
+
 </script>
+<style>
+i{
+    color: white;
+}
+</style>

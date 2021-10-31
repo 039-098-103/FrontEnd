@@ -1,43 +1,42 @@
 <template>
-  <div class="sticky bg-babyblue py-5">
-    <p class="brand justify-center flex">JW PEI</p>
-  </div>
+  <div class="layout bg-loginAd h-screen">
+    <div class="form">
+      <div class="brand flex justify-center">JW PEI</div>
 
-<div class="flex justify-center">
-  <div class="bg bg-grayblue ">
-    <div class="login">
-      <p>Login</p>
-    </div>
-
-    <form @submit.prevent="login">
-      <div class="groupform flex justify-center">
-        <div>
-          <div class="textname">
-            <p class="text-sm justify-start flex">Username</p>
-            <input
-              v-model="user"
-              class="rounded-sm py-1 px-2 flex justify-start"
-            />
-          </div>
-
-          <div class="textname">
-            <p class="text-sm justify-start flex">Password</p>
-            <input
-              v-model="pass"
-              class="rounded-sm py-1 px-2 flex justify-start"
-              type="password"
-            />
+      <form @submit.prevent="login">
+        <div class="input relative w-max mx-auto">
+          <input
+            v-model="user"
+            class="input-w rounded-full py-1.5 px-8"
+            placeholder="USERNAME"
+            type="text"
+          />
+          <div class="icons absolute flex items-center top-0 left-2 h-full">
+            <i class="fas fa-user-circle "></i>
           </div>
         </div>
-      </div>
-      <div class="submit" v-if="login">
-        <button type="submit" class="button bg-skylight ">
-          <p class="signin">SIGN IN
-          </p>
-        </button>
-      </div>
-    </form>
-  </div>
+
+        <div class="input relative w-max mx-auto">
+          <input
+            v-model="pass"
+            class="input-w rounded-full py-1.5 px-8"
+            placeholder="PASSWORD"
+            type="password"
+          />
+          <div class="icons absolute flex items-center top-0 left-2 h-full">
+            <i class="fas fa-lock"></i>
+          </div>
+        </div>
+        <div v-if="login" class="signin">
+          <button class="login bg-red-500 px-20 rounded-full">
+            <p class="px-3 py-1">Log In</p>
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- <div class="h-full ">
+      <img src="../../src/assets/bagbrown.png" />
+    </div> -->
   </div>
 </template>
 
@@ -52,8 +51,8 @@ export default {
       user: "",
       pass: "",
       showError: false,
-      url: "http://52.187.115.71:3000/auth",
-      // url: "http://localhost:3000/auth",
+      // url: "http://52.187.115.71:3000/auth",
+      url: "http://localhost:3000/api/worker/auth",
     };
   },
 
@@ -82,54 +81,52 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+/* @import '~material-icons/iconfont/material-icons.scss'; */
 .brand {
-  color: white;
   font-family: "Bebas Neue", cursive;
-  @apply sm:text-lg
-  md:text-xl 
-  lg:text-3xl
-  xl:text-5xl;
+  color: white;
+  @apply text-2xl pt-10 pb-5
+  lg:text-5xl lg:mt-32
+  sm:text-3xl;
 }
-.login {
-  font-family: "Roboto Condensed", sans-serif;
-  @apply text-lg mb-2
-  xl:text-2xl
-  lg:text-2xl
-  md:text-xl 
-  sm:text-xl;
+.layout{
+  @apply lg:grid lg:grid-cols-2 
+  ;
 }
 .bg {
-  @apply
-  md:mx-40 lg:mx-64 xl:mx-80
+  @apply md:mx-40 lg:mx-64 xl:mx-80
   xl:my-12 xl:pt-12
   lg:my-12 lg:py-7
   md:my-14 md:py-8 
   sm:my-10 sm:py-10 sm:mx-10 sm:h-auto;
 }
-.submit {
-  font-family: "Roboto Condensed", sans-serif;
+.input {
+  font-family: "Roboto", sans-serif;
+  @apply my-4 text-xs
+  lg:text-base;
 }
-.textname {
-  @apply mt-6 
-   xl:mt-10 lg:mt-10 md:mt-8 sm:mt-7;
+.input-w {
+  @apply sm:py-2
+  lg:py-1 lg:px-10;
 }
-.button:hover{
-  cursor: pointer;
-  transform: scale(1.1);
-  transition: .4s;
-  box-shadow: 1px 1px 8px 0 lightblue;
+.icons {
+  font-size: 16px;
+  @apply sm:left-3;
 }
-.button{
-  @apply px-1.5 py-1 mt-10 rounded-sm 
-  xl:px-4 xl:py-2 xl:rounded-md xl:mt-16 
-  lg:px-3 lg:py-1.5 lg:rounded lg:mb-5 lg:mt-16 
-  md:px-1.5 md:py-1 md:text-base md:mt-12 md:rounded
-  sm:px-1.5 sm:pt-1 sm:rounded sm:mt-10;
+.signin {
+  font-family: "Roboto", sans-serif;
+  color: black;
+  @apply font-medium;
 }
-.signin{
-  @apply text-xs
-  sm:text-sm
-  md:text-sm;
+.login {
+  @apply text-sm font-medium
+  sm:px-20
+  lg:w-full lg:py-0.5 ;
+}
+.form{
+  @apply lg:px-36
+  xl:px-40
+  2xl:px-60;
 }
 </style>

@@ -101,8 +101,8 @@ export default {
       DOB: null,
       username: "",
       password: "",
-      url: "http://52.187.115.71:3000/admin",
-      // url: "http://localhost:3000/admin",
+      // url: "http://52.187.115.71:3000/admin",
+      url: "http://localhost:3000/api/admin",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,
@@ -170,6 +170,7 @@ export default {
                     lastName: this.lastName,
                     DOB: this.DOB,
                     username: this.username,
+                    // password: this.password,
                   }
                 : adminEdit
             );
@@ -201,7 +202,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .header {
   @apply xl:mb-5 xl:mt-5 xl:text-2xl
   lg:text-xl;

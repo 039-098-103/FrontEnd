@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar sticky bg-babyblue py-5 grid grid-cols-3">
+  <div class="navbar sticky bg-loginAd py-5 grid grid-cols-3">
     <div class="items-center justify-start flex" @click="showHamburger()">
       <i class="icons fas fa-bars fa-lg"></i>
     </div>
@@ -19,7 +19,7 @@
     </div>
   </div>
   
-  <div v-if="hamburgerBar" class="menuNav bg-babyblue sticky">
+  <div v-if="hamburgerBar" class="menuNav bg-loginAd sticky">
     <router-link to="/adminHome">
       <p class="pb-5 pt-10">Staff List</p>
     </router-link>
@@ -52,7 +52,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 .brand {
   color: white;

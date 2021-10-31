@@ -51,8 +51,8 @@ export default {
   data() {
     return {
       admin: [],
-      url: "http://52.187.115.71:3000/admin/getInfo",
-      // url: "http://localhost:3000/admin/getInfo",
+      // url: "http://52.187.115.71:3000/admin/getInfo",
+      url: "http://localhost:3000/api/admin/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,
