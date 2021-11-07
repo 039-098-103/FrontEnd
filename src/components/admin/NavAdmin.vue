@@ -1,27 +1,41 @@
 <template>
-  <div class="navbar sticky bg-loginAd py-5 grid grid-cols-3">
+<div>
+  <div class="navbar fixed py-5 grid grid-cols-3 w-screen ">
     <div class="items-center justify-start flex" @click="showHamburger()">
       <i class="icons fas fa-bars fa-lg"></i>
     </div>
-
-    
-      <p class="brand justify-center flex">
-       <router-link to="/adminHome"> 
+    <p class="brand justify-center flex">
+      <router-link to="/adminHome">
         JWPEI
-        </router-link>
-        </p>
-    
+      </router-link>
+    </p>
+
     <div class="items-center justify-end flex ">
       <router-link to="/accountAdmin">
         <i class="icons fas fa-user fa-lg"></i>
       </router-link>
-      
     </div>
   </div>
-  
-  <div v-if="hamburgerBar" class="menuNav bg-loginAd sticky">
+
+  <div v-if="hamburgerBar" class="menuNav bg-loginAd fixed w-full ">
+    <div class="navbar fixed py-5 grid grid-cols-3 w-screen ">
+    <div class="items-center justify-start flex" @click="showHamburger()">
+      <i class="icons fas fa-bars fa-lg"></i>
+    </div>
+    <p class="brand justify-center flex">
+      <router-link to="/adminHome">
+        JWPEI
+      </router-link>
+    </p>
+
+    <div class="items-center justify-end flex ">
+      <router-link to="/accountAdmin">
+        <i class="icons fas fa-user fa-lg"></i>
+      </router-link>
+    </div>
+  </div>
     <router-link to="/adminHome">
-      <p class="pb-5 pt-10">Staff List</p>
+      <p class="pb-5 pt-10 mt-20">Staff List</p>
     </router-link>
     <router-link to="/register">
       <p class="py-5">Register Staff</p>
@@ -29,6 +43,7 @@
     <div class="py-5" @click="showHamburger()">
       <i class="iconNav fas fa-angle-up fa-2x"></i>
     </div>
+  </div>
   </div>
 </template>
 
@@ -50,7 +65,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
@@ -77,8 +91,5 @@ export default {
 }
 .iconNav {
   font-size: 2rem;
-
 }
 </style>
-
-

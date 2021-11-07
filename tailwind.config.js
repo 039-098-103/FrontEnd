@@ -8,7 +8,7 @@ module.exports = {
         skylight : '#ABC3C7',
         grayblue: '#809AB9',
         loginAd: '#4E4A3E',
-        
+        add: '#414535',
 
     },
   }

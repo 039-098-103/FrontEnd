@@ -1,26 +1,28 @@
 <template>
-    <div class="flex justify-end sticky bottom-8 mr-12 items-end">
-<router-link to="/register">
-      <div class="rounded-full w-12 h-12 items-center flex justify-center bg-babyblue button " >
-        
+  <div class="flex justify-end sticky mr-8 bottom-8 items-end">
+    <router-link to="/register">
+      <div
+        class="size  rounded-full w-8 h-8 items-center flex justify-center button bg-black"
+      >
         <i class="icon fas fa-plus"></i>
-        
       </div>
-      </router-link>
-    </div>
-    
+    </router-link>
+  </div>
 </template>
 
-<style>
-.icon{
-    font-size: 20px;
-    color: white;
+<style scoped>
+.icon {
+  font-size: 20px;
+  color: white;
 }
-.button:hover{
+.button:hover {
   cursor: pointer;
   transform: scale(1.1);
-  transition: .4s;
-  box-shadow: 1px 1px 8px 0 lightblue;
-  
+  transition: 0.4s;
+  box-shadow: 1px 1px 8px 0 gray;
+}
+.size {
+  @apply lg:w-12 lg:h-12  
+  md:w-10 md:h-10;
 }
 </style>

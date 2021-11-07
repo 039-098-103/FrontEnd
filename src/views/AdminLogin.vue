@@ -4,26 +4,26 @@
       <div class="brand flex justify-center">JW PEI</div>
 
       <form @submit.prevent="login">
-        <div class="input relative w-max mx-auto">
+        <div class="input relative mx-auto">
           <input
             v-model="user"
-            class="input-w rounded-full py-1.5 px-8"
+            class="input-w rounded-full py-1.5 px-8 w-max "
             placeholder="USERNAME"
             type="text"
           />
-          <div class="icons absolute flex items-center top-0 left-2 h-full">
+          <div class="icons absolute flex items-center top-0 left-14 h-full">
             <i class="fas fa-user-circle "></i>
           </div>
         </div>
 
-        <div class="input relative w-max mx-auto">
+        <div class="input relative mx-auto">
           <input
             v-model="pass"
-            class="input-w rounded-full py-1.5 px-8"
+            class="input-w rounded-full py-1.5 px-8 w-max "
             placeholder="PASSWORD"
             type="password"
           />
-          <div class="icons absolute flex items-center top-0 left-2 h-full">
+          <div class="icons absolute flex items-center top-0 left-14 h-full">
             <i class="fas fa-lock"></i>
           </div>
         </div>
@@ -34,9 +34,9 @@
         </div>
       </form>
     </div>
-    <!-- <div class="h-full ">
-      <img src="../../src/assets/bagbrown.png" />
-    </div> -->
+    <div class="h-screen">
+      <img src="../../src/assets/bagbrown.png" class="lg:block hidden h-screen"/>
+    </div>
   </div>
 </template>
 
@@ -104,15 +104,16 @@ export default {
 .input {
   font-family: "Roboto", sans-serif;
   @apply my-4 text-xs
-  lg:text-base;
+  lg:text-sm;
 }
 .input-w {
   @apply sm:py-2
-  lg:py-1 lg:px-10;
+  lg:py-1 lg:w-full;
 }
 .icons {
   font-size: 16px;
-  @apply sm:left-3;
+  @apply sm:left-3
+  ;
 }
 .signin {
   font-family: "Roboto", sans-serif;
