@@ -1,7 +1,7 @@
 <template>
   <navAdmin></navAdmin>
 
-  <div class="bg-loginAd h-full">
+  <div class="bg-loginAd h-max">
     <div class="title flex justify-center md:justify-start">
       <div class="posit mt-20">
         <p class="head font-bold">Officer</p>
@@ -67,6 +67,7 @@ export default {
       staffs: [],
       url: "http://localhost:3000/api/admin",
       // url: "http://52.187.115.71:3000/admin",
+      // url: "http://localhost:5000/admin",
       search: "",
     };
   },
@@ -84,7 +85,12 @@ export default {
             this.staffs = res.data;
           })
           .catch((err) => {
-            alert(err.response.data);
+            // alert(err.response.data);
+            if(err.response.status === 403){
+              console.log('you are not log-in')
+              this.$router.push('/')
+            }
+            console.log(err.response.data)
           });
       } catch (error) {
         console.log(`Could not get! ${error}`);

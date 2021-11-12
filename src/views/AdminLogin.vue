@@ -53,7 +53,19 @@ export default {
       showError: false,
       // url: "http://52.187.115.71:3000/auth",
       url: "http://localhost:3000/api/worker/auth",
+      // url: "http://localhost:5000/admin",
+      
     };
+  },
+  created(){
+    let check = localStorage.getItem("token")
+    console.log(check)
+    if(!check){
+      return
+    }else{
+      return this.$router.push("/adminHome");
+    }
+
   },
 
   methods: {
@@ -77,6 +89,8 @@ export default {
           });
       }
     },
+
+
   },
 };
 </script>

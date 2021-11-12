@@ -56,25 +56,28 @@
           >
         </div>
 
-        <div class="form justify-center grid my-2 text-xs">
+        
           <form name="dropdown">
             <select
-              v-model="positions"
+              v-model="selectPosition"
               class="rounded-full py-1 px-2 justify-start inline"
               placeholder="POSITION"
             >
-              <option v-for="position in selectPosition" :value="position" :key="position.positionId">
-                {{ position.positionName }}
+              <option v-for="position in positions" 
+              :value="position" 
+              :key="position.positionId">
+                {{ position.position }}
               </option>
+              
             </select>
           </form>
           <sup
-            v-show="inputPostition"
+            v-show="inputPostition" 
             class="text-red-500 flex justify-end mt-4"
           >
             Please select position!</sup
           >
-        </div>
+       
 
         <div class="justify-center mt-5 mb-2">
           <p class="line mx-2">&nbsp;&nbsp;Account&nbsp;&nbsp;</p>
@@ -154,7 +157,7 @@ export default {
       inputConfirm: false,
       inputPostition: false,
       positions: null,
-      Selection: null,
+      selectPosition: null,
       firstName: "",
       lastName: "",
       DOB: "",
@@ -166,13 +169,24 @@ export default {
       staffs: [],
     };
   },
+  
+  async created(){
+      this.positions = await this.getPositions();
+      console.log(this.positions);
+    },
 
   methods: {
-    // getPositions(){
-    //   ProductDataService.getPosition().then((res) => {
-    //     this.selectPosition = res.data;
-    //   });
-    // },
+
+    async getPositions(){
+      try {
+        const res = await fetch("http://localhost:5000/positions");
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log(`Could not get! ${error}`);
+      }
+      
+    },
 
     submitAccount() {
       this.inputFirstname = this.firstName === "" ? true : false;
@@ -181,7 +195,7 @@ export default {
       this.inputUsername = this.username === "" ? true : false;
       this.inputPassword = this.password === "" ? true : false;
       this.inputConfirm = this.confirmPassword === "" ? true : false;
-      this.inputPostition = this.positions === "" ? true : false;
+      this.inputPostition = this.selectPosition === "" ? true : false;
       if (
         this.inputFirstname ||
         this.inputLastname ||
@@ -189,7 +203,7 @@ export default {
         this.inputUsername ||
         this.inputPassword ||
         this.inputConfirm ||
-        this.positions
+        this.inputPostition
       ) {
         return;
       }
@@ -205,7 +219,7 @@ export default {
           DOB: this.DOB,
           username: this.username,
           password: this.password,
-          position: this.positions,
+          positions: this.selectPosition,
         };
         const json = JSON.stringify(data);
         const blob = new Blob([json], {
@@ -228,7 +242,8 @@ export default {
               this.password = "";
               this.confirmPassword = "";
               this.DOB = "";
-              (this.positions = ""), alert("Successfully added!");
+              this.positions = "";
+              alert("Successfully added!");
             }
           })
           .catch((err) => {
@@ -238,6 +253,8 @@ export default {
         console.log(`Could not save! ${error}`);
       }
     },
+
+    
   },
 };
 </script>

@@ -2,12 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AdminLogin from '../views/AdminLogin.vue'
 import AdminHome from '../views/AdminHome.vue'
 import RegisStaff from '../views/RegisStaff.vue'
-import AccountAdmin from '../views/AccountAdmin.vue'
+import AccountAdmin from '../views/AdminAccount.vue'
+import Home from '../views/Home.vue'
+import Team from '../views/Team.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'AdminLogin',
+    path: '/adminLogin',
+    name: '/AdminLogin',
     component: AdminLogin
   },
   {
@@ -16,8 +18,8 @@ const routes = [
     component: AdminHome
   },
   {
-    path: '/register',
-    name: '/register',
+    path: '/addAccount',
+    name: '/addAccount',
     component: RegisStaff
   },
   {
@@ -25,14 +27,28 @@ const routes = [
     name: '/accountAdmin',
     component: AccountAdmin
   },
+
+  // customer
+  {
+    path: '/',
+    name: '/Home',
+    component: Home
+  },
+  {
+    path: '/developTeam',
+    name: 'Develop',
+    component: Team
+  }
   // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
+  //   path: '/home',
+  //   name: 'home',
+  //   component: AccountAdmin
+  // },
+  // {
+  //   path: '/accountAdmin',
+  //   name: '/accountAdmin',
+  //   component: AccountAdmin
+  // },
 ]
 
 const router = createRouter({

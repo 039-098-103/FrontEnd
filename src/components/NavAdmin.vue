@@ -37,7 +37,7 @@
     <router-link to="/adminHome">
       <p class="pb-5 pt-10 mt-20">Staff List</p>
     </router-link>
-    <router-link to="/register">
+    <router-link to="/addAccount">
       <p class="py-5">Register Staff</p>
     </router-link>
     <div class="py-5" @click="showHamburger()">
@@ -51,13 +51,11 @@
 export default {
   name: "",
   components: {},
-
   data() {
     return {
       hamburgerBar: false,
     };
   },
-
   methods: {
     showHamburger() {
       this.hamburgerBar = !this.hamburgerBar;

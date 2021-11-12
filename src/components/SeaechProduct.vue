@@ -10,7 +10,6 @@
 export default{
     name: "staffs",
     components: {},
-
     data() {
         return{
             staff: [],
@@ -18,7 +17,6 @@ export default{
             input: "",
         }
     },
-
     computed: {
         search(){
             return this.url.filter(showResult => {
@@ -27,7 +25,6 @@ export default{
         }
     }
 }
-
 </script>
 <style>
 i{

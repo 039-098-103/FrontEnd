@@ -84,15 +84,12 @@ import axios from "axios";
 export default {
   name: "admin",
   components: {},
-
   props: {
     editAdmin: {
       type: Object,
     },
   },
-
   emits: ["editAc"],
-
   data() {
     return {
       admin: [],
@@ -112,16 +109,13 @@ export default {
       inputPassword: false,
     };
   },
-
   methods: {
     cancel() {
       // อันนี้ไว้สำหรับไว้ลองเเก้อีกหน้านึงที่เรียกใช้ compo นี้
       // <edit @handleCancel="ชื่อ method ที่ไว้ใช่เปลี่ยนค่า true false ในการเเสดง ไม่เเสดง"></edit>
       this.$emit("toggleOpen");
     },
-
     // done(){
-
     //   alert(`Edit Success`)
     // },
     submitAccount() {
@@ -139,7 +133,6 @@ export default {
       }
       this.submitEdit();
     },
-
     async submitEdit() {
       const formData = new FormData();
       let data = {
@@ -189,7 +182,6 @@ export default {
         });
     },
   },
-
   async created() {
     // this.admin = await this.getData();
     this.firstName = this.editAdmin.firstName;

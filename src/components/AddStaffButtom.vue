@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-end sticky mr-8 bottom-8 items-end">
-    <router-link to="/register">
+    <router-link to="/addAccount">
       <div
         class="size  rounded-full w-8 h-8 items-center flex justify-center button bg-black"
       >
