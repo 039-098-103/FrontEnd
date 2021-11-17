@@ -12,10 +12,10 @@
       </p>
 
       <div class="items-center justify-end flex">
-        <router-link to="/" class="mr-7 bag mt-1">
+        <router-link to="/cart" class="mr-7 bag mt-1">
           <i class="fas fa-shopping-bag "></i>
         </router-link>
-        <router-link to="/" class="mr-7">
+        <router-link to="/account" class="mr-7">
           <i class="user fas fa-user fa-lg"></i>
         </router-link>
       </div>
@@ -36,10 +36,10 @@
       <router-link to="/">
         <p class="pb-5 pt-10 mt-20">All</p>
       </router-link>
-      <router-link to="/">
+      <router-link to="/newCollection">
         <p class="py-5">New Collection</p>
       </router-link>
-      <router-link to="/">
+      <router-link to="/lookbook">
         <p class="py-5">Lookbook</p>
       </router-link>
       <router-link to="/developTeam">

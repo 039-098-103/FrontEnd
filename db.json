@@ -270,28 +270,59 @@
           "colorId": 1
         }
       ]
+    }
+  ],
+  "colors": [
+    {
+      "colorName": "#242423",
+      "id": 1
     },
     {
-      "productName": "fbf",
-      "price": "100000",
-      "inStockDate": "2021-05-26",
-      "productDescrip": "nl,",
-      "imageName": null,
-      "bagType": {
-        "id": 1,
-        "bagTypeName": "Mini Flap Bag"
-      },
-      "colors": [
-        {
-          "colorName": "#ffbfcb",
-          "id": 4
-        },
-        {
-          "colorName": "#FFF3E4",
-          "id": 6
-        }
-      ],
-      "id": 12
+      "colorName": "#BF8B3F",
+      "id": 2
+    },
+    {
+      "colorName": "#7F8164",
+      "id": 3
+    },
+    {
+      "colorName": "#ffbfcb",
+      "id": 4
+    },
+    {
+      "colorName": "#ABC3C7",
+      "id": 5
+    },
+    {
+      "colorName": "#FFF3E4",
+      "id": 6
+    },
+    {
+      "colorName": "#D18E64",
+      "id": 7
+    },
+    {
+      "colorName": "#F9E37C",
+      "id": 8
+    },
+    {
+      "colorName": "#E7DCD5",
+      "id": 9
+    },
+    {
+      "colorName": "#FEA46D",
+      "id": 10
+    }
+  ],
+
+  "customer": [
+    {
+      "firstName": "aaasf",
+      "lastName": "555555",
+      "DOB": "2021-09-02",
+      "username": "0",
+      "password": "",
+      "id": 1
     }
   ]
 }

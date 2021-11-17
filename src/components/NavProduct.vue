@@ -3,10 +3,10 @@
     <router-link to="/" class="navOne hover:text-red-600 inline"
       >All</router-link
     >
-    <router-link to="/" class="nav hover:text-red-600 inline"
+    <router-link to="/newCollection" class="nav hover:text-red-600 inline"
       >New Collection</router-link
     >
-    <router-link to="/" class="nav hover:text-red-600 inline"
+    <router-link to="/lookbook" class="nav hover:text-red-600 inline"
       >Lookbook</router-link
     >
   </div>

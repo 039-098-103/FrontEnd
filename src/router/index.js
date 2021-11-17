@@ -5,6 +5,10 @@ import RegisStaff from '../views/RegisStaff.vue'
 import AccountAdmin from '../views/AdminAccount.vue'
 import Home from '../views/Home.vue'
 import Team from '../views/Team.vue'
+import New from '../views/NewCollec.vue'
+import LookBook from '../views/LookBook.vue'
+import Account from '../views/Account.vue'
+import Cart from '../views/Cart.vue'
 
 const routes = [
   {
@@ -38,17 +42,27 @@ const routes = [
     path: '/developTeam',
     name: 'Develop',
     component: Team
+  },
+  {
+    path: '/newCollection',
+    name: 'NewCollection',
+    component: New
+  },
+  {
+    path: '/lookbook',
+    name: 'LookBook',
+    component: LookBook
+  },
+  {
+    path: '/account',
+    name: 'Account',
+    component: Account
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
   }
-  // {
-  //   path: '/home',
-  //   name: 'home',
-  //   component: AccountAdmin
-  // },
-  // {
-  //   path: '/accountAdmin',
-  //   name: '/accountAdmin',
-  //   component: AccountAdmin
-  // },
 ]
 
 const router = createRouter({
