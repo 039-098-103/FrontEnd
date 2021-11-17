@@ -116,8 +116,8 @@ export default {
 
   computed: {
     searching() {
-      return this.staffs.filter((showResult) => {
-        return showResult.username
+      return this.products.filter((showResult) => {
+        return showResult.productName
           .toLowerCase()
           .includes(this.search.toLowerCase());
       });
