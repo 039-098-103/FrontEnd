@@ -1,3 +1,5 @@
 <template>
     <navbar></navbar>
+
+    
 </template>

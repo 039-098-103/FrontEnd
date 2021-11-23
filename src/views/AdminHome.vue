@@ -1,7 +1,7 @@
 <template>
   <navAdmin></navAdmin>
 
-  <div class="bg-loginAd h-max">
+  <div class="bg-loginAd h-full lg:h-screen">
     <div class="title flex justify-center md:justify-start">
       <div class="posit mt-20">
         <p class="head font-bold">Officer</p>
@@ -43,8 +43,8 @@
           <p class="inline">{{ list.firstName }}</p>
           <p class="inline ml-5">{{ list.lastName }}</p>
         </div>
-        <div class="flex justify-start">
-          <p>{{ list.DOB }}</p>
+        <div class="flex justify-start" >
+          <p :format="'MM.DD.YYYY'">{{ list.DOB }}</p>
         </div>
 
         <div class="flex justify-end pr-8 " @click="deleteStaff(list.username)">
@@ -85,10 +85,10 @@ export default {
             this.staffs = res.data;
           })
           .catch((err) => {
-            // alert(err.response.data);
+            alert(err.response.data);
             if(err.response.status === 403){
               console.log('you are not log-in')
-              this.$router.push('/')
+              this.$router.push('/adminLogin')
             }
             console.log(err.response.data)
           });
@@ -142,14 +142,14 @@ input::placeholder {
 
 .posit {
   @apply xl:mb-2 xl:mx-16
-  lg:mx-12 lg:mb-2
+  lg:mx-14 lg:mb-2
   md:mx-7 md:mb-1;
 }
 .head {
   color: white;
   @apply text-lg mt-0
   xl:text-3xl
-  lg:text-2xl
+  lg:text-2xl 
   md:text-2xl md:justify-start md:flex
   sm:text-xl;
 }
@@ -176,7 +176,7 @@ input::placeholder {
   xl:mx-20
   lg:mx-14 lg:gap-x-4 lg:gap-y-6 lg:grid-cols-4
   md:mx-7 md:grid-cols-3 md:gap-x-4 md:gap-y-6
-  sm:mx-14 sm:gap-4;
+  sm:mx-16 sm:gap-4;
 }
 .list {
   @apply lg:py-5 lg:pl-10

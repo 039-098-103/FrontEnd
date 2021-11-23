@@ -22,25 +22,161 @@
     <navProduct />
   </div>
 
-  <div class="product" v-for="show in products" :key="show.productId">
-    <img :src="getProductImg(show.imageName)" />
+<div class="lg:grid lg:grid-cols-5">
+  <div class="yellow mx-8 mt-5 flex justify-center">
+    <img src="../../src/assets/yellow.png" class="shadow " />
+  </div>
 
-    <div class="colorSlot pt-4">
-      <div
-        class="colors pt-4"
-        v-for="colorProduct in show.colors"
-        :key="colorProduct.colorName"
-        :style="{ background: colorProduct.colorName }"
-      ></div>
+  <div v-if="products.length" class="image mt-5 grid grid-cols-2">
+    <div class="box-l pl-8 pr-2">
+      <div class="flex justify-center">
+        <img
+          :src="getProductImg(products[3].imageName)"
+          class="shadow"
+        />
+      </div>
+      <div class="product mt-2">
+        <div class="box flex justify-center">
+          <div
+            class="colors py-1 "
+            v-for="colorProduct in products[3].Color"
+            :key="colorProduct.colorId"
+            :style="{ background: colorProduct.colorName }"
+          ></div>
+        </div>
+        <div>
+          {{ products[3].productName }}
+        </div>
+        <div>{{ products[3].price }} $</div>
+      </div>
     </div>
 
-    <h3 class="productName text-black">{{ show.productName }}</h3>
-    <h4 class="productPrice font-extralight">{{ show.price }} $</h4>
+    <div class="box-r pr-8 pl-2">
+      <div class="flex justify-center">
+        <img
+          :src="getProductImg(products[11].imageName)"
+          class=" shadow"
+        />
+      </div>
+      <div class="product mt-2">
+        <div class="box flex justify-center">
+          <div
+            class="colors py-1 "
+            v-for="colorProduct in products[11].Color"
+            :key="colorProduct.colorId"
+            :style="{ background: colorProduct.colorName }"
+          ></div>
+        </div>
+        <div>
+          {{ products[11].productName }}
+        </div>
+        <div>{{ products[11].price }} $</div>
+      </div>
+    </div>
+
+    <div class="box-l px-8 pr-2">
+      <div class="flex justify-center">
+        <img
+          :src="getProductImg(products[8].imageName)"
+          class="shadow"
+        />
+      </div>
+      <div class="product mt-2">
+        <div class="box flex justify-center">
+          <div
+            class="colors py-1 "
+            v-for="colorProduct in products[8].Color"
+            :key="colorProduct.colorId"
+            :style="{ background: colorProduct.colorName }"
+          ></div>
+        </div>
+        <div>
+          {{ products[8].productName }}
+        </div>
+        <div>{{ products[8].price }} $</div>
+      </div>
+    </div>
+
+    <div class="box-r pr-8 pl-2">
+      <div class="flex justify-center">
+        <img
+          :src="getProductImg(products[5].imageName)"
+          class="shadow"
+        />
+      </div>
+      <div class="product mt-2">
+        <div class="box flex justify-center">
+          <div
+            class="colors py-1 "
+            v-for="colorProduct in products[5].Color"
+            :key="colorProduct.colorId"
+            :style="{ background: colorProduct.colorName }"
+          ></div>
+        </div>
+        <div>
+          {{ products[5].productName }}
+        </div>
+        <div>{{ products[5].price }} $</div>
+      </div>
+    </div>
+
+    <div class="box-l pl-8 pr-2">
+      <div class="flex justify-center">
+        <img
+          :src="getProductImg(products[9].imageName)"
+          class="shadow"
+        />
+      </div>
+      <div class="product mt-2">
+        <div class="box flex justify-center">
+          <div
+            class="colors py-1 "
+            v-for="colorProduct in products[9].Color"
+            :key="colorProduct.colorId"
+            :style="{ background: colorProduct.colorName }"
+          ></div>
+        </div>
+        <div>
+          {{ products[9].productName }}
+        </div>
+        <div>{{ products[9].price }} $</div>
+      </div>
+    </div>
+
+    <div class="box-r pr-8 pl-2 ">
+      <div class="flex justify-center">
+        <img
+          :src="getProductImg(products[1].imageName)"
+          class=" shadow"
+        />
+      </div>
+      <div class="product mt-2">
+        <div class="box flex justify-center">
+          <div
+            class="colors py-1 "
+            v-for="colorProduct in products[1].Color"
+            :key="colorProduct.colorId"
+            :style="{ background: colorProduct.colorName }"
+          ></div>
+        </div>
+        <div>
+          {{ products[1].productName }}
+        </div>
+        <div>{{ products[1].price }} $</div>
+      </div>
+    </div>
   </div>
+</div>
+  <div class="new-in mx-8 mt-2">
+    <img src="../../src/assets/newin.png" class=" shadow" />
+  </div>
+
+  <Footer />
 </template>
 
 <script>
 import axios from "axios";
+// import ProductDataService from "../service/ProductDataService";
 export default {
   name: "products",
   components: {},
@@ -60,58 +196,52 @@ export default {
       bagType: null,
       ColorsSelect: null,
       show: false,
-      delete: false,
-      selectColor: [],
-      selectType: null,
-      submitEdit: null,
-      imgFile: null,
-      preview: null,
     };
   },
 
   methods: {
-  //   async getProduct() {
-  //     try {
-  //       const res = await fetch(this.url);
-  //       const data = await res.json();
-  //       return data;
-  //     } catch (error) {
-  //       console.log(`Could not get! ${error}`);
-  //     }
-  //   },
-  // },
+    //   async getProduct() {
+    //     try {
+    //       const res = await fetch(this.url);
+    //       const data = await res.json();
+    //       return data;
+    //     } catch (error) {
+    //       console.log(`Could not get! ${error}`);
+    //     }
+    //   },
+    // },
 
-  async getProduct() {
+    async getProduct() {
       try {
-        axios
-          .get(`${this.url}/getProduct`)
-          .then((res) => {
-            this.products = res.data;
-            console.log(res.data)
-          })
-          // .catch((err) => {
-          //   // alert(err.response.data);
-          //   if(err.response.status === 403){
-          //     console.log('you are not log-in')
-          //     this.$router.push('/')
-          //   }
-          //   console.log(err.response.data)
-          // });
+        axios.get(`${this.url}/getProduct`).then((res) => {
+          this.products = res.data;
+        });
+        axios.get(`${this.url}/getColors`).then((res) => {
+          this.colors = res.data;
+          console.log(this.products);
+          console.log(this.colors[3]);
+        });
+        // .catch((err) => {
+        //   // alert(err.response.data);
+        //   if(err.response.status === 403){
+        //     console.log('you are not log-in')
+        //     this.$router.push('/')
+        //   }
+        //   console.log(err.response.data)
+        // });
       } catch (error) {
         console.log(`Could not get! ${error}`);
       }
     },
 
-   getProductImg(imageName) {
+    getProductImg(imageName) {
       return "http://localhost:3000/" + imageName;
     },
+  },
 
   async created() {
-    // this.products = await this.getProduct();
-    // this.colors = await this.getData();
-    this.products = await this.getProducts();
-    // this.getData();
-  },
+    this.products = await this.getProduct();
+    this.colors = await this.getColors();
   },
 
   computed: {
@@ -121,11 +251,9 @@ export default {
           .toLowerCase()
           .includes(this.search.toLowerCase());
       });
-    }
+    },
   },
-
-}
-
+};
 </script>
 
 <style scoped>
@@ -146,5 +274,19 @@ export default {
   /* width: 100px;
   height: 100px; */
   @apply w-28 h-28 md:w-52 md:h-52 md:items-center md:flex lg:w-80 lg:h-80;
+}
+.product {
+  font-size: 12px;
+  @apply mb-2 ;
+}
+.search{
+  @apply md:pt-24;
+}
+.yellow{
+  @apply md:mx-12
+  lg:col-span-2;
+}
+.image{
+  @apply lg:col-span-3 md:grid-cols-3;
 }
 </style>

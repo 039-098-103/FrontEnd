@@ -1,6 +1,6 @@
 <template>
   <div class="text-black">
-    <router-link to="/" class="navOne hover:text-red-600 inline"
+    <router-link to="/allProduct" class="navOne hover:text-red-600 inline"
       >All</router-link
     >
     <router-link to="/newCollection" class="nav hover:text-red-600 inline"

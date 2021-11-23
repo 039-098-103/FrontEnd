@@ -29,7 +29,7 @@
         </div>
         <div v-if="login" class="signin">
           <button class="login bg-red-500 px-20 rounded-full">
-            <p class="px-3 py-1">Log In</p>
+            <p class="px-3 py-2">Log In</p>
           </button>
         </div>
       </form>
@@ -63,7 +63,7 @@ export default {
     if(!check){
       return
     }else{
-      return this.$router.push("/adminHome");
+      return this.$router.push("/adminLogin");
     }
 
   },
@@ -122,11 +122,13 @@ export default {
 }
 .input-w {
   @apply sm:py-2
-  lg:py-1 lg:w-full;
+  lg:py-2 lg:w-full;
 }
 .icons {
   font-size: 16px;
-  @apply sm:left-3
+  @apply sm:left-56
+  md:left-72
+  lg:left-3;
   ;
 }
 .signin {

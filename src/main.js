@@ -9,7 +9,7 @@ import AddStaff from '@/components/AddStaffButtom.vue'
 import EditProfile from '@/components/EditProfile.vue'
 import CusNav from '@/components/NavCus.vue'
 import NavProduct from '@/components/NavProduct.vue'
-import PopUp from '@/components/PopUp.vue'
+import Footer from '@/components/Footer.vue'
 
 
 const app = createApp(App).use(router)
@@ -18,5 +18,5 @@ app.component('addStaff', AddStaff)
 app.component('edit', EditProfile)
 app.component('navbar', CusNav);
 app.component('navProduct', NavProduct)
-app.component('popup', PopUp)
+app.component('Footer', Footer)
 app.mount('#app')

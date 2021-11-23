@@ -2,56 +2,70 @@
   <div class="bg-loginAd h-screen mt-0">
     <navAdmin></navAdmin>
 
-    <div class="head flex justify-center text-sm">
-      <p class="font-bold text-white pt-20 pb-5">Account</p>
-    </div>
+    <div class="layout text-white">
+      <div class="lg:col-span-5 pt-5">
+        <p class="account font-bold text-white pt-20 pb-5">Account</p>
 
-    <i class="username far fa-user-circle items-center "></i>
+        <i class="username far fa-user-circle items-center "></i>
 
-    <div class="flex justify-center text-white">
-      <div v-for="admin in admin" :key="admin.username">
-        <div v-if="hiddenEdit == false">
-          <div class="detail flex justify-center mb-1">
-            <p class="user font-bold">
-              {{ admin.firstName }} {{ admin.lastName }}
-            </p>
-          </div>
-          <div class="detail flex justify-start">
-            <p>Birthday : {{ admin.DOB }}</p>
-          </div>
-          <div class="detail flex justify-start">
-            <p class="">Username : {{ admin.username }}</p>
-          </div>
-          <!-- <div class="flex justify-start">
-            <p class="inline">Password : {{ admin.password }}</p>
-          </div> -->
-          <div class="detail">
-            <div>
-              <button
-                class="bg-white text-black rounded-full w-full"
-                @click="hiddenEdit = !hiddenEdit"
-              >
-              <i class="fas fa-user-edit"></i>
-                EDIT PROFILE
-              </button>
+        <div v-for="admin in admin" :key="admin.username">
+          <div v-if="hiddenEdit == false">
+            <div class="detail flex justify-center mb-1">
+              <p class="user font-bold">
+                {{ admin.firstName }} {{ admin.lastName }}
+              </p>
             </div>
 
-            <div @click="logout()">
-              <button class="bg-red-500 rounded-full w-full mt-2">LOG OUT</button>
+            <div class="info">
+              <div>
+                <div class="detail flex justify-start">
+                  <p class="">Username : {{ admin.username }}</p>
+                </div>
+                <div class="detail flex justify-start">
+                  <p>Birthday : {{ admin.DOB }}</p>
+                </div>
+
+                <div class="detail flex justify-start">
+                  <p class="">Position : {{ admin.positions }}</p>
+                </div>
+
+                <div class="detail pt-5">
+                  <div class="mb-2">
+                    <button
+                      class="bg-white text-black rounded-full w-full py-1"
+                      @click="hiddenEdit = !hiddenEdit"
+                    >
+                      <i class="fas fa-user-edit"></i>
+                      EDIT PROFILE
+                    </button>
+                  </div>
+
+                  <div @click="logout()">
+                    <button class="bg-red-500 rounded-full w-full py-1">
+                      <i class="fas fa-sign-out-alt"></i>
+                      LOG OUT
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          <div v-else>
+            <edit
+              :adminUsername="admin.username"
+              :editAdmin="admin"
+              @toggleOpen="toggleOpen"
+              @toggleDone="toggleDone"
+              :fn="firstName"
+              :ln="lastName"
+              :DOB="bt"
+            ></edit>
+          </div>
         </div>
-        <div v-else>
-          <edit
-            :adminUsername="admin.username"
-            :editAdmin="admin"
-            @toggleOpen="toggleOpen"
-            @toggleDone="toggleDone"
-            :fn="firstName"
-            :ln="lastName"
-            :DOB="bt"
-          ></edit>
-        </div>
+      </div>
+
+      <div class="lg:col-span-6">
+        <img src="../../src/assets/orange.jpg" class="lg:block hidden" />
       </div>
     </div>
   </div>
@@ -72,7 +86,7 @@ export default {
       lastName: "",
       DOB: null,
       username: "",
-      password: "",
+      positions: "",
       submitEdit: null,
       hiddenEdit: false,
     };
@@ -82,7 +96,7 @@ export default {
     logout() {
       localStorage.removeItem("token");
       console.log("logout");
-      return this.$router.push("/");
+      return this.$router.push("/adminLogin");
     },
 
     toggleOpen() {
@@ -139,7 +153,7 @@ export default {
 } */
 .detail {
   @apply text-xs mt-2
-  lg:mt-2
+  lg:mt-2 
   sm:text-sm sm:mt-1;
 }
 .user {
@@ -150,5 +164,20 @@ export default {
   color: white;
   font-size: 30px;
   /* @apply pt-10; */
+}
+.layout {
+  @apply flex justify-center
+  lg:grid lg:grid-cols-11;
+}
+.account {
+  @apply md:text-xl
+  lg:text-2xl;
+}
+button {
+  @apply md:text-xs;
+}
+.info {
+  @apply md:mt-5
+  lg:justify-center lg:flex;
 }
 </style>

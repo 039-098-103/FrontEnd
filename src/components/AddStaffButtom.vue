@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-end sticky mr-8 bottom-8 items-end">
+  <div class="all flex justify-end sticky mr-8 bottom-5 items-end">
     <router-link to="/addAccount">
       <div
         class="size  rounded-full w-8 h-8 items-center flex justify-center button bg-black"
@@ -24,5 +24,8 @@
 .size {
   @apply lg:w-12 lg:h-12  
   md:w-10 md:h-10;
+}
+.all{
+  @apply lg:bottom-2 lg:mr-10;
 }
 </style>

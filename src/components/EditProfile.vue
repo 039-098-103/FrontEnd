@@ -1,14 +1,13 @@
 <template>
-  <div class="bg-blue-100">
-    <p class="header">Edit profile</p>
+  <div class="mt-5 box">
     <form @submit.prevent="submitAccount" v-if="hiddenEdit == true">
+
       <div class="edit flex justify-center">
-        <p class="flex mr-10 items-center">Firstname</p>
         <input
           v-model="firstName"
           type="text"
-          placeholder="Change firstname"
-          class="px-2 py-1 inline my-2"
+          class="px-2 py-1 inline my-2 "
+          placeholder="Name"
         />
       </div>
       <sup v-show="inputFirstname" class="text-red-500 flex justify-end mt-4">
@@ -16,7 +15,6 @@
       >
 
       <div class="edit flex justify-center">
-        <p class="flex items-center mr-10">Lastname</p>
         <input
           v-model="lastName"
           type="text"
@@ -29,7 +27,6 @@
       >
 
       <div class="edit flex justify-center">
-        <p class="flex items-center mr-12">Birthday</p>
         <input
           v-model="DOB"
           type="date"
@@ -42,7 +39,6 @@
       >
 
       <div class="edit flex justify-center">
-        <p class="flex items-center mr-10">Username</p>
         <input
           v-model="username"
           type="text"
@@ -55,7 +51,6 @@
       >
 
       <div class="edit flex justify-center">
-        <p class="flex items-center mr-10">Password</p>
         <input
           v-model="password"
           type="password"
@@ -63,20 +58,21 @@
           class="px-1 py-1 inline my-2"
         />
       </div>
-      <div class="mt-5">
-        <button class="border-black border buttoncan" @click="cancel">
-          CANCEL
-        </button>
-        <button
-          class="bg-blue-500 text-white border-2 border-blue-500"
-          type="submit"
-        >
-          SUBMIT
-        </button>
+
+      <div class="mt-8">
+        <div class="flex justify-center w-full mb-2 ">
+          <button class="bg-red-500 text-white" type="submit">
+            SAVE EDIT
+          </button>
+        </div>
+        <div class="flex justify-center w-full">
+          <button class="bg-white text-black buttoncan" @click="cancel">
+            CANCEL
+          </button>
+        </div>
+        
       </div>
     </form>
-
-    <div v-else></div>
   </div>
 </template>
 <script>
@@ -163,7 +159,7 @@ export default {
                     lastName: this.lastName,
                     DOB: this.DOB,
                     username: this.username,
-                    // password: this.password,
+                    password: this.password,
                   }
                 : adminEdit
             );
@@ -187,38 +183,42 @@ export default {
     this.firstName = this.editAdmin.firstName;
     this.lastName = this.editAdmin.lastName;
     this.DOB = this.editAdmin.DOB;
-    // this.password = this.editAdmin.password;
+    this.password = this.editAdmin.password;
     this.username = this.editAdmin.username;
   },
 };
 </script>
-
 
 <style scoped>
 .header {
   @apply xl:mb-5 xl:mt-5 xl:text-2xl
   lg:text-xl;
 }
-.button:hover {
+/* .button:hover {
   cursor: pointer;
   transform: scale(1.1);
   transition: 0.4s;
   box-shadow: 1px 1px 8px 0 lightblue;
-}
+} */
 button {
-  @apply text-xs mr-4 px-1 py-1 rounded
-  lg:px-4 lg:mr-8
+  @apply text-xs px-1 py-1 rounded-full w-full
+  lg:px-4
   md:text-sm
-  sm:mr-7 sm:px-3 sm:py-1
-  sm:rounded-md;
+  sm:px-3 sm:py-1;
 }
-.buttoncan {
-  font-size: 14.5px;
-}
+
 .edit {
-  @apply text-xs md:text-sm lg:text-base;
+  @apply text-black text-xs 
+  md:text-sm 
+  lg:text-base;
 }
 sup {
   @apply text-xs md:text-sm lg:text-base;
+}
+input {
+  @apply rounded-full w-full;
+}
+.box{
+  @apply mx-52;
 }
 </style>

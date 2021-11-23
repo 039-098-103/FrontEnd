@@ -9,6 +9,8 @@ import New from '../views/NewCollec.vue'
 import LookBook from '../views/LookBook.vue'
 import Account from '../views/Account.vue'
 import Cart from '../views/Cart.vue'
+import All from '../views/AllProduct.vue'
+import Preview from '../views/Preview.vue'
 
 const routes = [
   {
@@ -35,7 +37,7 @@ const routes = [
   // customer
   {
     path: '/',
-    name: '/Home',
+    name: 'Home',
     component: Home
   },
   {
@@ -62,6 +64,17 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: Cart
+  },
+  {
+    path: '/allProduct',
+    name: 'AllProduct',
+    component: All
+  },
+  {
+    path: '/preview/:productId',
+    name: 'productPreview',
+    component: Preview,
+    props: true
   }
 ]
 
