@@ -9,7 +9,7 @@
           p-1
           placeholder-gray-500 placeholder-opacity-50
           focus:outline-none
-          text-white
+          text-black
           border-b-2
         "
       type="text"

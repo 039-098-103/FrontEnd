@@ -43,7 +43,7 @@
           <p class="inline">{{ list.firstName }}</p>
           <p class="inline ml-5">{{ list.lastName }}</p>
         </div>
-        <div class="flex justify-start" >
+        <div class="flex justify-start">
           <p :format="'MM.DD.YYYY'">{{ list.DOB }}</p>
         </div>
 
@@ -68,11 +68,35 @@ export default {
       url: "http://localhost:3000/api/admin",
       // url: "http://52.187.115.71:3000/admin",
       // url: "http://localhost:5000/admin",
+      // url: "http://52.187.115.71:3000/auth",
+      login: "http://localhost:3000/api/worker/auth",
+      userAdmin: "http://localhost:3000/api/admin/getInfo",
       search: "",
+      admin: [],
+      pass: "",
     };
   },
 
   methods: {
+    async getAdmin() {
+      try {
+        axios
+          .get(`${this.userAdmin}`, {
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          })
+          .then((res) => {
+            this.admin = res.data;
+          })
+          .catch((err) => {
+            alert(err.response.data);
+          });
+      } catch (error) {
+        console.log(`Could not get! ${error}`);
+      }
+    },
+
     async getStaffs() {
       try {
         axios
@@ -86,11 +110,11 @@ export default {
           })
           .catch((err) => {
             alert(err.response.data);
-            if(err.response.status === 403){
-              console.log('you are not log-in')
-              this.$router.push('/adminLogin')
+            if (err.response.status === 403) {
+              console.log("you are not log-in");
+              this.$router.push("/adminLogin");
             }
-            console.log(err.response.data)
+            console.log(err.response.data);
           });
       } catch (error) {
         console.log(`Could not get! ${error}`);
@@ -98,7 +122,22 @@ export default {
     },
 
     async deleteStaff(username) {
-      if (confirm(`Are you sure to delete ?`)) {
+        axios
+          .post(`${this.login}`, {
+            username: this.admin.username,
+            password: this.pass,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              this.staffs = this.staffs.filter(
+                (list) => list.username !== username
+              );
+            }
+          })
+          .catch((err) => {
+            alert(err.response.data);
+          });
+
         axios
           .delete(`${this.url}/delete/${username}`, {
             headers: {
@@ -115,8 +154,7 @@ export default {
           .catch((err) => {
             alert(err.response.data);
           });
-      }
-    },
+    }
   },
 
   async created() {

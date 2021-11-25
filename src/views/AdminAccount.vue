@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="detail flex justify-start">
-                  <p class="">Position : {{ admin.positions }}</p>
+                  <p class="">Position : {{ admin.position }}</p>
                 </div>
 
                 <div class="detail pt-5">
@@ -86,13 +86,14 @@ export default {
       lastName: "",
       DOB: null,
       username: "",
-      positions: "",
       submitEdit: null,
       hiddenEdit: false,
     };
   },
 
   methods: {
+
+
     logout() {
       localStorage.removeItem("token");
       console.log("logout");

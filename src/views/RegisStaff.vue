@@ -1,6 +1,6 @@
 <template>
   <navAdmin></navAdmin>
-  
+
   <div class="layout flex justify-center bg-loginAd h-screen">
     <div class="flex justify-center lg:col-span-5">
       <div class="header mt-32 absolute lg:block hidden">
@@ -113,6 +113,11 @@
             >
               Please confirm password!</sup
             >
+            <div>
+              <sup v-show="alertPassword"
+              class="text-red-500 justify-end flex mt-4">The password confirm doesn't match.</sup>
+            </div>
+            
           </div>
 
           <div class="submit mt-5 text-xs">
@@ -152,6 +157,7 @@ export default {
       username: "",
       password: "",
       confirmPassword: "",
+      alertPassword: false,
       // url: "http://52.187.115.71:3000/admin",
       url: "http://localhost:3000/api/admin",
       staffs: [],
@@ -166,6 +172,14 @@ export default {
   },
 
   methods: {
+    // confirm() {
+    //   if(this.password === this.confirmPassword){
+    //     this.addStaff();
+    //   }else{
+    //     this.alertPassword = !this.alertPassword;   
+    //   }
+    // },
+
     showPassword() {
       if (this.type === "password") {
         this.type = "text";
@@ -183,6 +197,7 @@ export default {
       this.inputUsername = this.username === "" ? true : false;
       this.inputPassword = this.password === "" ? true : false;
       this.inputConfirm = this.confirmPassword === "" ? true : false;
+      this.alertPassword = this.password !== this.confirmPassword ? true : false; 
       this.inputPostition = this.selectPosition === "" ? true : false;
       if (
         this.inputFirstname ||
@@ -191,8 +206,11 @@ export default {
         this.inputUsername ||
         this.inputPassword ||
         this.inputConfirm ||
-        this.inputPostition
-      ) {
+        this.inputPostition 
+      ){
+        return;
+      }
+      else if(this.alertPassword){
         return;
       }
       this.addStaff();

@@ -8,7 +8,15 @@
   <i class="username far fa-user-circle items-center "></i>
 
   <div v-for="customer in customer" :key="customer.username">
-      {{ customer.firstName }} {{ customer.lastName }}
+    {{ customer.firstName }} {{ customer.lastName }}
+  </div>
+  <div class="">
+    <router-link to="/login">
+     <button class="bg-red-500 rounded-full px-5 py-1 text-xs">LOG IN</button> 
+    </router-link>
+  </div>
+  <div>
+    <button class="bg-black text-white rounded-full px-5 py-1 text-xs">REGISTER</button>
   </div>
 </template>
 

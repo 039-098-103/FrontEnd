@@ -11,6 +11,7 @@ import Account from '../views/Account.vue'
 import Cart from '../views/Cart.vue'
 import All from '../views/AllProduct.vue'
 import Preview from '../views/Preview.vue'
+import Login from '../views/Login.vue'
 
 const routes = [
   {
@@ -75,6 +76,11 @@ const routes = [
     name: 'productPreview',
     component: Preview,
     props: true
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 ]
 

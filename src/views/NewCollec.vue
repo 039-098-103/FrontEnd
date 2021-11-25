@@ -38,7 +38,7 @@
           FEI 100 Collection has arrived.
         </div>
         <div>
-          <router-link to="/">
+          <router-link to="/allProduct">
             <button class="bg-black p-2 md:px-4 text-white text-xs fei">
               SHOP NOW
             </button>

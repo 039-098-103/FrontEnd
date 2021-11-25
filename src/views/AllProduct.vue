@@ -1,62 +1,64 @@
 <template>
   <navbar />
 
-  <div class="search flex justify-center items-center pt-20">
-    <i class="icons fas fa-search self-center"></i>
-    <input
-      class="
+  <div class="h-full md:mb-10">
+    <div class="search flex justify-center items-center pt-20">
+      <i class="icons fas fa-search self-center"></i>
+      <input
+        class="
           ml-2 lg:w-80
           p-1
           placeholder-gray-500 placeholder-opacity-50
           focus:outline-none
-          text-white
+          text-black
           border-b-2
         "
-      type="text"
-      placeholder="search"
-      v-model="search"
-    />
-  </div>
+        type="text"
+        placeholder="search"
+        v-model="search"
+      />
+    </div>
 
-  <div class="mt-2">
-    <navProduct />
-  </div>
+    <div class="mt-2">
+      <navProduct />
+    </div>
 
-  <div class="product grid grid-cols-2 mx-8 gap-4 mt-5">
-    <div v-for="show in products" :key="show.productId">
-      <div class="flex justify-center">
-        <router-link
-          :to="{
-            name: 'productPreview',
-            params: { productId: show.productId },
-          }"
-        >
-          <img :src="getProductImg(show.imageName)" class="picture shadow" />
-        </router-link>
-      </div>
-
-      <div class=" mt-3 justify-center">
-        <div class="box-color flex justify-center">
-          <div
-            class="colors py-1 "
-            v-for="colorProduct in show.Color"
-            :key="colorProduct.colorId"
-            :style="{ background: colorProduct.colorName }"
-          ></div>
+    <div class="product grid grid-cols-2 mx-8 gap-4 mt-5">
+      <div v-for="show in searching" :key="show.productName">
+        <div class="flex justify-center">
+          <router-link
+            :to="{
+              name: 'productPreview',
+              params: { productId: show.productId },
+            }"
+          >
+            <img :src="getProductImg(show.imageName)" class="picture shadow" />
+          </router-link>
         </div>
-        <div class="box mt-2 text-black ">
-          <div>
-            {{ show.productName }}
+
+        <div class=" mt-3 justify-center">
+          <div class="box-color flex justify-center">
+            <div
+              class="colors py-1 "
+              v-for="colorProduct in show.Color"
+              :key="colorProduct.colorId"
+              :style="{ background: colorProduct.colorName }"
+            ></div>
           </div>
-          <div>
-            {{ show.price }}
+          <div class="box mt-2 text-black ">
+            <div>
+              {{ show.productName }}
+            </div>
+            <div>
+              {{ show.price }}
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <Footer />
+  <Footer></Footer>
 </template>
 
 <script>

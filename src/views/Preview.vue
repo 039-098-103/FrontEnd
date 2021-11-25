@@ -1,20 +1,41 @@
 <template>
   <navbar></navbar>
 
-  <div class="pt-24 mx-8">
-    <img :src="getProductImg(product.imageName)" class="shadow" />
-    {{ product.productName }}
-    <!-- <div
-      class="colors py-1 "
-      :style="{ background: product.colorName }"
-    ></div> -->
-    {{ product.price }}
-    {{ product.productDes }}
-
-    <div>
-      <button class="bg-black text-white" @click="goToCart">ADD TO CART</button>
+  <div class="detail pt-20 mx-8 grid ">
+    <div class="box-image md:items-center">
+      <img
+        :src="getProductImg(product.imageName)"
+        class="image shadow rounded-md"
+      />
     </div>
+
+    <div class="md:items-center flex">
+      <div>
+      <div class="name text-sm font-bold mt-5">{{ product.productName }}</div>
+      <div class="flex justify-center my-1">
+        <div
+          class="colors"
+          v-for="product in product.Color"
+          :key="product.colorId"
+          :style="{ background: product.colorName }"
+        ></div>
+      </div>
+      <div class="price mb-5 text-sm font-semibold">{{ product.price }} $</div>
+      <div class="descript text-justify text-xs">
+        {{ product.productDes }}
+      </div>
+
+      <div class="mt-10">
+        <button
+          class="bg-black text-white rounded-full px-5 py-1 text-xs"
+          @click="goToCart"
+        >
+          ADD TO CART
+        </button>
+      </div>
+    </div></div>
   </div>
+  <Footer></Footer>
 </template>
 
 <script>
@@ -36,17 +57,10 @@ export default {
       return "http://localhost:3000/" + productId;
     },
 
-    goToCart(){
+    goToCart() {
       try {
         const formData = new FormData();
-        let data = {
-          firstName: this.firstName,
-          lastName: this.lastName,
-          DOB: this.DOB,
-          username: this.username,
-          password: this.password,
-          positions: this.selectPosition,
-        };
+        let data = this.productId
         const json = JSON.stringify(data);
         const blob = new Blob([json], {
           type: "application/json",
@@ -66,7 +80,6 @@ export default {
         console.log(`Could not save! ${error}`);
       }
     },
-
   },
 
   mounted() {
@@ -91,5 +104,27 @@ export default {
   display: flex;
   width: 100%;
   @apply justify-center;
+}
+.detail {
+  @apply md:grid-cols-2 md:pt-2 md:my-0;
+}
+.name {
+  @apply lg:text-lg;
+}
+.price {
+  @apply lg:text-lg;
+}
+.descript {
+  @apply md:mx-8
+  lg:text-base;
+}
+.image {
+  @apply md:h-3/5;
+}
+.box-image {
+  @apply justify-center flex;
+}
+button {
+  @apply md:text-base lg:text-lg;
 }
 </style>

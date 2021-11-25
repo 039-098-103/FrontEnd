@@ -1,12 +1,11 @@
 <template>
   <div class="mt-5 box">
     <form @submit.prevent="submitAccount" v-if="hiddenEdit == true">
-
       <div class="edit flex justify-center">
         <input
           v-model="firstName"
           type="text"
-          class="px-2 py-1 inline my-2 "
+          class="px-5 py-1 inline my-2 "
           placeholder="Name"
         />
       </div>
@@ -19,7 +18,7 @@
           v-model="lastName"
           type="text"
           placeholder="Change lastname"
-          class="px-1 py-1 inline my-2"
+          class="px-5 py-1 inline my-2"
         />
       </div>
       <sup v-show="inputLastname" class="text-red-500 justify-end mt-4 flex">
@@ -43,25 +42,36 @@
           v-model="username"
           type="text"
           placeholder="Change username"
-          class="px-1 py-1 inline my-2"
+          class="px-5 py-1 inline my-2"
         />
       </div>
       <sup v-show="inputUsername" class="text-red-500 justify-end flex mt-4">
         Please enter username!</sup
       >
 
-      <div class="edit flex justify-center">
+      <div class="edit flex justify-center ">
         <input
+          v-if="showPassword"
+          type="text"
+          class="input"
           v-model="password"
-          type="password"
-          placeholder="Change password"
-          class="px-1 py-1 inline my-2"
         />
+        <input v-else type="password" class="input" v-model="password" />
+        <div class="flex items-center bg-white" @click="showPass">
+          <i
+            class="fas"
+            :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }"
+          ></i>
+        </div>
       </div>
 
       <div class="mt-8">
         <div class="flex justify-center w-full mb-2 ">
-          <button class="bg-red-500 text-white" type="submit">
+          <button
+            class="bg-red-500 text-white"
+            type="submit"
+            @click="submitEdit"
+          >
             SAVE EDIT
           </button>
         </div>
@@ -70,9 +80,9 @@
             CANCEL
           </button>
         </div>
-        
       </div>
     </form>
+    
   </div>
 </template>
 <script>
@@ -93,7 +103,7 @@ export default {
       lastName: "",
       DOB: null,
       username: "",
-      password: "",
+      password: null,
       // url: "http://52.187.115.71:3000/admin",
       url: "http://localhost:3000/api/admin",
       show: true,
@@ -103,9 +113,14 @@ export default {
       inputBOD: false,
       inputUsername: false,
       inputPassword: false,
+      showPassword: false,
     };
   },
   methods: {
+    async showPass() {
+      this.showPassword = !this.showPassword;
+    },
+
     cancel() {
       // อันนี้ไว้สำหรับไว้ลองเเก้อีกหน้านึงที่เรียกใช้ compo นี้
       // <edit @handleCancel="ชื่อ method ที่ไว้ใช่เปลี่ยนค่า true false ในการเเสดง ไม่เเสดง"></edit>
@@ -178,6 +193,13 @@ export default {
         });
     },
   },
+
+  computed: {
+    button() {
+      return this.showPassword ? "Hide" : "Show";
+    },
+  },
+
   async created() {
     // this.admin = await this.getData();
     this.firstName = this.editAdmin.firstName;
@@ -218,7 +240,7 @@ sup {
 input {
   @apply rounded-full w-full;
 }
-.box{
+.box {
   @apply mx-52;
 }
 </style>

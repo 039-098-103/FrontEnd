@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-10 pt-16">
+  <div class="all pb-10 pt-16">
     <hr class="" />
 
     <div class="socail flex justify-center pt-4">
@@ -51,5 +51,8 @@ img {
 hr {
   border: 1px solid #001d4a;
   @apply ml-4 mr-4 sm:ml-10 sm:mr-10 md:ml-12 md:mr-12 lg:ml-14 lg:mr-14
+}
+.all{
+  @apply md:pt-0;
 }
 </style>
