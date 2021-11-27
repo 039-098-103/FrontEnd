@@ -11,6 +11,7 @@ import EditProfile from '@/components/EditProfile.vue'
 import CusNav from '@/components/NavCus.vue'
 import NavProduct from '@/components/NavProduct.vue'
 import Footer from '@/components/Footer.vue'
+import Register from '@/components/Register.vue'
 
 
 const app = createApp(App).use(router)
@@ -20,4 +21,5 @@ app.component('edit', EditProfile)
 app.component('navbar', CusNav);
 app.component('navProduct', NavProduct)
 app.component('Footer', Footer)
+app.component('Register', Register)
 app.mount('#app')

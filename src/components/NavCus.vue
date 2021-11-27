@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div class="navbar fixed py-5 grid grid-cols-3 w-screen bg-white">
+
+    <div class="navbar fixed py-5 grid grid-cols-3 w-screen">
       <div class="items-center justify-start flex" @click="showHamburger()">
         <i class="icons fas fa-bars fa-lg"></i>
       </div>
@@ -50,7 +50,7 @@
         <i class="iconNav fas fa-angle-up fa-2x"></i>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>

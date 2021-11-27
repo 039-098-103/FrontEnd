@@ -57,24 +57,32 @@ export default {
       return "http://localhost:3000/" + productId;
     },
 
+    checkLogin(){
+
+    },
+
     goToCart() {
       try {
         const formData = new FormData();
-        let data = this.productId
+        let data = this.product
         const json = JSON.stringify(data);
         const blob = new Blob([json], {
           type: "application/json",
         });
         formData.append("data", blob);
 
-        axios
-          .post(`${this.url}/addToCart`, formData, {
+        axios 
+          .post(`${this.url}/customer/addToCart/${this.product.productDetailId}`, formData, {
             headers: {
               Authorization: localStorage.getItem("token"),
             },
           })
           .catch((err) => {
-            alert(err.response.data);
+             if (err.response.status === 403) {
+              alert('Please log in to order.');
+              this.$router.push("/Login");
+            }
+            // alert(err.response.data);
           });
       } catch (error) {
         console.log(`Could not save! ${error}`);

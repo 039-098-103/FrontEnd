@@ -126,10 +126,6 @@ export default {
         console.log(`Could not get! ${error}`);
       }
     },
-
-    hideEdit() {
-      this.hidenEdit = true;
-    },
   },
 
   async created() {

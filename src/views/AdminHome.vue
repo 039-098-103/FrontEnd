@@ -109,9 +109,10 @@ export default {
             this.staffs = res.data;
           })
           .catch((err) => {
-            alert(err.response.data);
+            // alert(err.response.data);
             if (err.response.status === 403) {
-              console.log("you are not log-in");
+              // console.log("you are not log-in");
+              alert('you are not log-in');
               this.$router.push("/adminLogin");
             }
             console.log(err.response.data);

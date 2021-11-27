@@ -121,6 +121,7 @@
           </div>
 
           <div class="submit mt-5 text-xs">
+            
             <button
               class="bg-red-500 text-white button w-full rounded-full py-2"
               @click="submitAccount"
@@ -148,9 +149,6 @@ export default {
       inputUsername: false,
       inputPassword: false,
       inputConfirm: false,
-      inputPostition: false,
-      positions: null,
-      selectPosition: null,
       firstName: "",
       lastName: "",
       DOB: "",
@@ -198,7 +196,6 @@ export default {
       this.inputPassword = this.password === "" ? true : false;
       this.inputConfirm = this.confirmPassword === "" ? true : false;
       this.alertPassword = this.password !== this.confirmPassword ? true : false; 
-      this.inputPostition = this.selectPosition === "" ? true : false;
       if (
         this.inputFirstname ||
         this.inputLastname ||

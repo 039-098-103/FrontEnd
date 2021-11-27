@@ -11,7 +11,7 @@
             placeholder="USERNAME"
             type="text"
           />
-          <div class="icons absolute flex items-center top-0 left-14 h-full">
+          <div class="icons absolute flex items-center top-0 left-16 h-full">
             <i class="fas fa-user-circle "></i>
           </div>
         </div>
@@ -23,7 +23,7 @@
             placeholder="PASSWORD"
             type="password"
           />
-          <div class="icons absolute flex items-center top-0 left-14 h-full">
+          <div class="icons absolute flex items-center top-0 left-16 h-full">
             <i class="fas fa-lock"></i>
           </div>
         </div>
@@ -35,7 +35,10 @@
       </form>
     </div>
     <div class="h-screen">
-      <img src="../../src/assets/bagbrown.png" class="lg:block hidden h-screen"/>
+      <img
+        src="../../src/assets/bagbrown.png"
+        class="lg:block hidden h-screen"
+      />
     </div>
   </div>
 </template>
@@ -54,18 +57,16 @@ export default {
       // url: "http://52.187.115.71:3000/auth",
       url: "http://localhost:3000/api/worker/auth",
       // url: "http://localhost:5000/admin",
-      
     };
   },
-  created(){
-    let check = localStorage.getItem("token")
-    console.log(check)
-    if(!check){
-      return
-    }else{
+  created() {
+    let check = localStorage.getItem("token");
+    console.log(check);
+    if (!check) {
+      return;
+    } else {
       return this.$router.push("/adminLogin");
     }
-
   },
 
   methods: {
@@ -81,7 +82,13 @@ export default {
           .then((res) => {
             if (res.status === 200) {
               localStorage.setItem("token", res.data);
-              return this.$router.push("/adminHome");
+              if (res.data.role == "admin") {
+                 return this.$router.push("/adminHome");
+              } else {
+                return this.$router.push("/staffHome")
+              }
+              // console.log(res.data.token);
+              // console.log(res.data.role);
             }
           })
           .catch((err) => {
@@ -89,8 +96,6 @@ export default {
           });
       }
     },
-
-
   },
 };
 </script>
@@ -104,9 +109,8 @@ export default {
   lg:text-5xl lg:mt-32
   sm:text-3xl;
 }
-.layout{
-  @apply lg:grid lg:grid-cols-2 
-  ;
+.layout {
+  @apply lg:grid lg:grid-cols-2;
 }
 .bg {
   @apply md:mx-40 lg:mx-64 xl:mx-80
@@ -129,7 +133,6 @@ export default {
   @apply sm:left-56
   md:left-72
   lg:left-3;
-  ;
 }
 .signin {
   font-family: "Roboto", sans-serif;
@@ -139,9 +142,9 @@ export default {
 .login {
   @apply text-sm font-medium
   sm:px-20
-  lg:w-full lg:py-0.5 ;
+  lg:w-full lg:py-0.5;
 }
-.form{
+.form {
   @apply lg:px-36
   xl:px-40
   2xl:px-60;

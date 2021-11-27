@@ -12,6 +12,7 @@ import Cart from '../views/Cart.vue'
 import All from '../views/AllProduct.vue'
 import Preview from '../views/Preview.vue'
 import Login from '../views/Login.vue'
+import StaffHome from '../views/StaffHome.vue'
 
 const routes = [
   {
@@ -33,6 +34,13 @@ const routes = [
     path: '/accountAdmin',
     name: '/accountAdmin',
     component: AccountAdmin
+  },
+
+  //staff
+  {
+    path: '/staffHome',
+    name: 'staffHome',
+    component: StaffHome
   },
 
   // customer
