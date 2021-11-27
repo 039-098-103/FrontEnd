@@ -121,7 +121,6 @@
           </div>
 
           <div class="submit mt-5 text-xs">
-            
             <button
               class="bg-red-500 text-white button w-full rounded-full py-2"
               @click="submitAccount"

@@ -168,7 +168,7 @@ export default {
       } else if (this.alertPassword) {
         return;
       }
-      this.addStaff();
+      this.addCustomer();
     },
 
     async addCustomer() {
