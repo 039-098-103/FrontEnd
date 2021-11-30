@@ -1,172 +1,138 @@
 <template>
   <navbar></navbar>
 
-  <div class="search flex justify-center items-center pt-20">
-    <i class="icons fas fa-search self-center"></i>
-    <input
-      class="
-          ml-2 lg:w-80
-          p-1
-          placeholder-gray-500 placeholder-opacity-50
-          focus:outline-none
-          text-black
-          border-b-2
-        "
-      type="text"
-      placeholder="search"
-      v-model="search"
-    />
-  </div>
-
-  <div class="mt-2">
+  <div class="navpd pt-20 justify-center flex">
     <navProduct />
   </div>
 
-<div class="lg:grid lg:grid-cols-5">
-  <div class="yellow mx-8 mt-5 flex justify-center">
-    <img src="../../src/assets/yellow.png" class="shadow " />
-  </div>
-
-  <div v-if="products.length" class="image mt-5 grid grid-cols-2">
-    <div class="box-l pl-8 pr-2">
-      <div class="flex justify-center">
-        <img
-          :src="getProductImg(products[3].imageName)"
-          class="shadow"
-        />
-      </div>
-      <div class="product mt-2">
-        <div class="box flex justify-center">
-          <div
-            class="colors py-1 "
-            v-for="colorProduct in products[3].Color"
-            :key="colorProduct.colorId"
-            :style="{ background: colorProduct.colorName }"
-          ></div>
-        </div>
-        <div>
-          {{ products[3].productName }}
-        </div>
-        <div>{{ products[3].price }} $</div>
-      </div>
+  <div class="lg:grid lg:grid-cols-5">
+    <div class="yellow mx-8 mt-5 flex justify-center">
+      <img src="../../src/assets/yellow.png" class="shadow " />
     </div>
 
-    <div class="box-r pr-8 pl-2">
-      <div class="flex justify-center">
-        <img
-          :src="getProductImg(products[11].imageName)"
-          class=" shadow"
-        />
-      </div>
-      <div class="product mt-2">
-        <div class="box flex justify-center">
-          <div
-            class="colors py-1 "
-            v-for="colorProduct in products[11].Color"
-            :key="colorProduct.colorId"
-            :style="{ background: colorProduct.colorName }"
-          ></div>
+    <div v-if="products" class="image mt-5 grid grid-cols-2">
+      <div class="box-l pl-8 pr-2">
+        <div class="flex justify-center">
+          <img :src="getProductImg(products[3].imageName)" class="shadow" />
         </div>
-        <div>
-          {{ products[11].productName }}
+        <div class="product mt-2">
+          <div class="box flex justify-center">
+            <div
+              class="colors py-1 "
+              v-for="colorProduct in products[3].Color"
+              :key="colorProduct.colorId"
+              :style="{ background: colorProduct.colorName }"
+            ></div>
+          </div>
+          <div class="center">
+            {{ products[3].productName }}
+          </div>
+          <div class="center">{{ products[3].price }} $</div>
         </div>
-        <div>{{ products[11].price }} $</div>
       </div>
-    </div>
 
-    <div class="box-l px-8 pr-2">
-      <div class="flex justify-center">
-        <img
-          :src="getProductImg(products[8].imageName)"
-          class="shadow"
-        />
-      </div>
-      <div class="product mt-2">
-        <div class="box flex justify-center">
-          <div
-            class="colors py-1 "
-            v-for="colorProduct in products[8].Color"
-            :key="colorProduct.colorId"
-            :style="{ background: colorProduct.colorName }"
-          ></div>
+      <div class="box-r pr-8 pl-2">
+        <div class="flex justify-center">
+          <img :src="getProductImg(products[11].imageName)" class=" shadow" />
         </div>
-        <div>
-          {{ products[8].productName }}
+        <div class="product mt-2">
+          <div class="box flex justify-center">
+            <div
+              class="colors py-1 "
+              v-for="colorProduct in products[11].Color"
+              :key="colorProduct.colorId"
+              :style="{ background: colorProduct.colorName }"
+            ></div>
+          </div>
+          <div class="center">
+            {{ products[11].productName }}
+          </div>
+          <div class="center">{{ products[11].price }} $</div>
         </div>
-        <div>{{ products[8].price }} $</div>
       </div>
-    </div>
 
-    <div class="box-r pr-8 pl-2">
-      <div class="flex justify-center">
-        <img
-          :src="getProductImg(products[5].imageName)"
-          class="shadow"
-        />
-      </div>
-      <div class="product mt-2">
-        <div class="box flex justify-center">
-          <div
-            class="colors py-1 "
-            v-for="colorProduct in products[5].Color"
-            :key="colorProduct.colorId"
-            :style="{ background: colorProduct.colorName }"
-          ></div>
+      <div class="box-l px-8 pr-2">
+        <div class="flex justify-center">
+          <img :src="getProductImg(products[8].imageName)" class="shadow" />
         </div>
-        <div>
-          {{ products[5].productName }}
+        <div class="product mt-2">
+          <div class="box flex justify-center">
+            <div
+              class="colors py-1 "
+              v-for="colorProduct in products[8].Color"
+              :key="colorProduct.colorId"
+              :style="{ background: colorProduct.colorName }"
+            ></div>
+          </div>
+          <div class="center">
+            {{ products[8].productName }}
+          </div>
+          <div class="center">{{ products[8].price }} $</div>
         </div>
-        <div>{{ products[5].price }} $</div>
       </div>
-    </div>
 
-    <div class="box-l pl-8 pr-2">
-      <div class="flex justify-center">
-        <img
-          :src="getProductImg(products[9].imageName)"
-          class="shadow"
-        />
-      </div>
-      <div class="product mt-2">
-        <div class="box flex justify-center">
-          <div
-            class="colors py-1 "
-            v-for="colorProduct in products[9].Color"
-            :key="colorProduct.colorId"
-            :style="{ background: colorProduct.colorName }"
-          ></div>
+      <div class="box-r pr-8 pl-2">
+        <div class="flex justify-center">
+          <img :src="getProductImg(products[5].imageName)" class="shadow" />
         </div>
-        <div>
-          {{ products[9].productName }}
+        <div class="product mt-2">
+          <div class="box flex justify-center">
+            <div
+              class="colors py-1 "
+              v-for="colorProduct in products[5].Color"
+              :key="colorProduct.colorId"
+              :style="{ background: colorProduct.colorName }"
+            ></div>
+          </div>
+          <div class="center">
+            {{ products[5].productName }}
+          </div>
+          <div class="center">{{ products[5].price }} $</div>
         </div>
-        <div>{{ products[9].price }} $</div>
       </div>
-    </div>
 
-    <div class="box-r pr-8 pl-2 ">
-      <div class="flex justify-center">
-        <img
-          :src="getProductImg(products[1].imageName)"
-          class=" shadow"
-        />
+      <div class="box-l pl-8 pr-2">
+        <div class="flex justify-center">
+          <img :src="getProductImg(products[9].imageName)" class="shadow" />
+        </div>
+        <div class="product mt-2">
+          <div class="box flex justify-center">
+            <div
+              class="colors py-1 "
+              v-for="colorProduct in products[9].Color"
+              :key="colorProduct.colorId"
+              :style="{ background: colorProduct.colorName }"
+            ></div>
+          </div>
+          <div class="center">
+            {{ products[9].productName }}
+          </div>
+          <div class="center">{{ products[9].price }} $</div>
+        </div>
       </div>
-      <div class="product mt-2">
-        <div class="box flex justify-center">
-          <div
-            class="colors py-1 "
-            v-for="colorProduct in products[1].Color"
-            :key="colorProduct.colorId"
-            :style="{ background: colorProduct.colorName }"
-          ></div>
+
+      <div class="box-r pr-8 pl-2 ">
+        <div class="flex justify-center">
+          <img :src="getProductImg(products[1].imageName)" class=" shadow" />
         </div>
-        <div>
-          {{ products[1].productName }}
+        <div class="product mt-2">
+          <div class="box flex justify-center">
+            <div
+              class="colors py-1 "
+              v-for="colorProduct in products[1].Color"
+              :key="colorProduct.colorId"
+              :style="{ background: colorProduct.colorName }"
+            ></div>
+          </div>
+          <div class="center">
+            {{ products[1].productName }}
+          </div>
+          <div class="center">{{ products[1].price }} $</div>
         </div>
-        <div>{{ products[1].price }} $</div>
       </div>
     </div>
   </div>
-</div>
+
   <div class="new-in mx-8 mt-2">
     <img src="../../src/assets/newin.png" class=" shadow" />
   </div>
@@ -243,16 +209,6 @@ export default {
     this.products = await this.getProduct();
     this.colors = await this.getColors();
   },
-
-  computed: {
-    searching() {
-      return this.products.filter((showResult) => {
-        return showResult.productName
-          .toLowerCase()
-          .includes(this.search.toLowerCase());
-      });
-    },
-  },
 };
 </script>
 
@@ -277,16 +233,30 @@ export default {
 }
 .product {
   font-size: 12px;
-  @apply mb-2 ;
+  @apply mb-2;
 }
-.search{
-  @apply md:pt-24;
-}
-.yellow{
+.yellow {
   @apply md:mx-12
-  lg:col-span-2;
+  lg:col-span-2 lg:mx-0 lg:mr-5 lg:ml-20;
 }
-.image{
-  @apply lg:col-span-3 md:grid-cols-3;
+.image {
+  @apply lg:col-span-3 lg:mr-20 lg:mx-0
+  md:grid-cols-3 md:gap-8 md:mx-24 md:px-1;
+}
+.center {
+  @apply flex justify-center;
+}
+.box-l {
+  @apply md:pr-0 pl-0;
+}
+.box-r {
+  @apply md:pr-0 pl-0;
+}
+.new-in{
+  @apply md:mx-24 md:mb-10
+  lg:mt-8 lg:mx-20;
+}
+.navpd{
+  @apply lg:justify-end lg:pt-32;
 }
 </style>

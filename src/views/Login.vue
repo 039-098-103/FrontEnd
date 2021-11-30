@@ -31,7 +31,7 @@
 
           <div v-if="login" class="signin mt-5">
             <button class="login bg-red-500 px-20 rounded-full">
-              <p class="px-3 py-2 text-black">Log In</p>
+              <p class="px-3 py-2 text-black">SIGN IN</p>
             </button>
           </div>
 
@@ -45,7 +45,8 @@
       </div>
 
       <div v-else>
-        <Register />
+
+        <Register @toggleOpen = colseSignUp></Register>
       </div>
     </div>
 
@@ -63,16 +64,16 @@ export default {
     return {
       user: "",
       pass: "",
-      url: "http://localhost:3000/api/auth/customer",
+      url: "http://localhost:3000/api/auth",
       customer: [],
-      staff: [],
       hidden: false,
     };
   },
 
   methods: {
-    toggleOpen() {
-      this.hiddenEdit = false;
+    
+    colseSignUp() {
+      this.hidden = false;
     },
 
     async login() {
@@ -86,9 +87,11 @@ export default {
           })
           .then((res) => {
             if (res.status === 200) {
-              localStorage.setItem("token", res.data);
+              localStorage.setItem("token", res.data.token);
+              localStorage.setItem("role", res.data.role);
               return this.$router.push("/allProduct");
             }
+            console.log(res.data.token);
           })
           .catch((err) => {
             alert(err.response.data);
@@ -98,8 +101,7 @@ export default {
   },
 
   async created() {
-    this.customer = await this.getCustomer();
-    this.staff = await this.getStaff();
+
   },
 };
 </script>

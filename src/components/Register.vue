@@ -115,6 +115,11 @@
           </button>
         </div>
       </div>
+
+      <div class="text-white grid grid-cols-2 mt-5">
+        <p class="justify-start flex">Have an account?</p>
+        <U class="justify-end flex text-red-500" @click="signin">Sign in</U>
+      </div>
     </div>
   </div>
 </template>
@@ -122,10 +127,12 @@
 <script>
 import axios from "axios";
 export default {
+  // emits: ["Regis"],
+
   data() {
     return {
       hidden: true,
-      url: "http://localhost:3000/api/auth/customer",
+      url: "http://localhost:3000/api/customer/register",
       customer: [],
       inputFirstname: false,
       inputLastname: false,
@@ -140,11 +147,14 @@ export default {
       password: "",
       confirmPassword: "",
       alertPassword: false,
-
     };
   },
 
   methods: {
+    signin() {
+      this.$emit("toggleOpen");
+    },
+
     submitAccount() {
       this.inputFirstname = this.firstName === "" ? true : false;
       this.inputLastname = this.lastName === "" ? true : false;
@@ -188,7 +198,7 @@ export default {
         formData.append("data", blob);
 
         axios
-          .post(`${this.url}/addCustomer`, formData, {
+          .post(`${this.url}`, formData, {
             headers: {
               Authorization: localStorage.getItem("token"),
             },
@@ -203,6 +213,7 @@ export default {
               this.confirmPassword = "";
               this.DOB = "";
               alert("Successfully applied!");
+              this.$emit("toggleDone");
             }
           })
           .catch((err) => {

@@ -11,29 +11,42 @@
 
     <div class="md:items-center flex">
       <div>
-      <div class="name text-sm font-bold mt-5">{{ product.productName }}</div>
-      <div class="flex justify-center my-1">
-        <div
-          class="colors"
-          v-for="product in product.Color"
-          :key="product.colorId"
-          :style="{ background: product.colorName }"
-        ></div>
-      </div>
-      <div class="price mb-5 text-sm font-semibold">{{ product.price }} $</div>
-      <div class="descript text-justify text-xs">
-        {{ product.productDes }}
-      </div>
+        <div class="name text-sm font-bold mt-5 flex justify-center">
+          {{ product.productName }}
+        </div>
+        <div class="flex justify-center my-1" >
+          <label
+            class="colors"
+            v-for="product in product.Color"
+            :key="product.colorId"
+            :style="{ background: product.colorName }"
+            
+          >
+            <input
+              type="radio"
+              :value="product.productDetailId"
+              v-model="color"
+            />
+          </label>
+          
+        </div>
+        <div class="price mb-5 text-sm font-semibold flex justify-center">
+          {{ product.price }} $
+        </div>
+        <div class="descript text-justify text-xs">
+          {{ product.productDes }}
+        </div>
 
-      <div class="mt-10">
-        <button
-          class="bg-black text-white rounded-full px-5 py-1 text-xs"
-          @click="goToCart"
-        >
-          ADD TO CART
-        </button>
+        <div class="mt-10 flex justify-center">
+          <button
+            class="bg-black text-white rounded-full px-5 py-1 text-xs"
+            @click="goToCart"
+          >
+            ADD TO CART
+          </button>
+        </div>
       </div>
-    </div></div>
+    </div>
   </div>
   <Footer></Footer>
 </template>
@@ -48,38 +61,34 @@ export default {
     return {
       url: "http://localhost:3000/api",
       product: "",
-      imageName: "",
+      // imageName: "",
+      color: null,
     };
   },
 
   methods: {
-    getProductImg(productId) {
-      return "http://localhost:3000/" + productId;
-    },
-
-    checkLogin(){
-
+    getProductImg(imageName) {
+      console.log(imageName);
+      return "http://localhost:3000/" + imageName;
     },
 
     goToCart() {
       try {
-        const formData = new FormData();
-        let data = this.product
-        const json = JSON.stringify(data);
-        const blob = new Blob([json], {
-          type: "application/json",
-        });
-        formData.append("data", blob);
-
-        axios 
-          .post(`${this.url}/customer/addToCart/${this.product.productDetailId}`, formData, {
+        console.log(this.color);
+        axios
+          .post(`${this.url}/customer/addToCart/${this.color}`,{}, {
             headers: {
               Authorization: localStorage.getItem("token"),
             },
           })
+          .then((res) => {
+            if (res.status === 200) {
+              alert("Successfully added to cart");
+            }
+          })
           .catch((err) => {
-             if (err.response.status === 403) {
-              alert('Please log in to order.');
+            if (err.response.status === 403) {
+              alert("Please log in to order.");
               this.$router.push("/Login");
             }
             // alert(err.response.data);
@@ -91,8 +100,8 @@ export default {
   },
 
   mounted() {
-    console.log(this.productId);
     axios.get(`${this.url}/getProduct/${this.productId}`).then((res) => {
+      console.log(res.data);
       return (this.product = res.data);
     });
   },

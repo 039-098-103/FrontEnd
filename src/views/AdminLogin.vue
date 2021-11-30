@@ -27,9 +27,10 @@
             <i class="fas fa-lock"></i>
           </div>
         </div>
+
         <div v-if="login" class="signin">
           <button class="login bg-red-500 px-20 rounded-full">
-            <p class="px-3 py-2">Log In</p>
+            <p class="px-3 py-1">Log In</p>
           </button>
         </div>
       </form>
@@ -81,14 +82,15 @@ export default {
           })
           .then((res) => {
             if (res.status === 200) {
-              localStorage.setItem("token", res.data);
-              if (res.data.role == "admin") {
-                 return this.$router.push("/adminHome");
+              localStorage.setItem("token", res.data.token);
+              localStorage.setItem("role", res.data.role);
+              // console.log(res.data.role);
+              if (res.data.role == "Admin") {
+                return this.$router.push("/adminHome");
               } else {
-                return this.$router.push("/staffHome")
+                return this.$router.push("/staffHome");
               }
               // console.log(res.data.token);
-              // console.log(res.data.role);
             }
           })
           .catch((err) => {
@@ -121,7 +123,7 @@ export default {
 }
 .input {
   font-family: "Roboto", sans-serif;
-  @apply my-4 text-xs
+  @apply my-4 text-xs flex justify-center
   lg:text-sm;
 }
 .input-w {
@@ -137,7 +139,7 @@ export default {
 .signin {
   font-family: "Roboto", sans-serif;
   color: black;
-  @apply font-medium;
+  @apply font-medium flex justify-center;
 }
 .login {
   @apply text-sm font-medium

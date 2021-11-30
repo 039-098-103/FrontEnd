@@ -2,29 +2,32 @@
   <navbar />
 
   <div class="h-full md:mb-10">
-    <div class="search flex justify-center items-center pt-20">
-      <i class="icons fas fa-search self-center"></i>
-      <input
-        class="
+    <div class="lg:mr-20">
+      <div class="search flex justify-center items-center pt-20 text-xs">
+        <i class="icons fas fa-search self-center"></i>
+        <input
+          class="
           ml-2 lg:w-80
           p-1
-          placeholder-gray-500 placeholder-opacity-50
+          placeholder-black placeholder-opacity-50
           focus:outline-none
           text-black
           border-b-2
+          border-black
         "
-        type="text"
-        placeholder="search"
-        v-model="search"
-      />
+          type="text"
+          placeholder="search"
+          v-model="search"
+        />
+      </div>
     </div>
 
-    <div class="mt-2">
-      <navProduct />
+    <div class="nav mt-2 justify-center flex">
+      <navProduct/>
     </div>
 
     <div class="product grid grid-cols-2 mx-8 gap-4 mt-5">
-      <div v-for="show in searching" :key="show.productName">
+      <div v-for="show in searching" :key="show.productName" class="">
         <div class="flex justify-center">
           <router-link
             :to="{
@@ -36,7 +39,7 @@
           </router-link>
         </div>
 
-        <div class=" mt-3 justify-center">
+        <div class=" mt-3">
           <div class="box-color flex justify-center">
             <div
               class="colors py-1 "
@@ -45,12 +48,12 @@
               :style="{ background: colorProduct.colorName }"
             ></div>
           </div>
-          <div class="box mt-2 text-black ">
+          <div class="box mt-2 text-black">
             <div>
-              {{ show.productName }}
-            </div>
-            <div>
-              {{ show.price }}
+              <div class="flex justify-center">
+                {{ show.productName }}
+              </div>
+              <div class="flex justify-center">{{ show.price }} $</div>
             </div>
           </div>
         </div>
@@ -147,8 +150,16 @@ export default {
 .product {
   font-size: 12px;
   @apply md:grid-cols-3
-  lg:grid-cols-5 lg:gap-x-16 lg:mx-40 lg:mt-16;
+  lg:grid-cols-5 lg:gap-x-16 lg:mx-20 lg:mt-2;
 }
-.picture {
+.search {
+  @apply md:text-sm 
+  lg:text-xl lg:justify-end lg:pt-32;
+}
+.nav {
+  @apply lg:justify-end lg:text-base lg:mt-14;
+}
+.box{
+  @apply lg:text-sm;
 }
 </style>

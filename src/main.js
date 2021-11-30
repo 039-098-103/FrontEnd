@@ -12,6 +12,7 @@ import CusNav from '@/components/NavCus.vue'
 import NavProduct from '@/components/NavProduct.vue'
 import Footer from '@/components/Footer.vue'
 import Register from '@/components/Register.vue'
+import NavStaff from '@/components/NavStaff.vue'
 
 
 const app = createApp(App).use(router)
@@ -22,4 +23,5 @@ app.component('navbar', CusNav);
 app.component('navProduct', NavProduct)
 app.component('Footer', Footer)
 app.component('Register', Register)
+app.component('navStaff', NavStaff)
 app.mount('#app')

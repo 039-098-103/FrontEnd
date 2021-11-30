@@ -13,26 +13,28 @@ import All from '../views/AllProduct.vue'
 import Preview from '../views/Preview.vue'
 import Login from '../views/Login.vue'
 import StaffHome from '../views/StaffHome.vue'
+import Address from '../views/PostAddress.vue'
+import Order from '../views/Order.vue'
 
 const routes = [
   {
     path: '/adminLogin',
-    name: '/AdminLogin',
+    name: 'AdminLogin',
     component: AdminLogin
   },
   {
     path: '/adminHome',
-    name: '/adminHome',
+    name: 'adminHome',
     component: AdminHome
   },
   {
     path: '/addAccount',
-    name: '/addAccount',
+    name: 'AddAccount',
     component: RegisStaff
   },
   {
     path: '/accountAdmin',
-    name: '/accountAdmin',
+    name: 'AccountAdmin',
     component: AccountAdmin
   },
 
@@ -67,7 +69,16 @@ const routes = [
   {
     path: '/account',
     name: 'Account',
-    component: Account
+    component: Account,
+    beforeEnter:(to, from, next) => {
+      const role = localStorage.getItem("role");
+      const login = localStorage.getItem("token");
+      if(!login && role != "Customer"){
+        next("/login");
+      }else{
+        next();
+      }
+    }
   },
   {
     path: '/cart',
@@ -88,7 +99,17 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+  },
+  {
+    path: '/addAddress',
+    name: 'Address',
+    component: Address,
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: Order,
   }
 ]
 

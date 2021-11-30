@@ -1,14 +1,20 @@
 <template>
-  <div class="text-black">
-    <router-link to="/allProduct" class="navOne hover:text-red-600 inline"
-      >All</router-link
-    >
-    <router-link to="/newCollection" class="nav hover:text-red-600 inline"
-      >New Collection</router-link
-    >
-    <router-link to="/lookbook" class="nav hover:text-red-600 inline"
-      >Lookbook</router-link
-    >
+  <div class="text-black grid grid-cols-3 lg:mr-16">
+    <div class="flex justify-center">
+      <router-link to="/allProduct" class="nav hover:text-red-600 inline"
+        >ALL
+      </router-link>
+    </div>
+    <div class="flex justify-end">
+      <router-link to="/newCollection" class="nav hover:text-red-600 inline"
+        >NEW CILLECTION</router-link
+      >
+    </div>
+    <div class=" flex justify-center">
+      <router-link to="/lookbook" class="nav hover:text-red-600 inline"
+        >LOOKBOOK</router-link
+      >
+    </div>
   </div>
 </template>
 
@@ -16,17 +22,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap");
 
-.navOne {
-  font-size: 12px;
-  font-family: "Rajdhani", sans-serif;
-  @apply mr-2 sm:mr-6 sm:text-sm md:text-base lg:mr-14 lg:text-lg;
-}
 .nav {
   font-size: 12px;
   font-family: "Rajdhani", sans-serif;
-  @apply mr-2 sm:mr-6 sm:text-sm md:text-base lg:mr-8 lg:text-lg;
+  @apply lg:text-lg;
 }
-
 
 nav:visited {
   color: #e92b2b;

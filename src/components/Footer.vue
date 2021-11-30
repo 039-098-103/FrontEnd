@@ -38,11 +38,15 @@ img {
 }
 .contactUs {
   font-size: 12px;
-  @apply font-bold flex justify-center;
+  @apply font-bold flex justify-center
+  md:text-base
+  lg:text-xl;
 }
 .email {
   font-size: 9px;
-  @apply pt-1 font-normal flex justify-center;
+  @apply pt-1 font-normal flex justify-center
+  md:text-sm
+  lg:text-base;
 }
 
 .socail {

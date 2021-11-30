@@ -67,10 +67,9 @@ export default {
       staffs: [],
       url: "http://localhost:3000/api/admin",
       // url: "http://52.187.115.71:3000/admin",
-      // url: "http://localhost:5000/admin",
       // url: "http://52.187.115.71:3000/auth",
       login: "http://localhost:3000/api/worker/auth",
-      userAdmin: "http://localhost:3000/api/admin/getInfo",
+      // userAdmin: "http://localhost:3000/api/admin/getInfo",
       search: "",
       admin: [],
       pass: "",
@@ -178,7 +177,6 @@ export default {
 input::placeholder {
   color: white;
 }
-
 .posit {
   @apply xl:mb-2 xl:mx-16
   lg:mx-14 lg:mb-2

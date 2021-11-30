@@ -92,10 +92,9 @@ export default {
   },
 
   methods: {
-
-
     logout() {
       localStorage.removeItem("token");
+      localStorage.removeItem("role");
       console.log("logout");
       return this.$router.push("/adminLogin");
     },

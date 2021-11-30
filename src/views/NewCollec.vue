@@ -1,52 +1,37 @@
 <template>
   <navbar></navbar>
 
-  <div class="search flex justify-center items-center pt-20 mb-3 text-xs">
-    <i class="icons fas fa-search self-center"></i>
-    <input
-      class="
-          ml-2 lg:w-80
-          p-1
-          placeholder-gray-500 placeholder-opacity-50
-          focus:outline-none
-          text-white
-          border-b-2
-        "
-      type="text"
-      placeholder="search"
-      v-model="search"
-    />
+  <div class="navpd pt-20 justify-center flex">
+    <navProduct />
   </div>
 
-  <navProduct></navProduct>
-
   <div class="w-full">
-    <div class="mt-8 mx-6 ">
+    <div class="info mt-8 mx-6 ">
       <img src="../../src/assets/info.png" />
     </div>
 
-    <div class="pic mx-6 my-2 items-center grid">
-      <div>
+    <div class="group mx-6 my-2 grid">
+      <div class="">
         <img src="../../src/assets/pink.jpg" class="image justify-center" />
       </div>
 
-      <div class="font text-white">
+      <div class="font flex justify-center mt-4">
+        <div>
         <div class="jw text-sm font-bold">
-          JW PEI
+           JW PEI 
         </div>
         <div class="fei text-xs mb-5">
-          FEI 100 Collection has arrived.
+            FEI 100 Collection has arrived.
         </div>
-        <div>
+        <div class="but">
           <router-link to="/allProduct">
-            <button class="bg-black p-2 md:px-4 text-white text-xs fei">
+            <button class=" bg-black p-2 md:px-4 text-white text-xs fei">
               SHOP NOW
             </button>
           </router-link>
         </div>
       </div>
-
-    </div>
+    </div></div>
   </div>
   <Footer />
 </template>
@@ -74,25 +59,37 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 .search {
   @apply lg:justify-end lg:flex lg:mx-20;
 }
 .font {
-  @apply
-  lg:justify-end lg:text-black ;
+  @apply lg:justify-center lg:items-center ;
 }
-.pic {
+.group {
   text-align: center;
-  @apply lg:grid-cols-2;
+  @apply lg:grid-cols-2 lg:mx-20 lg:mb-10
+  md:mx-14;
+}
+.info {
+  @apply md:mx-14
+  lg:mx-20;
 }
 .jw {
+  font-family: "Bebas Neue", cursive;
   @apply md:text-2xl
-  lg:justify-end;
+  lg:justify-end lg:text-5xl;
 }
 .fei {
-  @apply md:text-base;
+  @apply md:text-base  lg:text-xl;
 }
 .image {
   @apply lg:flex lg:justify-center;
+}
+.navpd {
+  @apply lg:justify-end lg:pt-32;
+}
+.but{
+  @apply md:mb-10;
 }
 </style>
