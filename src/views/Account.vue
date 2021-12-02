@@ -19,9 +19,6 @@
               <div class="detail flex justify-start">
                 <p class="">Username : {{ this.customer.username }}</p>
               </div>
-              <div class="detail flex justify-start">
-                <p>Birthday : {{ this.customer.birthday }}</p>
-              </div>
 
               <div class="detail pt-5">
                 <div class="mb-2">

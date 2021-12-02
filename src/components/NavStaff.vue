@@ -10,7 +10,7 @@
     </p>
 
     <div class="items-center justify-end flex ">
-      <router-link to="/">
+      <router-link to="/staffAccount">
         <i class="icons fas fa-user fa-lg"></i>
       </router-link>
     </div>
@@ -22,13 +22,13 @@
         <i class="icons fas fa-bars fa-lg"></i>
       </div>
       <p class="brand justify-center flex">
-        <router-link to="/">
+        <router-link to="/staffHome">
           JWPEI
         </router-link>
       </p>
 
       <div class="items-center justify-end flex ">
-        <router-link to="/">
+        <router-link to="/staffAccount">
           <i class="icons fas fa-user fa-lg"></i>
         </router-link>
       </div>
@@ -37,12 +37,17 @@
     <div class="flex justify-center">
       <div>
         <router-link to="/staffHome">
-          <p class="pb-5 pt-10 mt-20 flex justify-center">Staff List</p>
+          <p class="pb-5 pt-10 mt-20 flex justify-center">Order List</p>
         </router-link>
 
-        <router-link to="/">
-          <p class="py-5 flex justify-center">Register Staff</p>
+        <router-link to="/addProduct">
+          <p class="py-5 flex justify-center">Add New Product</p>
         </router-link>
+
+        <router-link to="/stock">
+          <p class="py-5 flex justify-center">Product in Stock</p>
+        </router-link>
+
         <div class="py-5 flex justify-center" @click="showHamburger()">
           <i class="iconNav fas fa-angle-up fa-2x"></i>
         </div>

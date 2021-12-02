@@ -17,34 +17,37 @@
       </div>
     </div>
 
-      <div v-if="hamburgerBar" class="menuNav bg-loginAd fixed w-full ">
-        <div class="navbar fixed py-5 grid grid-cols-3 w-screen ">
-          <div class="items-center justify-start flex" @click="showHamburger()">
-            <i class="icons fas fa-bars fa-lg"></i>
-          </div>
-          <p class="brand justify-center flex">
-            <router-link to="/adminHome">
-              JWPEI
-            </router-link>
-          </p>
-
-          <div class="items-center justify-end flex ">
-            <router-link to="/accountAdmin">
-              <i class="icons fas fa-user fa-lg"></i>
-            </router-link>
-          </div>
+    <div v-if="hamburgerBar" class="menuNav bg-loginAd fixed w-full ">
+      <div class="navbar fixed py-5 grid grid-cols-3 w-screen ">
+        <div class="items-center justify-start flex" @click="showHamburger()">
+          <i class="icons fas fa-bars fa-lg"></i>
         </div>
+        <p class="brand justify-center flex">
+          <router-link to="/adminHome">
+            JWPEI
+          </router-link>
+        </p>
 
-        <router-link to="/adminHome">
-          <p class="pb-5 pt-10 mt-20">Staff List</p>
-        </router-link>
-        <router-link to="/addAccount">
-          <p class="py-5">Register Staff</p>
-        </router-link>
-        <div class="py-5" @click="showHamburger()">
-          <i class="iconNav fas fa-angle-up fa-2x"></i>
+        <div class="items-center justify-end flex ">
+          <router-link to="/accountAdmin">
+            <i class="icons fas fa-user fa-lg"></i>
+          </router-link>
         </div>
       </div>
+      <div class="flex justify-center">
+        <div>
+          <router-link to="/adminHome">
+            <p class="pb-5 pt-10 mt-20 flex justify-center">Staff List</p>
+          </router-link>
+          <router-link to="/addAccount">
+            <p class="py-5 flex justify-center">Register Staff</p>
+          </router-link>
+          <div class="py-5 flex justify-center" @click="showHamburger()">
+            <i class="iconNav fas fa-angle-up fa-2x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

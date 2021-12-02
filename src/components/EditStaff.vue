@@ -109,24 +109,24 @@
 <script>
 import axios from "axios";
 export default {
-  name: "admin",
+  name: "staff",
   components: {},
   props: {
-    editAdmin: {
+    editStaff: {
       type: Object,
     },
   },
   emits: ["editAc"],
   data() {
     return {
-      admin: [],
+      staff: [],
       firstName: "",
       lastName: "",
       DOB: null,
       username: "",
       password: null,
       // url: "http://52.187.115.71:3000/admin",
-      url: "http://localhost:3000/api/admin",
+      url: "http://localhost:3000/api/staff",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,
@@ -140,28 +140,24 @@ export default {
     };
   },
   methods: {
-    selectDate() {
-      function calculate_age(dob) {
-        var diff_ms = Date.now() - dob.getTime();
-        var age_dt = new Date(diff_ms);
-        return Math.abs(age_dt.getUTCFullYear() - 1970);
-      }
-      console.log(calculate_age(new Date(1982, 11, 4)));
-      console.log(calculate_age(new Date(1962, 1, 1)));
-    },
+    // selectDate() {
+    //   function calculate_age(dob) {
+    //     var diff_ms = Date.now() - dob.getTime();
+    //     var age_dt = new Date(diff_ms);
+    //     return Math.abs(age_dt.getUTCFullYear() - 1970);
+    //   }
+    //   console.log(calculate_age(new Date(1982, 11, 4)));
+    //   console.log(calculate_age(new Date(1962, 1, 1)));
+    // },
 
     async showPass() {
       this.showPassword = !this.showPassword;
     },
 
     cancel() {
-      // อันนี้ไว้สำหรับไว้ลองเเก้อีกหน้านึงที่เรียกใช้ compo นี้
-      // <edit @handleCancel="ชื่อ method ที่ไว้ใช่เปลี่ยนค่า true false ในการเเสดง ไม่เเสดง"></edit>
       this.$emit("toggleOpen");
     },
-    // done(){
-    //   alert(`Edit Success`)
-    // },
+
     submitAccount() {
       this.inputFirstname = this.firstName === "" ? true : false;
       this.inputLastname = this.lastName === "" ? true : false;
@@ -183,6 +179,7 @@ export default {
       }
       this.submitEdit();
     },
+
     async submitEdit() {
       const formData = new FormData();
       let data = {
@@ -198,24 +195,24 @@ export default {
       });
       formData.append("data", blob);
       axios
-        .patch(`${this.url}/update`, formData, {
+        .patch(`${this.url}/updateInfo`, formData, {
           headers: {
             Authorization: localStorage.getItem("token"),
           },
         })
         .then((res) => {
           if (res.status === 200) {
-            this.admin = this.admin.map((adminEdit) =>
-              adminEdit.username === this.username
+            this.staff = this.staff.map((staffEdit) =>
+              staffEdit.username === this.username
                 ? {
-                    ...adminEdit,
+                    ...staffEdit,
                     firstName: this.firstName,
                     lastName: this.lastName,
                     DOB: this.DOB,
                     username: this.username,
                     password: this.password,
                   }
-                : adminEdit
+                : staffEdit
             );
             (this.firstName = ""),
               (this.lastName = ""),
@@ -240,12 +237,11 @@ export default {
   },
 
   async created() {
-    // this.admin = await this.getData();
-    this.firstName = this.editAdmin.firstName;
-    this.lastName = this.editAdmin.lastName;
-    this.DOB = this.editAdmin.DOB;
-    this.password = this.editAdmin.password;
-    this.username = this.editAdmin.username;
+    this.firstName = this.editStaff.firstName;
+    this.lastName = this.editStaff.lastName;
+    this.DOB = this.editStaff.DOB;
+    this.password = this.editStaff.password;
+    this.username = this.editStaff.username;
   },
 };
 </script>
@@ -255,12 +251,6 @@ export default {
   @apply xl:mb-5 xl:mt-5 xl:text-2xl
   lg:text-xl;
 }
-/* .button:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  transition: 0.4s;
-  box-shadow: 1px 1px 8px 0 lightblue;
-} */
 button {
   @apply text-xs px-1 py-1 rounded-full w-full
   lg:px-4

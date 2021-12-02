@@ -4,9 +4,15 @@
 
     <div class="layout text-white">
       <div class="lg:col-span-5 pt-5">
-        <p class="account font-bold text-white pt-20 pb-5">Account</p>
+        <div>
+          <div class="flex justify-center">
+            <p class="account font-bold text-white pt-20 pb-5 ">Account</p>
+          </div>
 
-        <i class="username far fa-user-circle items-center "></i>
+          <div class="flex justify-center">
+            <i class="username far fa-user-circle items-center "></i>
+          </div>
+        </div>
 
         <div v-for="admin in admin" :key="admin.username">
           <div v-if="hiddenEdit == false">
@@ -22,11 +28,7 @@
                   <p class="">Username : {{ admin.username }}</p>
                 </div>
                 <div class="detail flex justify-start">
-                  <p>Birthday : {{ admin.DOB }}</p>
-                </div>
-
-                <div class="detail flex justify-start">
-                  <p class="">Position : {{ admin.position }}</p>
+                  <p>Birthday : {{ formatDate(admin.DOB) }}</p>
                 </div>
 
                 <div class="detail pt-5">
@@ -124,6 +126,12 @@ export default {
       } catch (error) {
         console.log(`Could not get! ${error}`);
       }
+    },
+
+    formatDate(date) {
+      return new Intl.DateTimeFormat("en-GB", { dateStyle: "long" }).format(
+        new Date(date)
+      );
     },
   },
 

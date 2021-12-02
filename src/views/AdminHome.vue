@@ -59,7 +59,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "staffs",
+  name: "admin",
   components: {},
 
   data() {

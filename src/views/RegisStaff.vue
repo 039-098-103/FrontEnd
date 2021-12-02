@@ -14,11 +14,11 @@
 
     <div class="lg:col-span-6 mt-20 ">
       <div class="justify-center mb-2">
-        <p class="line mx-2">&nbsp;&nbsp;Profile&nbsp;&nbsp;</p>
+        <p class="title line mx-2">&nbsp;&nbsp;Profile&nbsp;&nbsp;</p>
       </div>
 
-      <div class="">
-        <div class="">
+      <div>
+        <div class="input">
           <div class=" justify-center grid my-2 text-xs">
             <input
               v-model="firstName"
@@ -34,7 +34,7 @@
             >
           </div>
 
-          <div class="justify-center grid my-2 text-xs">
+          <div class="justify-center grid my-2 text-xs ">
             <input
               v-model="lastName"
               class="rounded-full py-1 px-2 justify-start inline"
@@ -49,10 +49,10 @@
             >
           </div>
 
-          <div class="justify-center grid my-2 text-xs w-full">
+          <div class="justify-center grid my-2 text-xs ">
             <input
               type="date"
-              class="rounded-full py-1 px-5 inline justify-start "
+              class="rounded-full py-1 px-2 md:px-3 inline justify-start "
               v-model="DOB"
             />
             <div></div>
@@ -63,66 +63,63 @@
         </div>
 
         <div class="justify-center mt-5 mb-2">
-          <p class="line mx-2">&nbsp;&nbsp;Account&nbsp;&nbsp;</p>
+          <p class="title line mx-2">&nbsp;&nbsp;Account&nbsp;&nbsp;</p>
         </div>
 
         <div class="box ">
-          <div class="justify-center grid my-2 text-xs">
-            <input
-              v-model="username"
-              class="rounded-full py-1 px-2 inline justify-start"
-              placeholder="USERNAME"
-            />
-            <div></div>
-            <sup
-              v-show="inputUsername"
-              class="text-red-500 justify-end flex mt-4"
-            >
-              Please enter username!</sup
-            >
-          </div>
-
-          <div class="justify-center grid my-2 text-xs">
-            <input
-              v-model="password"
-              class="rounded-full py-1 px-2 inline justify-start"
-              placeholder="PASSWORD"
-              type="password"
-            />
-            <div></div>
-            <sup
-              v-show="inputPassword"
-              class="text-red-500 justify-end flex mt-4"
-            >
-              Please enter password!</sup
-            >
-          </div>
-          <div></div>
-
-          <div class="justify-center grid my-1 text-xs">
-            <input
-              v-model="confirmPassword"
-              class="rounded-full py-1 px-2 inline justify-start"
-              placeholder="CONFIRM PASSWORD"
-              type="password"
-            />
-            <div></div>
-            <sup
-              v-show="inputConfirm"
-              class="text-red-500 justify-end flex mt-4"
-            >
-              Please confirm password!</sup
-            >
-            <div>
-              <sup v-show="alertPassword"
-              class="text-red-500 justify-end flex mt-4">The password confirm doesn't match.</sup>
+          <div>
+            <div class="justify-center grid my-2 text-xs">
+              <input
+                v-model="username"
+                class="rounded-full py-1 px-2 inline justify-start"
+                placeholder="USERNAME"
+              />
+              <div></div>
+              <sup
+                v-show="inputUsername"
+                class="text-red-500 justify-end flex mt-4"
+              >
+                Please enter username!</sup
+              >
             </div>
-            
+
+            <div class="justify-center grid my-2 text-xs">
+              <input
+                v-model="password"
+                class="rounded-full py-1 px-2 inline justify-start"
+                placeholder="PASSWORD"
+                type="password"
+              />
+              <div></div>
+              <sup
+                v-show="inputPassword"
+                class="text-red-500 justify-end flex mt-4"
+              >
+                Please enter password!</sup
+              >
+            </div>
+            <div></div>
+
+            <div class="justify-center grid my-1 text-xs">
+              <input
+                v-model="confirmPassword"
+                class="rounded-full py-1 px-2 inline justify-start"
+                placeholder="CONFIRM PASSWORD"
+                type="password"
+              />
+              <div></div>
+              <sup
+                v-show="inputConfirm"
+                class="text-red-500 justify-end flex mt-4"
+              >
+                The password confirm doesn't match.!</sup
+              >
+            </div>
           </div>
 
-          <div class="submit mt-5 text-xs">
+          <div class="submit mt-5">
             <button
-              class="bg-red-500 text-white button w-full rounded-full py-2"
+              class="bg-red-500 text-white button w-full rounded-full"
               @click="submitAccount"
             >
               REGISTER
@@ -163,19 +160,7 @@ export default {
     };
   },
 
-  async created() {
-    this.positions = await this.getPositions();
-    console.log(this.positions);
-  },
-
   methods: {
-    // confirm() {
-    //   if(this.password === this.confirmPassword){
-    //     this.addStaff();
-    //   }else{
-    //     this.alertPassword = !this.alertPassword;   
-    //   }
-    // },
 
     showPassword() {
       if (this.type === "password") {
@@ -193,20 +178,17 @@ export default {
       this.inputBOD = this.DOB === "" ? true : false;
       this.inputUsername = this.username === "" ? true : false;
       this.inputPassword = this.password === "" ? true : false;
-      this.inputConfirm = this.confirmPassword === "" ? true : false;
-      this.alertPassword = this.password !== this.confirmPassword ? true : false; 
+      this.inputConfirm = this.password !== this.confirmPassword ? true : false;
       if (
         this.inputFirstname ||
         this.inputLastname ||
         this.inputBOD ||
         this.inputUsername ||
         this.inputPassword ||
-        this.inputConfirm ||
-        this.inputPostition 
-      ){
+        this.inputConfirm
+      ) {
         return;
-      }
-      else if(this.alertPassword){
+      } else if (this.alertPassword) {
         return;
       }
       this.addStaff();
@@ -244,7 +226,6 @@ export default {
               this.password = "";
               this.confirmPassword = "";
               this.DOB = "";
-              this.positions = "";
               alert("Successfully added!");
             }
           })
@@ -287,20 +268,17 @@ p {
   box-shadow: 1px 1px 8px 0 lightblue;
 }
 .submit {
-  @apply xl:pb-1;
-}
-.form {
-  @apply lg:text-sm
-  sm:grid-cols-2 sm:mt-2;
+  @apply xl:pb-1
+  lg:flex justify-center;
 }
 .title {
   @apply flex justify-start mt-4
-  lg:mx-5
-  md:mx-1;
+  lg:mx-5 lg:text-xl
+  md:mx-1 md:text-base;
 }
 .button {
   @apply md:text-sm md:px-4 md:mt-8
-  lg:py-1 lg:w-44;
+  lg:py-1 lg:w-44 lg:text-base;
 }
 .line {
   display: flex;
@@ -314,7 +292,8 @@ p {
   border-bottom: 1px solid white;
   margin: auto;
 }
-/* .title{
-  @apply lg:mb-2;
-} */
+input{
+  @apply md:text-sm
+  lg:text-base;
+}
 </style>

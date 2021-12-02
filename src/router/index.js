@@ -15,6 +15,10 @@ import Login from '../views/Login.vue'
 import StaffHome from '../views/StaffHome.vue'
 import Address from '../views/PostAddress.vue'
 import Order from '../views/Order.vue'
+import StaffAdd from '../views/StaffAdd.vue'
+import StaffAccount from '../views/StaffAccount.vue'
+import Stock from '../views/StaffStock.vue'
+import EditProduct from '../views/StaffDelete.vue'
 
 const routes = [
   {
@@ -43,6 +47,27 @@ const routes = [
     path: '/staffHome',
     name: 'staffHome',
     component: StaffHome
+  },
+  {
+    path: '/addProduct',
+    name: 'addProduct',
+    component: StaffAdd
+  },
+  {
+    path: '/staffAccount',
+    name: 'staffAccount',
+    component: StaffAccount
+  },
+  {
+    path: '/stock',
+    name: 'stock',
+    component: Stock
+  },
+  {
+    path: '/editProduct/:productId',
+    name: 'editProduct',
+    component: EditProduct,
+    props: true
   },
 
   // customer

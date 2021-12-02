@@ -164,15 +164,13 @@ export default {
       this.inputConfirm = this.confirmPassword === "" ? true : false;
       this.alertPassword =
         this.password !== this.confirmPassword ? true : false;
-      this.inputPostition = this.selectPosition === "" ? true : false;
       if (
         this.inputFirstname ||
         this.inputLastname ||
         this.inputBOD ||
         this.inputUsername ||
         this.inputPassword ||
-        this.inputConfirm ||
-        this.inputPostition
+        this.inputConfirm
       ) {
         return;
       } else if (this.alertPassword) {
