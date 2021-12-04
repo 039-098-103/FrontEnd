@@ -40,7 +40,7 @@
         <div class="mt-10 flex justify-center">
           <button
             class="bg-black text-white rounded-full px-5 py-1 text-xs"
-            @click="add()"
+            @click="add(product.productDetailId)"
           >
             ADD TO CART
           </button>

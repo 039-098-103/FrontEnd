@@ -112,7 +112,6 @@ export default {
 
   async created() {
     this.item = await this.getData();
-    this.product = await this.getColor();
   },
 
   mounted() {},

@@ -194,11 +194,7 @@ export default {
       formData.append("data", blob);
 
       axios
-        .post(`${this.url}`, formData, {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        })
+        .post(`${this.url}`, formData)
         .then((res) => {
           if (res.status === 200) {
             this.customer = [...this.customer, data];
