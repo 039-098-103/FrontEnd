@@ -111,7 +111,7 @@ export default {
             if (err.response.status === 403) {
               // console.log("you are not log-in");
               alert("you are not log-in");
-              this.$router.push("/adminLogin");
+              this.$router.push("/worker");
             }
             console.log(err.response.data);
           });

@@ -40,7 +40,7 @@
           <input
           id="date"
             type="date"
-            class="rounded-full py-1 px-5 inline justify-start "
+            class="rounded-full py-1 px-4 inline justify-start "
             v-model="DOB"
           />
           <div></div>

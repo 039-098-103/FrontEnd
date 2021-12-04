@@ -103,7 +103,16 @@ const routes = [{
     path: '/cart',
     name: 'Cart',
     component: Cart,
-    props: true
+    props: true,
+    beforeEnter: (to, from, next) => {
+      const role = localStorage.getItem("role");
+      const login = localStorage.getItem("token");
+      if (!login && role != "Customer") {
+        next("/login");
+      } else {
+        next();
+      }
+    }
   },
   {
     path: '/allProduct',
