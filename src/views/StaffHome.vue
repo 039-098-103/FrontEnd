@@ -74,7 +74,7 @@ export default {
 
   data() {
     return {
-      url: "https://jwbrand.company/backend/api/staff/getOrderList",
+      url: "https://www.jwbrand.company/backend/api/staff/getOrderList",
       orders: [],
       search: "",
     };

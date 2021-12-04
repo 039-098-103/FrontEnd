@@ -81,7 +81,7 @@ export default {
   data() {
     return {
       staff: [],
-      url: "https://jwbrand.company/backend/api/staff/getInfo",
+      url: "https://www.jwbrand.company/backend/api/staff/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,

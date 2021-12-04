@@ -64,7 +64,7 @@ export default {
     return {
       user: "",
       pass: "",
-      url: "https://jwbrand.company/backend/api/auth",
+      url: "https://www.jwbrand.company/backend/api/auth",
       customer: [],
       hidden: false,
     };

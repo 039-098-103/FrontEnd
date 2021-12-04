@@ -130,7 +130,7 @@ export default {
     return {
       picture: null,
       check: false,
-      url: "https://jwbrand.company/backend/api",
+      url: "https://www.jwbrand.company/backend/api",
       inputName: false,
       inputPrice: false,
       inputColor: false,

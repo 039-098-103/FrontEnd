@@ -178,7 +178,7 @@ export default {
       confirmPassword: "",
       position: "",
       alertPassword: false,
-      url: "https://jwbrand.company/backend/api/admin",
+      url: "https://www.jwbrand.company/backend/api/admin",
       staffs: [],
       type: "password",
       btnText: "Show Password",

@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       item: [],
-      url: "https://jwbrand.company/backend/api",
+      url: "https://www.jwbrand.company/backend/api",
       inputColor: false,
       productName: "",
       price: "",
@@ -75,7 +75,7 @@ export default {
     },
 
     getProductImg(imageName) {
-      return "https://jwbrand.company/backend/" + imageName;
+      return "https://www.jwbrand.company/backend/" + imageName;
     },
 
     cancel() {

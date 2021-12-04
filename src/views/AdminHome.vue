@@ -67,8 +67,8 @@ export default {
   data() {
     return {
       staffs: [],
-      url: "https://jwbrand.company/backend/api/admin",
-      login: "https://jwbrand.company/backend/api/worker/auth",
+      url: "https://www.jwbrand.company/backend/api/admin",
+      login: "https://www.jwbrand.company/backend/api/worker/auth",
       search: "",
       admin: [],
       pass: "",
