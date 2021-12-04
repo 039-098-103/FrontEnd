@@ -40,7 +40,7 @@
         <div class="mt-10 flex justify-center">
           <button
             class="bg-black text-white rounded-full px-5 py-1 text-xs"
-            @click="add(product.productDetailId)"
+            @click="add()"
           >
             ADD TO CART
           </button>
@@ -60,6 +60,7 @@ export default {
   data() {
     return {
       url: "https://www.jwbrand.company/backend/api",
+      // url: "http://localhost:3000/api",
       product: "",
       color: null,
       inputColor: false,
@@ -80,6 +81,7 @@ export default {
     },
 
     goToCart() {
+      console.log(this.color);
         axios
           .post(`${this.url}/customer/addToCart/${this.color}`,{}, {
             headers: {
