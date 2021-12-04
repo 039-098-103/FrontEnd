@@ -99,7 +99,7 @@ export default {
     },
 
     getProductImg(imageName) {
-      return "https://www.jwbrand/backend/" + imageName;
+      return "https://www.jwbrand.company/backend/" + imageName;
     },
   },
 
