@@ -61,7 +61,6 @@ export default {
     return {
       url: "https://jwbrand.company/backend/api",
       product: "",
-      // imageName: "",
       color: null,
       inputColor: false,
     };
@@ -69,7 +68,6 @@ export default {
 
   methods: {
     getProductImg(imageName) {
-      console.log(imageName);
       return "https://jwbrand.company/backend/" + imageName;
     },
 
@@ -82,8 +80,6 @@ export default {
     },
 
     goToCart() {
-      try {
-        console.log(this.color);
         axios
           .post(`${this.url}/customer/addToCart/${this.color}`,{}, {
             headers: {
@@ -100,17 +96,12 @@ export default {
               alert("Please log in to order.");
               this.$router.push("/Login");
             }
-            // alert(err.response.data);
           });
-      } catch (error) {
-        console.log(`Could not save! ${error}`);
-      }
     },
   },
 
   mounted() {
     axios.get(`${this.url}/getProduct/${this.productId}`).then((res) => {
-      console.log(res.data);
       return (this.product = res.data);
     });
   },

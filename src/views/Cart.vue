@@ -75,8 +75,6 @@ export default {
 
   data() {
     return {
-      // url: "http://localhost:3000/api/customer/getCart",
-      // remove: "http://localhost:3000/api/customer/removeFromCart",
       url: "https://jwbrand.company/backend/api/customer/getCart",
       remove: "https://jwbrand.company/backend/api/customer/removeFromCart",
       cart: [],
@@ -136,7 +134,6 @@ export default {
         },
       })
       .then((res) => {
-        console.log(res.data);
         return (this.cart = res.data);
       });
   },
@@ -147,7 +144,6 @@ export default {
       this.cart.forEach((e) => {
         sum += e.price;
       });
-      console.log(sum);
       return this.total == sum;
     },
   },
@@ -178,9 +174,6 @@ export default {
   @apply md:flex md:items-end md:text-base
   lg:text-lg lg:justify-start;
 }
-/* .price{
-  @apply md:grid-cols-1;
-} */
 .checkout {
   @apply md:mb-20 md:mt-20 md:justify-center md:flex md:col-span-3 md:text-base
   xl:text-lg;

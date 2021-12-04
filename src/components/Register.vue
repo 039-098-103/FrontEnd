@@ -38,7 +38,7 @@
 
         <div class="justify-center grid my-2 text-xs w-full">
           <input
-          id="date"
+            id="date"
             type="date"
             class="rounded-full py-1 px-5 inline justify-start "
             v-model="DOB"
@@ -128,8 +128,6 @@
 <script>
 import axios from "axios";
 export default {
-  // emits: ["Regis"],
-
   data() {
     return {
       hidden: true,
@@ -181,46 +179,42 @@ export default {
     },
 
     async addCustomer() {
-      try {
-        const formData = new FormData();
-        let data = {
-          firstName: this.firstName,
-          lastName: this.lastName,
-          DOB: this.DOB,
-          username: this.username,
-          password: this.password,
-        };
-        const json = JSON.stringify(data);
-        const blob = new Blob([json], {
-          type: "application/json",
-        });
-        formData.append("data", blob);
+      const formData = new FormData();
+      let data = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        DOB: this.DOB,
+        username: this.username,
+        password: this.password,
+      };
+      const json = JSON.stringify(data);
+      const blob = new Blob([json], {
+        type: "application/json",
+      });
+      formData.append("data", blob);
 
-        axios
-          .post(`${this.url}`, formData, {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              this.customer = [...this.customer, data];
-              this.firstName = "";
-              this.lastName = "";
-              this.username = "";
-              this.password = "";
-              this.confirmPassword = "";
-              this.DOB = "";
-              alert("Successfully applied!");
-              this.$emit("toggleDone");
-            }
-          })
-          .catch((err) => {
-            alert(err.response.data);
-          });
-      } catch (error) {
-        console.log(`Could not save! ${error}`);
-      }
+      axios
+        .post(`${this.url}`, formData, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            this.customer = [...this.customer, data];
+            this.firstName = "";
+            this.lastName = "";
+            this.username = "";
+            this.password = "";
+            this.confirmPassword = "";
+            this.DOB = "";
+            alert("Successfully applied!");
+            this.$emit("toggleDone");
+          }
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
     },
   },
 

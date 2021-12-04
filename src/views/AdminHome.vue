@@ -77,7 +77,6 @@ export default {
 
   methods: {
     async getAdmin() {
-      try {
         axios
           .get(`${this.userAdmin}`, {
             headers: {
@@ -90,13 +89,9 @@ export default {
           .catch((err) => {
             alert(err.response.data);
           });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
     },
 
     async getStaffs() {
-      try {
         axios
           .get(`${this.url}/getStaffList`, {
             headers: {
@@ -107,17 +102,11 @@ export default {
             this.staffs = res.data;
           })
           .catch((err) => {
-            // alert(err.response.data);
             if (err.response.status === 403) {
-              // console.log("you are not log-in");
               alert("you are not log-in");
               this.$router.push("/adminLogin");
             }
-            console.log(err.response.data);
           });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
     },
 
     async deleteStaff(username) {
@@ -129,7 +118,6 @@ export default {
             },
           })
           .then((res) => {
-            console.log(res.data);
             if (res.status === 200) {
               this.staffs = this.staffs.filter(
                 (list) => list.username !== username
@@ -138,7 +126,6 @@ export default {
             }
           })
           .catch((err) => {
-            console.log(err)
             alert(err.response.data);
           });
       }

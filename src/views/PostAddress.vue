@@ -49,9 +49,7 @@
     </div>
 
     <div class="flex justify-center mt-8 text-xs" @click="submit">
-      <!-- <router-link to="/order"> -->
       <button class="bg-black text-white py-1 px-2">Place Order</button>
-      <!-- </router-link> -->
     </div>
   </div>
 </template>
@@ -90,13 +88,11 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data);
           return (this.listItem = res.data);
         });
     },
 
     async postAddress() {
-      try {
         const formData = new FormData();
         let data = {
           address: this.address,
@@ -121,11 +117,8 @@ export default {
             }
           })
           .catch((err) => {
-            alert(err.response.data);
+            alert(err);
           });
-      } catch (error) {
-        console.log(`Could not save! ${error}`);
-      }
     },
   },
 

@@ -76,18 +76,6 @@
         </div>
       </div>
 
-      <!-- <div class="edit flex justify-center ">
-        <input
-          type="password"
-          class="input px-5 py-1 inline my-2"
-          v-model="confirmPassword"
-          placeholder="Confirm Password"
-        />
-        <sup v-show="inputConfirm" class="text-red-500 justify-end flex mt-4">
-          Please confirm password!</sup
-        >
-      </div> -->
-
       <div class="mt-8">
         <div class="flex justify-center w-full mb-2 ">
           <button
@@ -126,7 +114,6 @@ export default {
       DOB: null,
       username: "",
       password: "",
-      // url: "http://52.187.115.71:3000/admin",
       url: "https://jwbrand.company/backend/api/admin",
       show: true,
       hiddenEdit: true,
@@ -147,8 +134,6 @@ export default {
         var age_dt = new Date(diff_ms);
         return Math.abs(age_dt.getUTCFullYear() - 1970);
       }
-      console.log(calculate_age(new Date(1982, 11, 4)));
-      console.log(calculate_age(new Date(1962, 1, 1)));
     },
 
     async showPass() {
@@ -160,9 +145,6 @@ export default {
       // <edit @handleCancel="ชื่อ method ที่ไว้ใช่เปลี่ยนค่า true false ในการเเสดง ไม่เเสดง"></edit>
       this.$emit("toggleOpen");
     },
-    // done(){
-    //   alert(`Edit Success`)
-    // },
     submitAccount() {
       this.inputFirstname = this.firstName === "" ? true : false;
       this.inputLastname = this.lastName === "" ? true : false;
@@ -187,7 +169,6 @@ export default {
     },
 
     async submitEdit() {
-      console.log(this.password);
       const formData = new FormData();
       var data = {
         firstName: this.firstName,
@@ -271,7 +252,6 @@ export default {
   },
 
   async created() {
-    // this.admin = await this.getData();
     this.firstName = this.editAdmin.firstName;
     this.lastName = this.editAdmin.lastName;
     this.DOB = this.editAdmin.DOB;
@@ -286,12 +266,6 @@ export default {
   @apply xl:mb-5 xl:mt-5 xl:text-2xl
   lg:text-xl;
 }
-/* .button:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  transition: 0.4s;
-  box-shadow: 1px 1px 8px 0 lightblue;
-} */
 button {
   @apply text-xs px-1 py-1 rounded-full w-full
   lg:px-4

@@ -91,17 +91,12 @@ export default {
               localStorage.setItem("role", res.data.role);
               return this.$router.push("/allProduct");
             }
-            console.log(res.data.token);
           })
           .catch((err) => {
-            alert(err.response.data);
+            alert(err);
           });
       }
     },
-  },
-
-  async created() {
-
   },
 };
 </script>

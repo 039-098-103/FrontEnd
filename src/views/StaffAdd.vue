@@ -6,7 +6,6 @@
       <p class="head">NEW IN</p>
     </div>
 
-    <!-- {{ image }} -->
     <div class="addProduct grid grid-cols-1 py-1 justify-items-stretch mx-14">
       <label
         class="upPic bg-white flex-col items-center ursor-pointer rounded-lg shadow-lg"
@@ -197,7 +196,6 @@ export default {
         this.productPrice <= 0 && this.productPrice < 999.99 ? true : false;
       this.inputColor = this.colorsSelect.length == 0 ? true : false;
       this.inputType = this.selectType === null ? true : false;
-      console.log(this.colorsSelect);
       this.inputDescription = this.productDescription === "" ? true : false;
       if (
         this.inputName ||
@@ -208,7 +206,6 @@ export default {
       ) {
         return;
       }
-      console.log("loo");
       this.addProduct();
     },
 
@@ -235,7 +232,6 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data)
           res.status === 200 ? alert("Sucessfully Added") : alert("Error");
         });
     },

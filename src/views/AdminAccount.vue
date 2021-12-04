@@ -98,7 +98,6 @@ export default {
     logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
-      console.log("logout");
       return this.$router.push("/worker");
     },
 
@@ -143,19 +142,6 @@ export default {
 </script>
 
 <style scoped>
-/* .head {
-  @apply xl:mt-20 xl:text-3xl
-  lg:mt-16 lg:text-2xl
-  md:mt-12 md:text-xl
-  sm:mt-10 sm:text-lg;
-}
-.bg {
-  @apply py-5 px-7 rounded-sm shadow w-1/2
-  xl:mt-14 xl:py-10 xl:px-16
-  lg:py-10 lg:px-10 lg:w-1/3
-  md:shadow-md
-  sm:py-6 sm:px-8 sm:rounded-md sm:w-2/4;
-} */
 .detail {
   @apply text-xs mt-2
   lg:mt-2 
@@ -168,7 +154,6 @@ export default {
 .username {
   color: white;
   font-size: 30px;
-  /* @apply pt-10; */
 }
 .layout {
   @apply flex justify-center

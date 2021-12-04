@@ -88,7 +88,6 @@ export default {
     },
 
     async getOrders() {
-      try {
         axios
           .get(this.url, {
             headers: {
@@ -97,24 +96,18 @@ export default {
           })
           .then((res) => {
             this.orders = res.data;
-            console.log(res.data);
           })
           .catch((err) => {
             if (err.response.status === 403) {
               alert("you are not log-in");
               this.$router.push("/adminLogin");
             }
-            console.log(err.response.data);
           });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
     },
   },
 
   async created() {
     this.orders = await this.getOrders();
-    console.log(this.orders);
   },
 
   computed: {

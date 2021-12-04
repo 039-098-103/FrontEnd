@@ -142,7 +142,6 @@
 
 <script>
 import axios from "axios";
-// import ProductDataService from "../service/ProductDataService";
 export default {
   name: "products",
   components: {},
@@ -165,17 +164,6 @@ export default {
   },
 
   methods: {
-    //   async getProduct() {
-    //     try {
-    //       const res = await fetch(this.url);
-    //       const data = await res.json();
-    //       return data;
-    //     } catch (error) {
-    //       console.log(`Could not get! ${error}`);
-    //     }
-    //   },
-    // },
-
     async getProduct() {
       try {
         axios.get(`${this.url}/getProduct`).then((res) => {
@@ -183,24 +171,14 @@ export default {
         });
         axios.get(`${this.url}/getColors`).then((res) => {
           this.colors = res.data;
-          console.log(this.products);
-          console.log(this.colors[3]);
         });
-        // .catch((err) => {
-        //   // alert(err.response.data);
-        //   if(err.response.status === 403){
-        //     console.log('you are not log-in')
-        //     this.$router.push('/')
-        //   }
-        //   console.log(err.response.data)
-        // });
       } catch (error) {
         console.log(`Could not get! ${error}`);
       }
     },
 
     getProductImg(imageName) {
-      return "http://localhost:3000/" + imageName;
+      return "https://jwbrand.company/backend/" + imageName;
     },
   },
 
@@ -226,8 +204,6 @@ export default {
   @apply justify-center;
 }
 .showImage {
-  /* width: 100px;
-  height: 100px; */
   @apply w-28 h-28 md:w-52 md:h-52 md:items-center md:flex lg:w-80 lg:h-80;
 }
 .product {

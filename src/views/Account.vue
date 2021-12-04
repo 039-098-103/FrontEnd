@@ -69,7 +69,7 @@ export default {
   data() {
     return {
       customer: [],
-      url: "https://jwbrand.company/backend/apicustomer/accountInfo",
+      url: "https://jwbrand.company/backend/api/customer/accountInfo",
       firstName: "",
       lastName: "",
       DOB: null,
@@ -91,8 +91,6 @@ export default {
     },
 
     async getCustomer() {
-      try {
-        console.log("Help");
         axios
           .get(this.url, {
             headers: {
@@ -109,22 +107,17 @@ export default {
             }
             alert(err.response.data);
           });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
     },
 
     logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
-      console.log("logout");
       return this.$router.push("/login");
     },
   },
 
   async created() {
     this.customer = await this.getCustomer();
-    console.log("Hello");
   },
 };
 </script>
@@ -143,9 +136,7 @@ button {
   sm:ml-1;
 }
 .username {
-  /* color: white; */
   font-size: 30px;
-  /* @apply pt-10; */
 }
 .layout {
   @apply flex justify-center

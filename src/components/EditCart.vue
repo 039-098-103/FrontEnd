@@ -70,15 +70,11 @@ export default {
   methods: {
     getData() {
       axios.get(`${this.url}/getProduct/${this.productId}`).then((res) => {
-        console.log(res.data);
-        //   return (this.item = res.data);
         this.item = res.data;
-        console.log(this.item);
       });
     },
 
     getProductImg(imageName) {
-      console.log(imageName);
       return "https://jwbrand.company/backend/" + imageName;
     },
 
@@ -117,9 +113,6 @@ export default {
   async created() {
     this.item = await this.getData();
     this.product = await this.getColor();
-    // this.productName = this.editCart.productName;
-    // this.productDes = this.editCart.productDes;
-    // this.price = this.editCart.price;
   },
 
   mounted() {},
@@ -127,23 +120,4 @@ export default {
 </script>
 
 <style scoped>
-/* .checkbox {
-  display: flex;
-  cursor: pointer;
-  border-radius: 50px;
-  @apply mb-2 lg:mb-4;
-}
-
-.checkbox > input {
-  appearance: none;
-  outline: none;
-  transition-duration: 0.3s;
-  cursor: pointer;
-  border-radius: 50px;
-  @apply w-6 h-4 sm:w-4 md:w-5 lg:w-8 lg:h-5;
-}
-
-.checkbox > input:checked {
-  border: 2px solid red;
-} */
 </style>

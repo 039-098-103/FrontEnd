@@ -60,7 +60,6 @@ export default {
   data() {
     return {
       search: "",
-      // url: "http://localhost:5000/products",
       url: "https://jwbrand.company/backend/api",
       products: [],
       imageName: "",
@@ -80,7 +79,6 @@ export default {
       try {
         axios.get(`${this.url}/getProduct`).then((res) => {
           this.products = res.data;
-          console.log("test");
         });
       } catch (error) {
         console.log(`Could not get! ${error}`);
@@ -123,8 +121,6 @@ export default {
   @apply justify-center;
 }
 .showImage {
-  /* width: 100px;
-  height: 100px; */
   @apply w-28 h-28 md:w-52 md:h-52 md:items-center md:flex lg:w-80 lg:h-80;
 }
 .product {

@@ -178,7 +178,6 @@ export default {
       confirmPassword: "",
       position: "",
       alertPassword: false,
-      // url: "http://52.187.115.71:3000/admin",
       url: "https://jwbrand.company/backend/api/admin",
       staffs: [],
       type: "password",
@@ -222,48 +221,43 @@ export default {
     },
 
     async addStaff() {
-      try {
-        const formData = new FormData();
-        let data = {
-          firstName: this.firstName,
-          lastName: this.lastName,
-          DOB: this.DOB,
-          username: this.username,
-          password: this.password,
-          position: this.position,
-        };
+      const formData = new FormData();
+      let data = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        DOB: this.DOB,
+        username: this.username,
+        password: this.password,
+        position: this.position,
+      };
 
-        const json = JSON.stringify(data);
-        const blob = new Blob([json], {
-          type: "application/json",
+      const json = JSON.stringify(data);
+      const blob = new Blob([json], {
+        type: "application/json",
+      });
+      formData.append("data", blob);
+
+      axios
+        .post(`${this.url}/addWorker`, formData, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            this.staffs = [...this.staffs, data];
+            this.firstName = "";
+            this.lastName = "";
+            this.username = "";
+            this.password = "";
+            this.confirmPassword = "";
+            this.DOB = "";
+            (this.position = ""), alert("Successfully added!");
+          }
+        })
+        .catch((err) => {
+          alert(err.response.data);
         });
-        formData.append("data", blob);
-
-        axios
-          .post(`${this.url}/addWorker`, formData, {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            console.log(res.data);
-            if (res.status === 200) {
-              this.staffs = [...this.staffs, data];
-              this.firstName = "";
-              this.lastName = "";
-              this.username = "";
-              this.password = "";
-              this.confirmPassword = "";
-              this.DOB = "";
-              (this.position = ""), alert("Successfully added!");
-            }
-          })
-          .catch((err) => {
-            alert(err.response.data);
-          });
-      } catch (error) {
-        console.log(`Could not save! ${error}`);
-      }
     },
   },
   mounted() {
@@ -338,10 +332,6 @@ p {
   border-bottom: 1px solid white;
   margin: auto;
 }
-/* .input {
-  @apply md:text-sm
-  lg:text-base lg:mx-44;
-} */
 .selectDrop select {
   display: none;
 }
@@ -365,9 +355,4 @@ p {
   max-width: 100%;
   @apply w-40 py-1 lg:w-36;
 }
-/* .date {
-  @apply md:px-5
-  lg:flex lg:justify-center lg:ml-6 
-  xl:ml-36 xl:w-36;
-} */
 </style>
