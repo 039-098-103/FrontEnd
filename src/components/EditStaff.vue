@@ -113,7 +113,7 @@ export default {
       DOB: null,
       username: "",
       password: null,
-      url: "https://jwbrand.company/backend/api/staff",
+      url: "https://www.jwbrand.company/backend/api/staff",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,

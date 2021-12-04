@@ -55,7 +55,7 @@ export default {
       user: "",
       pass: "",
       showError: false,
-      url: "https://jwbrand.company/backend/api/worker/auth",
+      url: "https://www.jwbrand.company/backend/api/worker/auth",
     };
   },
   created() {

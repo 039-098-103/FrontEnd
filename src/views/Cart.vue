@@ -75,8 +75,8 @@ export default {
 
   data() {
     return {
-      url: "https://jwbrand.company/backend/api/customer/getCart",
-      remove: "https://jwbrand.company/backend/api/customer/removeFromCart",
+      url: "https://www.jwbrand.company/backend/api/customer/getCart",
+      remove: "https://www.jwbrand.company/backend/api/customer/removeFromCart",
       cart: [],
       total: "",
       hiddenEdit: false,
@@ -103,7 +103,7 @@ export default {
     },
 
     getProductImg(productId) {
-      return "https://jwbrand.company/backend/" + productId;
+      return "https://www.jwbrand.company/backend/" + productId;
     },
 
     async deleteOrder(cartItemId) {

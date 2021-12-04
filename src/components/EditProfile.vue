@@ -114,7 +114,7 @@ export default {
       DOB: null,
       username: "",
       password: "",
-      url: "https://jwbrand.company/backend/api/admin",
+      url: "https://www.jwbrand.company/backend/api/admin",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,
