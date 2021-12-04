@@ -194,7 +194,11 @@ export default {
       formData.append("data", blob);
 
       axios
-        .post(`${this.url}`, formData)
+        .post(`${this.url}`, formData, {
+          headers: {
+            "Content-type": "application/json",
+          },
+        })
         .then((res) => {
           if (res.status === 200) {
             this.customer = [...this.customer, data];
