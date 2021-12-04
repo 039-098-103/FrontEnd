@@ -3,13 +3,13 @@
 
   <div class="layout ">
     <div class="lg:col-span-5 pt-5">
-      <p class="account font-bold pt-20 pb-5">Account</p>
+      <p class="account font-bold pt-20 pb-5 flex justify-center">Account</p>
       <div class="justify-center flex">
         <i class="username far fa-user-circle items-center"></i>
       </div>
 
       <div>
-        <!-- <div v-if="hiddenEdit == false"> -->
+        <div v-if="hiddenEdit == false">
           <div class="detail flex justify-center mb-1">
             <p class="user font-bold">{{ this.customer.firstName }} {{ this.customer.lastName }}</p>
           </div>
@@ -40,18 +40,17 @@
               </div>
             </div>
           </div>
-        <!-- </div> -->
-        <!-- <div v-else>
-          <edit
-            :adminUsername="cus.username"
-            :editAdmin="admin"
+        </div>
+        <div v-else>
+          <editCus
+            :cusUsername="customer.username"
+            :editCustomer="customer"
             @toggleOpen="toggleOpen"
             @toggleDone="toggleDone"
             :fn="firstName"
             :ln="lastName"
-            :DOB="bt"
-          ></edit>
-        </div> -->
+          ></editCus>
+        </div>
       </div>
     </div>
 

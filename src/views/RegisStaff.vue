@@ -3,9 +3,6 @@
 
   <div class="layout flex justify-center bg-loginAd h-screen">
     <div class="flex justify-center lg:col-span-5">
-      <div class="header mt-32 absolute lg:block hidden">
-        <p>Create Account</p>
-      </div>
       <img
         src="../../src/assets/green.jpg"
         class="lg:block hidden w-full h-s4 lg:h-screen"
@@ -49,15 +46,42 @@
             >
           </div>
 
-          <div class="justify-center grid my-2 text-xs ">
+          <div class="justify-center grid my-2 text-xs">
             <input
+              id="date"
               type="date"
-              class="rounded-full py-1 px-2 md:px-3 inline justify-start "
+              class="date rounded-full py-1 px-4 md:px-3 inline justify-start"
               v-model="DOB"
             />
             <div></div>
             <sup v-show="inputBOD" class="text-red-500 justify-end flex mt-4">
               Please select birthday!</sup
+            >
+          </div>
+
+          <div class="justify-center grid my-2 text-xs">
+            <div class="flex justify-center">
+              <form name="" class="">
+                <select
+                  name="Position"
+                  id="Position"
+                  v-model="position"
+                  class="shadow-md rounded-full "
+                >
+                  <option value="Admin">
+                    Admin
+                  </option>
+                  <option value="Staff">
+                    Staff
+                  </option>
+                </select>
+              </form>
+            </div>
+            <sup
+              v-show="inputPosition"
+              class="text-red-500 justify-end flex mt-4"
+            >
+              Please select position!</sup
             >
           </div>
         </div>
@@ -119,7 +143,7 @@
 
           <div class="submit mt-5">
             <button
-              class="bg-red-500 text-white button w-full rounded-full"
+              class="bg-red-500 text-white button w-full rounded-full md:py-1.5"
               @click="submitAccount"
             >
               REGISTER
@@ -145,12 +169,14 @@ export default {
       inputUsername: false,
       inputPassword: false,
       inputConfirm: false,
+      inputPosition: false,
       firstName: "",
       lastName: "",
       DOB: "",
       username: "",
       password: "",
       confirmPassword: "",
+      position: "",
       alertPassword: false,
       // url: "http://52.187.115.71:3000/admin",
       url: "http://localhost:3000/api/admin",
@@ -161,7 +187,6 @@ export default {
   },
 
   methods: {
-
     showPassword() {
       if (this.type === "password") {
         this.type = "text";
@@ -179,13 +204,15 @@ export default {
       this.inputUsername = this.username === "" ? true : false;
       this.inputPassword = this.password === "" ? true : false;
       this.inputConfirm = this.password !== this.confirmPassword ? true : false;
+      this.inputPosition = this.position === "" ? true : false;
       if (
         this.inputFirstname ||
         this.inputLastname ||
         this.inputBOD ||
         this.inputUsername ||
         this.inputPassword ||
-        this.inputConfirm
+        this.inputConfirm ||
+        this.inputPosition
       ) {
         return;
       } else if (this.alertPassword) {
@@ -203,8 +230,9 @@ export default {
           DOB: this.DOB,
           username: this.username,
           password: this.password,
-          positions: this.selectPosition,
+          position: this.position,
         };
+
         const json = JSON.stringify(data);
         const blob = new Blob([json], {
           type: "application/json",
@@ -212,12 +240,13 @@ export default {
         formData.append("data", blob);
 
         axios
-          .post(`${this.url}/addStaff`, formData, {
+          .post(`${this.url}/addWorker`, formData, {
             headers: {
               Authorization: localStorage.getItem("token"),
             },
           })
           .then((res) => {
+            console.log(res.data);
             if (res.status === 200) {
               this.staffs = [...this.staffs, data];
               this.firstName = "";
@@ -226,7 +255,7 @@ export default {
               this.password = "";
               this.confirmPassword = "";
               this.DOB = "";
-              alert("Successfully added!");
+              (this.position = ""), alert("Successfully added!");
             }
           })
           .catch((err) => {
@@ -236,6 +265,23 @@ export default {
         console.log(`Could not save! ${error}`);
       }
     },
+  },
+  mounted() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+
+    today = yyyy + "-" + mm + "-" + dd;
+    document.getElementById("date").setAttribute("max", today);
   },
 };
 </script>
@@ -292,8 +338,36 @@ p {
   border-bottom: 1px solid white;
   margin: auto;
 }
-input{
+/* .input {
   @apply md:text-sm
-  lg:text-base;
+  lg:text-base lg:mx-44;
+} */
+.selectDrop select {
+  display: none;
 }
+.selectDrop {
+  background: transparent;
+  background-color: white;
+  border-color: black;
+  @apply px-2 py-1 mb-4 w-full sm:w-32 md:w-40 lg:w-56 lg:text-base;
+}
+.selectDrop::before {
+  border-color: black;
+  background: white;
+}
+.select {
+  @apply lg:text-base;
+}
+.inputDetail {
+  @apply px-2 py-1 mb-4 w-full sm:w-32 md:w-40 lg:w-56 lg:text-base;
+}
+#Position {
+  max-width: 100%;
+  @apply w-40 py-1 lg:w-36;
+}
+/* .date {
+  @apply md:px-5
+  lg:flex lg:justify-center lg:ml-6 
+  xl:ml-36 xl:w-36;
+} */
 </style>

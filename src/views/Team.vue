@@ -51,7 +51,8 @@ img {
 }
 h1 {
   /* font-family: "Rajdhani", sans-serif; */
-  @apply text-xs font-semibold mt-2 flex justify-center lg:text-lg;
+  @apply text-xs font-semibold mt-2 flex justify-center 
+  lg:text-base;
 }
 h2 {
   @apply text-xs flex justify-center md:text-sm lg:text-base;

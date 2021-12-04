@@ -1,7 +1,9 @@
 <template>
   <navStaff/>
 
-  <div class="h-full md:mb-10 bg-loginAd">
+  <div class="h-full md:mb-10 ">
+    <div class="background bg-loginAd fixed top-0 w-screen h-screen">
+    </div>
     <div class="lg:mr-20">
       <div class="search flex justify-center items-center pt-20 text-xs">
         <i class="icons fas fa-search self-center "></i>
@@ -23,7 +25,7 @@
       </div>
     </div>
 
-    <div class="product grid grid-cols-2 mx-8 gap-4 mt-5">
+    <div class="product grid grid-cols-2 mx-8 gap-4 mt-5 lg:pt-8">
       <div v-for="show in searching" :key="show.productName">
         <div class="flex justify-center">
           <router-link
@@ -32,7 +34,7 @@
               params: { productId: show.productId },
             }"
           >
-            <img :src="getProductImg(show.imageName)" class="picture shadow" />
+            <img :src="getProductImg(show.imageName)" class="picture shadow rounded-md" />
           </router-link>
         </div>
 
@@ -149,6 +151,9 @@ export default {
 }
 .icons{
     color: white;
+}
+.background{
+  z-index: -10;
 }
 </style>
 

@@ -39,13 +39,11 @@
         <router-link to="/staffHome">
           <p class="pb-5 pt-10 mt-20 flex justify-center">Order List</p>
         </router-link>
-
-        <router-link to="/addProduct">
-          <p class="py-5 flex justify-center">Add New Product</p>
-        </router-link>
-
         <router-link to="/stock">
-          <p class="py-5 flex justify-center">Product in Stock</p>
+          <p class="py-5 flex justify-center">Product List</p>
+        </router-link>
+        <router-link to="/addProduct">
+          <p class="py-5 flex justify-center">Add Product</p>
         </router-link>
 
         <div class="py-5 flex justify-center" @click="showHamburger()">

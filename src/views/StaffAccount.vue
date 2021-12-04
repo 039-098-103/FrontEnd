@@ -52,16 +52,17 @@
               </div>
             </div>
           </div>
+
           <div v-else>
-            <edit
+            <editStaff
               :staffUsername="staff.username"
               :editStaff="staff"
-              @toggleOpen="toggleOpen"
-              @toggleDone="toggleDone"
+              @open="open"
+              @done="done"
               :fn="firstName"
               :ln="lastName"
               :DOB="bt"
-            ></edit>
+            ></editStaff>
           </div>
         </div>
       <!-- </div> -->
@@ -100,11 +101,11 @@ export default {
       return this.$router.push("/adminLogin");
     },
 
-    toggleOpen() {
+    open() {
       this.hiddenEdit = false;
     },
 
-    toggleDone() {
+    done() {
       this.hiddenEdit = false;
     },
 

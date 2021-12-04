@@ -1,15 +1,17 @@
 <template>
   <navAdmin></navAdmin>
 
-  <div class="bg-loginAd h-full lg:h-screen">
-    <div class="title flex justify-center md:justify-start">
+  <div class=" h-full lg:h-screen">
+    <div class="background bg-loginAd fixed top-0 w-screen h-screen">
+    </div>
+    <div class="title flex justify-center md:justify-start z-10">
       <div class="posit mt-20">
         <p class="head font-bold">Officer</p>
         <p class="subhead">List of officer on the platform</p>
       </div>
     </div>
 
-    <div class="search flex justify-center items-center">
+    <div class="search flex justify-center items-center z-10">
       <i class="icons fas fa-search self-center"></i>
       <input
         class="
@@ -27,7 +29,7 @@
       />
     </div>
 
-    <div class="gridfetch grid lg:grid-cols-4 xl:gap-x-6 xl:gap-y-8 ">
+    <div class="gridfetch grid lg:grid-cols-4 xl:gap-x-6 xl:gap-y-8 z-10">
       <div
         class="list bg-white rounded-lg shadow-md"
         v-for="list in searching"
@@ -111,7 +113,7 @@ export default {
             // alert(err.response.data);
             if (err.response.status === 403) {
               // console.log("you are not log-in");
-              alert('you are not log-in');
+              alert("you are not log-in");
               this.$router.push("/adminLogin");
             }
             console.log(err.response.data);
@@ -122,39 +124,28 @@ export default {
     },
 
     async deleteStaff(username) {
+      if (confirm(`Are you sure to delete ?`)) {
         axios
-          .post(`${this.login}`, {
-            username: this.admin.username,
-            password: this.pass,
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              this.staffs = this.staffs.filter(
-                (list) => list.username !== username
-              );
-            }
-          })
-          .catch((err) => {
-            alert(err.response.data);
-          });
-
-        axios
-          .delete(`${this.url}/delete/${username}`, {
+          .delete(`${this.url}/deleteStaff/${username}`, {
             headers: {
               Authorization: localStorage.getItem("token"),
             },
           })
           .then((res) => {
+            console.log(res.data);
             if (res.status === 200) {
               this.staffs = this.staffs.filter(
                 (list) => list.username !== username
               );
+              alert(`Delete Success`)
             }
           })
           .catch((err) => {
+            console.log(err)
             alert(err.response.data);
           });
-    }
+      }
+    },
   },
 
   async created() {
@@ -226,5 +217,8 @@ input::placeholder {
   lg:mb-6 lg:mx-14
   md:mb-5 md:mx-7 md:justify-end
   my-5 mt-10;
+}
+.background{
+  z-index: -10;
 }
 </style>

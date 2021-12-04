@@ -43,6 +43,7 @@
                     class="inputDetail placeholder-gray-500 placeholder-opacity-50 focus:outline-none focus:ring-beer focus:border-transparent focus:ring-2 rounded-full border border-grayFigma"
                     type="text"
                     placeholder="Product Name"
+                    v-model="productName"
                   />
                 </div>
                 <sup v-show="inputName"> Please enter product name! </sup>
@@ -73,7 +74,7 @@
                   >
                     <option
                       v-for="bagType in productType"
-                      :value="bagType"
+                      :value="bagType.bagTypeId"
                       :key="bagType.bagTypeId"
                     >
                       {{ bagType.bagTypeName }}
@@ -109,15 +110,15 @@
               <sup v-show="inputDescription"> Please enter description! </sup>
             </div>
           </div>
+          <div class="group submit">
+            <button
+              @click="submitFrom"
+              class="submitButton text-white bg-red-500 group-hover:text-white group-hover:bg-blue-600 rounded"
+            >
+              Submit
+            </button>
+          </div>
         </form>
-
-        <div class=" group submit">
-          <button
-            class="submitButton text-white bg-red-500 group-hover:text-white group-hover:bg-blue-600 rounded"
-          >
-            Submit
-          </button>
-        </div>
       </div>
     </div>
   </div>
@@ -143,7 +144,6 @@ export default {
       productName: "",
       productPrice: null,
       productDescription: "",
-      productDate: "",
       productColor: [],
       productType: null,
       selectType: null,
@@ -198,45 +198,44 @@ export default {
       this.inputColor = this.colorsSelect.length == 0 ? true : false;
       this.inputType = this.selectType === null ? true : false;
       console.log(this.colorsSelect);
-      this.inputDate = this.productDate === "" ? true : false;
       this.inputDescription = this.productDescription === "" ? true : false;
       if (
         this.inputName ||
         this.inputPrice ||
         this.inputColor ||
         this.inputType ||
-        this.inputDate ||
         this.inputDescription
       ) {
         return;
       }
+      console.log("loo");
       this.addProduct();
     },
 
     addProduct() {
+      console.log(this.selectType)
       const formData = new FormData();
       let data = {
         productName: this.productName,
         price: this.productPrice,
-        productDescrip: this.productDescription,
-        inStockDate: this.productDate,
-        imageName: this.imageName,
-        bagType: this.selectType,
-        colors: this.colorsSelect,
+        productDes: this.productDescription,
+        bagTypeId: this.selectType,
+        Color: this.colorsSelect,
       };
       const json = JSON.stringify(data);
       const blob = new Blob([json], {
         type: "application/json",
       });
       formData.append("file", this.imgFile);
-      formData.append("newProduct", blob);
+      formData.append("data", blob);
       axios
-        .post("http://13.76.186.187/backend/addProduct", formData, {
+        .post(`${this.url}/staff/addProduct`, formData, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            Authorization: localStorage.getItem("token"),
           },
         })
         .then((res) => {
+          console.log(res.data)
           res.status === 200 ? alert("Sucessfully Added") : alert("Error");
         });
     },
@@ -326,7 +325,7 @@ sup {
 .submitButton {
   @apply px-2 py-1;
 }
-.head{
-    @apply lg:text-xl lg:pt-16 lg:mb-10;
+.head {
+  @apply lg:text-xl lg:pt-16 lg:mb-10;
 }
 </style>

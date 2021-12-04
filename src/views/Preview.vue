@@ -16,7 +16,7 @@
         </div>
         <div class="flex justify-center my-1" >
           <label
-            class="colors"
+            class="colors checkbox"
             v-for="product in product.Color"
             :key="product.colorId"
             :style="{ background: product.colorName }"
@@ -40,7 +40,7 @@
         <div class="mt-10 flex justify-center">
           <button
             class="bg-black text-white rounded-full px-5 py-1 text-xs"
-            @click="goToCart"
+            @click="add()"
           >
             ADD TO CART
           </button>
@@ -63,6 +63,7 @@ export default {
       product: "",
       // imageName: "",
       color: null,
+      inputColor: false,
     };
   },
 
@@ -70,6 +71,14 @@ export default {
     getProductImg(imageName) {
       console.log(imageName);
       return "http://localhost:3000/" + imageName;
+    },
+
+    add(){
+      this.inputColor = this.color === null ? true : false
+      if(this.inputColor){
+        return alert(`please select color`);
+      }
+      this.goToCart();
     },
 
     goToCart() {
@@ -121,6 +130,25 @@ export default {
   display: flex;
   width: 100%;
   @apply justify-center;
+}
+.checkbox {
+  display: flex;
+  cursor: pointer;
+  border-radius: 50px;
+  @apply mb-2 lg:mb-4;
+}
+
+.checkbox > input {
+  appearance: none;
+  outline: none;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  border-radius: 50px;
+  @apply w-6 h-4 sm:w-4 md:w-5 lg:w-8 lg:h-5;
+}
+
+.checkbox > input:checked {
+  border: 2px solid red;
 }
 .detail {
   @apply md:grid-cols-2 md:pt-2 md:my-0;

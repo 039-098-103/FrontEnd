@@ -27,6 +27,7 @@
 
       <div class="edit flex justify-center">
         <input
+          id="date"
           v-model="DOB"
           type="date"
           placeholder="Change birthday"
@@ -124,7 +125,7 @@ export default {
       lastName: "",
       DOB: null,
       username: "",
-      password: null,
+      password: "",
       // url: "http://52.187.115.71:3000/admin",
       url: "http://localhost:3000/api/admin",
       show: true,
@@ -169,6 +170,7 @@ export default {
       this.inputUsername = this.username === "" ? true : false;
       this.alertPassword =
         this.password !== this.confirmPassword ? true : false;
+
       if (
         this.inputFirstname ||
         this.inputLastname ||
@@ -183,15 +185,26 @@ export default {
       }
       this.submitEdit();
     },
+
     async submitEdit() {
+      console.log(this.password);
       const formData = new FormData();
-      let data = {
+      var data = {
         firstName: this.firstName,
         lastName: this.lastName,
         DOB: this.DOB,
         username: this.username,
         password: this.password,
       };
+      if (this.password == undefined) {
+        data = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          DOB: this.DOB,
+          username: this.username,
+          password: "",
+        };
+      }
       const json = JSON.stringify(data);
       const blob = new Blob([json], {
         type: "application/json",
@@ -231,6 +244,24 @@ export default {
           alert(err.response.data);
         });
     },
+  },
+
+  mounted() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+
+    today = yyyy + "-" + mm + "-" + dd;
+    document.getElementById("date").setAttribute("max", today);
   },
 
   computed: {

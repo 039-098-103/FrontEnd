@@ -1,7 +1,9 @@
 <template>
   <navStaff />
 
-  <div class="bg-loginAd h-full">
+  <div class="h-full">
+    <div class="background bg-loginAd fixed top-0 w-screen h-screen">
+    </div>
     <div class="title flex justify-center md:justify-start">
       <div class="posit pt-20">
         <p class="head font-semibold flex justify-center">Order List</p>
@@ -174,5 +176,8 @@ input::placeholder {
   lg:mb-6 lg:mx-14
   md:mb-5 md:mx-7 md:justify-end
   my-5 mt-10;
+}
+.background{
+  z-index: -10;
 }
 </style>

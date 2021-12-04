@@ -1,7 +1,7 @@
 <template>
   <navbar />
 
-  <div class="flex justify-center h-screen bg-bottlegreen">
+  <div class="flex justify-center h-screen bg-white">
     <div class="box text-xs pt-10 pb-2 px-5 mt-32 mb-auto rounded-lg">
       <div v-if="hidden == false">
         <form @submit.prevent="login">

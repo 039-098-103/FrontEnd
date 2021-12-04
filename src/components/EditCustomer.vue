@@ -1,6 +1,6 @@
 <template>
   <div class="mt-5 box">
-    <!-- <form @submit.prevent="submitAccount" v-if="hiddenEdit == true">
+    <form @submit.prevent="submitAccount" v-if="hiddenEdit == true">
       <div class="edit flex justify-center">
         <input
           v-model="firstName"
@@ -53,11 +53,19 @@
         <input
           v-if="showPassword"
           type="text"
-          class="input"
+          class="input px-5 py-1 inline my-2"
           v-model="password"
         />
-        <input v-else type="password" class="input" v-model="password" />
-        <div class="flex items-center bg-white" @click="showPass">
+        <input
+          v-else
+          type="password"
+          class="input px-5 py-1 inline my-2"
+          v-model="password"
+        />
+        <div
+          class="flex items-center bg-gray-300 rounded-full px-1 my-2.5 ml-2"
+          @click="showPass"
+        >
           <i
             class="fas"
             :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }"
@@ -81,8 +89,7 @@
           </button>
         </div>
       </div>
-    </form> -->
-    
+    </form>
   </div>
 </template>
 <script>
@@ -91,11 +98,11 @@ export default {
   name: "admin",
   components: {},
   props: {
-    editAdmin: {
+    editCustomer: {
       type: Object,
     },
   },
-  emits: ["editAc"],
+
   data() {
     return {
       admin: [],
@@ -144,6 +151,7 @@ export default {
       }
       this.submitEdit();
     },
+
     async submitEdit() {
       const formData = new FormData();
       let data = {
@@ -232,7 +240,7 @@ sup {
   @apply text-xs md:text-sm lg:text-base;
 }
 input {
-  @apply rounded-full w-full;
+  @apply rounded-full w-full bg-gray-300;
 }
 .box {
   @apply mx-52;

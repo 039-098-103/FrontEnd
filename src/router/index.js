@@ -1,5 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import AdminLogin from '../views/AdminLogin.vue'
+import {
+  createRouter,
+  createWebHistory
+} from 'vue-router'
+import Worker from '../views/WorkerLogin.vue'
 import AdminHome from '../views/AdminHome.vue'
 import RegisStaff from '../views/RegisStaff.vue'
 import AccountAdmin from '../views/AdminAccount.vue'
@@ -17,14 +20,13 @@ import Address from '../views/PostAddress.vue'
 import Order from '../views/Order.vue'
 import StaffAdd from '../views/StaffAdd.vue'
 import StaffAccount from '../views/StaffAccount.vue'
+import Edit from '../views/StaffEditProduct.vue'
 import Stock from '../views/StaffStock.vue'
-import EditProduct from '../views/StaffDelete.vue'
 
-const routes = [
-  {
-    path: '/adminLogin',
-    name: 'AdminLogin',
-    component: AdminLogin
+const routes = [{
+    path: '/worker',
+    name: 'Worker',
+    component: Worker
   },
   {
     path: '/adminHome',
@@ -59,17 +61,16 @@ const routes = [
     component: StaffAccount
   },
   {
+    path: '/editProduct/:productId',
+    name: 'editProduct',
+    component: Edit,
+    props: true
+  },
+  {
     path: '/stock',
     name: 'stock',
     component: Stock
   },
-  {
-    path: '/editProduct/:productId',
-    name: 'editProduct',
-    component: EditProduct,
-    props: true
-  },
-
   // customer
   {
     path: '/',
@@ -95,12 +96,12 @@ const routes = [
     path: '/account',
     name: 'Account',
     component: Account,
-    beforeEnter:(to, from, next) => {
+    beforeEnter: (to, from, next) => {
       const role = localStorage.getItem("role");
       const login = localStorage.getItem("token");
-      if(!login && role != "Customer"){
+      if (!login && role != "Customer") {
         next("/login");
-      }else{
+      } else {
         next();
       }
     }
@@ -108,7 +109,8 @@ const routes = [
   {
     path: '/cart',
     name: 'Cart',
-    component: Cart
+    component: Cart,
+    props: true
   },
   {
     path: '/allProduct',

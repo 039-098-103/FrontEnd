@@ -125,7 +125,7 @@ export default {
       DOB: null,
       username: "",
       password: null,
-      // url: "http://52.187.115.71:3000/admin",
+     
       url: "http://localhost:3000/api/staff",
       show: true,
       hiddenEdit: true,
@@ -155,7 +155,7 @@ export default {
     },
 
     cancel() {
-      this.$emit("toggleOpen");
+      this.$emit("open");
     },
 
     submitAccount() {
@@ -182,13 +182,22 @@ export default {
 
     async submitEdit() {
       const formData = new FormData();
-      let data = {
+      var data = {
         firstName: this.firstName,
-        lastName: this.lastName,
-        DOB: this.DOB,
-        username: this.username,
-        password: this.password,
+          lastName: this.lastName,
+          DOB: this.DOB,
+          username: this.username,
+          password: this.password,
       };
+      if (this.password == undefined) {
+        data = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          DOB: this.DOB,
+          username: this.username,
+          password: "",
+        };
+      }
       const json = JSON.stringify(data);
       const blob = new Blob([json], {
         type: "application/json",
@@ -221,7 +230,7 @@ export default {
               (this.username = ""),
               (this.submitEdit = null);
             alert("Edit success");
-            this.$emit("toggleDone");
+            this.$emit("done");
           }
         })
         .catch((err) => {
@@ -242,6 +251,7 @@ export default {
     this.DOB = this.editStaff.DOB;
     this.password = this.editStaff.password;
     this.username = this.editStaff.username;
+    console.log(this.editStaff)
   },
 };
 </script>
