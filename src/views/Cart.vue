@@ -140,15 +140,15 @@ export default {
       });
   },
 
-  computed: {
-    totalAmount: function() {
-      var sum = 0;
-      this.cart.forEach((e) => {
-        sum += e.price;
-      });
-      return this.total == sum;
-    },
-  },
+  // computed: {
+  //   totalAmount: function() {
+  //     var sum = 0;
+  //     this.cart.forEach((e) => {
+  //       sum += e.price;
+  //     });
+  //     return this.total == sum;
+  //   },
+  // },
 };
 </script>
 
