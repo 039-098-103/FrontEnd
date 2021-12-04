@@ -28,14 +28,7 @@
     <div class="product grid grid-cols-2 mx-8 gap-4 mt-5 lg:pt-8">
       <div v-for="show in searching" :key="show.productName">
         <div class="flex justify-center">
-          <router-link
-            :to="{
-              name: 'editProduct',
-              params: { productId: show.productId },
-            }"
-          >
             <img :src="getProductImg(show.imageName)" class="picture shadow rounded-md" />
-          </router-link>
         </div>
 
         <div class=" mt-3 ">
@@ -68,7 +61,7 @@ export default {
     return {
       search: "",
       // url: "http://localhost:5000/products",
-      url: "http://localhost:3000/api",
+      url: "https://jwbrand.company/backend/api",
       products: [],
       imageName: "",
       price: null,
@@ -95,7 +88,7 @@ export default {
     },
 
     getProductImg(imageName) {
-      return "http://localhost:3000/" + imageName;
+      return "https://jwbrand.company/backend/" + imageName;
     },
   },
 

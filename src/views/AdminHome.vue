@@ -67,11 +67,8 @@ export default {
   data() {
     return {
       staffs: [],
-      url: "http://localhost:3000/api/admin",
-      // url: "http://52.187.115.71:3000/admin",
-      // url: "http://52.187.115.71:3000/auth",
-      login: "http://localhost:3000/api/worker/auth",
-      // userAdmin: "http://localhost:3000/api/admin/getInfo",
+      url: "https://jwbrand.company/backend/api/admin",
+      login: "https://jwbrand.company/backend/api/worker/auth",
       search: "",
       admin: [],
       pass: "",

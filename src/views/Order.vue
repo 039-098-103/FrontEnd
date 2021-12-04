@@ -47,7 +47,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      url: "http://localhost:3000/api/customer/getOrders",
+      url: "https://jwbrand.company/backend/api/customer/getOrders",
       orders: [],
     };
   },

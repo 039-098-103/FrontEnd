@@ -179,7 +179,7 @@ export default {
       position: "",
       alertPassword: false,
       // url: "http://52.187.115.71:3000/admin",
-      url: "http://localhost:3000/api/admin",
+      url: "https://jwbrand.company/backend/api/admin",
       staffs: [],
       type: "password",
       btnText: "Show Password",

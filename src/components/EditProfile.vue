@@ -127,7 +127,7 @@ export default {
       username: "",
       password: "",
       // url: "http://52.187.115.71:3000/admin",
-      url: "http://localhost:3000/api/admin",
+      url: "https://jwbrand.company/backend/api/admin",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,

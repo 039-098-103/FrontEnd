@@ -55,9 +55,7 @@ export default {
       user: "",
       pass: "",
       showError: false,
-      // url: "http://52.187.115.71:3000/auth",
-      url: "http://localhost:3000/api/worker/auth",
-      // url: "http://localhost:5000/admin",
+      url: "https://jwbrand.company/backend/api/worker/auth",
     };
   },
   created() {

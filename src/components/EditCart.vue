@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       item: [],
-      url: "http://localhost:3000/api",
+      url: "https://jwbrand.company/backend/api",
       inputColor: false,
       productName: "",
       price: "",
@@ -79,7 +79,7 @@ export default {
 
     getProductImg(imageName) {
       console.log(imageName);
-      return "http://localhost:3000/" + imageName;
+      return "https://jwbrand.company/backend/" + imageName;
     },
 
     cancel() {

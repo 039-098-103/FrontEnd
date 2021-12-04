@@ -20,7 +20,6 @@ import Address from '../views/PostAddress.vue'
 import Order from '../views/Order.vue'
 import StaffAdd from '../views/StaffAdd.vue'
 import StaffAccount from '../views/StaffAccount.vue'
-import Edit from '../views/StaffEditProduct.vue'
 import Stock from '../views/StaffStock.vue'
 
 const routes = [{
@@ -59,12 +58,6 @@ const routes = [{
     path: '/staffAccount',
     name: 'staffAccount',
     component: StaffAccount
-  },
-  {
-    path: '/editProduct/:productId',
-    name: 'editProduct',
-    component: Edit,
-    props: true
   },
   {
     path: '/stock',

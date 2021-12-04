@@ -61,8 +61,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      url: "http://localhost:3000/api/customer/checkout",
-      item: "http://localhost:3000/api/customer/getCart",
+      url: "https://jwbrand.company/backend/api/customer/checkout",
+      item: "https://jwbrand.company/backend/api/customer/getCart",
       address: "",
       inputAddress: false,
       listItem: [],
@@ -71,7 +71,7 @@ export default {
 
   methods: {
     getProductImg(productId) {
-      return "http://localhost:3000/" + productId;
+      return "https://jwbrand.company/backend/" + productId;
     },
 
     submit() {

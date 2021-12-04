@@ -83,7 +83,7 @@ export default {
   data() {
     return {
       staff: [],
-      url: "http://localhost:3000/api/staff/getInfo",
+      url: "https://jwbrand.company/backend/api/staff/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,
@@ -98,7 +98,7 @@ export default {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
       console.log("logout");
-      return this.$router.push("/adminLogin");
+      return this.$router.push("/worker");
     },
 
     open() {

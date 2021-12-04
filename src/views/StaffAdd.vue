@@ -131,7 +131,7 @@ export default {
     return {
       picture: null,
       check: false,
-      url: "http://localhost:3000/api",
+      url: "https://jwbrand.company/backend/api",
       inputName: false,
       inputPrice: false,
       inputColor: false,

@@ -133,7 +133,7 @@ export default {
   data() {
     return {
       hidden: true,
-      url: "http://localhost:3000/api/customer/register",
+      url: "https://jwbrand.company/backend/api/customer/register",
       customer: [],
       inputFirstname: false,
       inputLastname: false,

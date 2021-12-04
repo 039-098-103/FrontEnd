@@ -150,8 +150,7 @@ export default {
   data() {
     return {
       search: "",
-      // url: "http://localhost:5000/products",
-      url: "http://localhost:3000/api",
+      url: "https://jwbrand.company/backend/api",
       products: [],
       imageName: "",
       price: null,

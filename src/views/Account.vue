@@ -69,7 +69,7 @@ export default {
   data() {
     return {
       customer: [],
-      url: "http://localhost:3000/api/customer/accountInfo",
+      url: "https://jwbrand.company/backend/apicustomer/accountInfo",
       firstName: "",
       lastName: "",
       DOB: null,
