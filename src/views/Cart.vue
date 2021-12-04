@@ -77,6 +77,8 @@ export default {
     return {
       url: "https://www.jwbrand.company/backend/api/customer/getCart",
       remove: "https://www.jwbrand.company/backend/api/customer/removeFromCart",
+      // url: "http://localhost:3000/api/customer/getCart",
+      // remove: "http://localhost:3000/api/customer/removeFromCart",
       cart: [],
       total: "",
       hiddenEdit: false,
@@ -134,7 +136,7 @@ export default {
         },
       })
       .then((res) => {
-        return (this.cart = res.data);
+        this.cart = res.data
       });
   },
 
