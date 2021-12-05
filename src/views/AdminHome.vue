@@ -69,8 +69,6 @@ export default {
       staffs: [],
       url: "https://www.jwbrand.company/backend/api/admin",
       login: "https://www.jwbrand.company/backend/api/worker/auth",
-      //  url: "http://localhost:3000/api/admin",
-      // login: "http://localhost:3000/api/worker/auth",
       search: "",
       admin: [],
       pass: "",
@@ -106,7 +104,7 @@ export default {
           .catch((err) => {
             if (err.response.status === 403) {
               alert("you are not log-in");
-              this.$router.push("/adminLogin");
+              this.$router.push("/worker");
             }
           });
     },

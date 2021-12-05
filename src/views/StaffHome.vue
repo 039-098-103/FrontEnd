@@ -100,7 +100,7 @@ export default {
           .catch((err) => {
             if (err.response.status === 403) {
               alert("you are not log-in");
-              this.$router.push("/adminLogin");
+              this.$router.push("/worker");
             }
           });
     },

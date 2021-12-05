@@ -56,7 +56,6 @@ export default {
       pass: "",
       showError: false,
       url: "https://www.jwbrand.company/backend/api/worker/auth",
-      // url: "http://localhost:3000/api/worker/auth",
     };
   },
   created() {
@@ -64,7 +63,7 @@ export default {
     if (!check) {
       return;
     } else {
-      return this.$router.push("/adminLogin");
+      return this.$router.push("/worker");
     }
   },
 
