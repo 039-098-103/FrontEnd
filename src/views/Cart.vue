@@ -77,8 +77,6 @@ export default {
     return {
       url: "https://www.jwbrand.company/backend/api/customer/getCart",
       remove: "https://www.jwbrand.company/backend/api/customer/removeFromCart",
-      // url: "http://localhost:3000/api/customer/getCart",
-      // remove: "http://localhost:3000/api/customer/removeFromCart",
       cart: [],
       total: "",
       hiddenEdit: false,
@@ -139,16 +137,6 @@ export default {
         this.cart = res.data
       });
   },
-
-  // computed: {
-  //   totalAmount: function() {
-  //     var sum = 0;
-  //     this.cart.forEach((e) => {
-  //       sum += e.price;
-  //     });
-  //     return this.total == sum;
-  //   },
-  // },
 };
 </script>
 

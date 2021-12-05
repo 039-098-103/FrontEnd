@@ -60,7 +60,6 @@ export default {
   data() {
     return {
       url: "https://www.jwbrand.company/backend/api",
-      // url: "http://localhost:3000/api",
       product: "",
       color: null,
       inputColor: false,
