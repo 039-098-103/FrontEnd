@@ -27,18 +27,6 @@
 
       <div class="edit flex justify-center">
         <input
-          v-model="DOB"
-          type="date"
-          placeholder="Change birthday"
-          class="px-5 py-1 inline my-2 xl:w-56"
-        />
-      </div>
-      <sup v-show="inputBOD" class="text-red-500 justify-end flex mt-4">
-        Please enter birthday!</sup
-      >
-
-      <div class="edit flex justify-center">
-        <input
           v-model="username"
           type="text"
           placeholder="Change username"
@@ -61,6 +49,7 @@
           type="password"
           class="input px-5 py-1 inline my-2"
           v-model="password"
+          placeholder="New Password"
         />
         <div
           class="flex items-center bg-gray-300 rounded-full px-1 my-2.5 ml-2"
@@ -84,7 +73,7 @@
           </button>
         </div>
         <div class="flex justify-center w-full">
-          <button class="bg-white text-black buttoncan" @click="cancel">
+          <button class="bg-white text-black border-black border-2" @click="cancel">
             CANCEL
           </button>
         </div>
@@ -95,7 +84,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "admin",
+  name: "customer",
   components: {},
   props: {
     editCustomer: {
@@ -108,7 +97,6 @@ export default {
       admin: [],
       firstName: "",
       lastName: "",
-      DOB: null,
       username: "",
       password: null,
       url: "https://www.jwbrand.company/backend/api/admin",
@@ -116,7 +104,6 @@ export default {
       hiddenEdit: true,
       inputFirstname: false,
       inputLastname: false,
-      inputBOD: false,
       inputUsername: false,
       inputPassword: false,
       showPassword: false,
@@ -136,12 +123,10 @@ export default {
     submitAccount() {
       this.inputFirstname = this.firstName === "" ? true : false;
       this.inputLastname = this.lastName === "" ? true : false;
-      this.inputBOD = this.DOB === "" ? true : false;
       this.inputUsername = this.username === "" ? true : false;
       if (
         this.inputFirstname ||
         this.inputLastname ||
-        this.inputBOD ||
         this.inputUsername
       ) {
         return;
@@ -154,7 +139,6 @@ export default {
       let data = {
         firstName: this.firstName,
         lastName: this.lastName,
-        DOB: this.DOB,
         username: this.username,
         password: this.password,
       };
@@ -177,7 +161,6 @@ export default {
                     ...adminEdit,
                     firstName: this.firstName,
                     lastName: this.lastName,
-                    DOB: this.DOB,
                     username: this.username,
                     password: this.password,
                   }
@@ -208,7 +191,6 @@ export default {
   async created() {
     this.firstName = this.editAdmin.firstName;
     this.lastName = this.editAdmin.lastName;
-    this.DOB = this.editAdmin.DOB;
     this.password = this.editAdmin.password;
     this.username = this.editAdmin.username;
   },

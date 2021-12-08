@@ -37,6 +37,9 @@
         <router-link to="/allProduct">
           <p class="pb-5 pt-10 mt-20 menu">All</p>
         </router-link>
+        <router-link to="/order">
+          <p class="py-5 menu">Order</p>
+        </router-link>
         <router-link to="/newCollection">
           <p class="py-5 menu">New Collection</p>
         </router-link>
@@ -69,6 +72,22 @@ export default {
       this.hamburgerBar = !this.hamburgerBar;
     },
   },
+
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+
+  // destroyed() {
+  //   window.removeEventListener("scroll", this.handleScroll);
+  // },
+
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+    this.handleScroll;
+    var element = document.querySelector(".similar-adventures");
+    var top = element.offsetTop;
+    window.scrollTo(0, top);
+  },
 };
 </script>
 
@@ -96,13 +115,12 @@ export default {
 .user {
   font-size: 1rem;
 }
-.menu{
+.menu {
   @apply justify-center flex text-xs
   md:text-sm
   lg:text-base;
 }
-.feature{
+.feature {
   @apply md:text-xl;
 }
-
 </style>

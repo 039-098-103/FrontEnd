@@ -11,7 +11,9 @@
       <div>
         <div v-if="hiddenEdit == false">
           <div class="detail flex justify-center mb-1">
-            <p class="user font-bold">{{ this.customer.firstName }} {{ this.customer.lastName }}</p>
+            <p class="user font-bold">
+              {{ this.customer.firstName }} {{ this.customer.lastName }}
+            </p>
           </div>
 
           <div class="info">
@@ -91,22 +93,22 @@ export default {
     },
 
     async getCustomer() {
-        axios
-          .get(this.url, {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            this.customer = res.data;
-            console.log(res.data);
-          })
-          .catch((err) => {
-            if (err.response.status === 403) {
-              return this.token;
-            }
-            alert(err.response.data);
-          });
+      axios
+        .get(this.url, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          this.customer = res.data;
+          console.log(res.data);
+        })
+        .catch((err) => {
+          if (err.response.status === 403) {
+            return this.token;
+          }
+          alert(err.response.data);
+        });
     },
 
     logout() {

@@ -11,7 +11,7 @@
     </div>
 
     <div v-if="products" class="image mt-5 grid grid-cols-2">
-      <div class="box-l pl-8 pr-2">
+      <div class="">
         <div class="flex justify-center">
           <img :src="getProductImg(products[3].imageName)" class="shadow" />
         </div>
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div class="box-r pr-8 pl-2">
+      <div class="">
         <div class="flex justify-center">
           <img :src="getProductImg(products[11].imageName)" class=" shadow" />
         </div>
@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <div class="box-l px-8 pr-2">
+      <div class="">
         <div class="flex justify-center">
           <img :src="getProductImg(products[8].imageName)" class="shadow" />
         </div>
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <div class="box-r pr-8 pl-2">
+      <div class="">
         <div class="flex justify-center">
           <img :src="getProductImg(products[5].imageName)" class="shadow" />
         </div>
@@ -91,7 +91,7 @@
         </div>
       </div>
 
-      <div class="box-l pl-8 pr-2">
+      <div class="">
         <div class="flex justify-center">
           <img :src="getProductImg(products[9].imageName)" class="shadow" />
         </div>
@@ -111,7 +111,7 @@
         </div>
       </div>
 
-      <div class="box-r pr-8 pl-2 ">
+      <div class=" ">
         <div class="flex justify-center">
           <img :src="getProductImg(products[1].imageName)" class=" shadow" />
         </div>
@@ -220,12 +220,6 @@ export default {
 }
 .center {
   @apply flex justify-center;
-}
-.box-l {
-  @apply md:pr-0 pl-0;
-}
-.box-r {
-  @apply md:pr-0 pl-0;
 }
 .new-in{
   @apply md:mx-24 md:mb-10

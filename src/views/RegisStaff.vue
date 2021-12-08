@@ -221,22 +221,22 @@ export default {
     },
 
     async addStaff() {
-      const formData = new FormData();
-      let data = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        DOB: this.DOB,
-        username: this.username,
-        password: this.password,
-        position: this.position,
-      };
+        const formData = new FormData();
+        let data = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          DOB: this.DOB,
+          username: this.username,
+          password: this.password,
+          position: this.position,
+        };
 
       const json = JSON.stringify(data);
       const blob = new Blob([json], {
         type: "application/json",
       });
       formData.append("data", blob);
-
+      
       axios
         .post(`${this.url}/addWorker`, formData, {
           headers: {

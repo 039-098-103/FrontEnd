@@ -61,6 +61,7 @@
       :cartId="cartItem"
       @toggleOpen="toggleOpen"
       @toggleDone="toggleDone"
+      
     >
     </editCart>
   </div>

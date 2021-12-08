@@ -210,7 +210,6 @@ export default {
     },
 
     addProduct() {
-      console.log(this.colorsSelect[1])
       const formData = new FormData();
       let data = {
         productName: this.productName,

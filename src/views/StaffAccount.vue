@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-loginAd h-screen mt-0">
+  <div class="mt-0">
+    <div class="background bg-loginAd fixed top-0 w-screen h-screen">
+    </div>
     <navStaff/>
 
     <div class="layout text-white">
@@ -162,5 +164,8 @@ button {
 .info {
   @apply md:mt-5
   lg:justify-center lg:flex;
+}
+.background{
+  z-index: -10;
 }
 </style>

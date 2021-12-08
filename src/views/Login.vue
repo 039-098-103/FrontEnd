@@ -71,7 +71,6 @@ export default {
   },
 
   methods: {
-    
     colseSignUp() {
       this.hidden = false;
     },
@@ -97,7 +96,7 @@ export default {
           });
       }
     },
-  },
+  }
 };
 </script>
 

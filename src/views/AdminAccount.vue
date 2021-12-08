@@ -1,7 +1,6 @@
 <template>
   <div class="h-screen mt-0">
-    <div class="background bg-loginAd fixed top-0 w-screen h-screen">
-    </div>
+    <div class="background bg-loginAd fixed top-0 w-screen h-screen"></div>
     <navAdmin></navAdmin>
 
     <div class="layout text-white">
@@ -110,22 +109,18 @@ export default {
     },
 
     async getAdmin() {
-      try {
-        axios
-          .get(this.url, {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            this.admin = res.data;
-          })
-          .catch((err) => {
-            alert(err.response.data);
-          });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
+      axios
+        .get(this.url, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          this.admin = res.data;
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
     },
 
     formatDate(date) {
@@ -170,7 +165,7 @@ button {
   @apply md:mt-5
   lg:justify-center lg:flex;
 }
-.background{
+.background {
   z-index: -10;
 }
 </style>

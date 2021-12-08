@@ -35,22 +35,9 @@
             Please enter lastname!</sup
           >
         </div>
-
-        <div class="justify-center grid my-2 text-xs w-full">
-          <input
-            id="date"
-            type="date"
-            class="rounded-full py-1 px-5 inline justify-start "
-            v-model="DOB"
-          />
-          <div></div>
-          <sup v-show="inputBOD" class="text-red-500 justify-end flex mt-4">
-            Please select birthday!</sup
-          >
-        </div>
       </div>
 
-      <div class="justify-center mt-5 mb-2">
+      <div class="justify-center mt-3 mb-2">
         <p class="line mx-2">&nbsp;&nbsp;Account&nbsp;&nbsp;</p>
       </div>
 
@@ -107,9 +94,9 @@
           </div>
         </div>
 
-        <div class="submit mt-5 text-xs mb-10">
+        <div class="submit flex justify-center mt-5 text-xs mb-10">
           <button
-            class="bg-red-500 text-white button w-full rounded-full py-2"
+            class="bg-red-500 text-white button w-full rounded-full py-1"
             @click="submitAccount"
           >
             REGISTER
@@ -141,7 +128,6 @@ export default {
       inputConfirm: false,
       firstName: "",
       lastName: "",
-      DOB: "",
       username: "",
       password: "",
       confirmPassword: "",
@@ -157,7 +143,6 @@ export default {
     submitAccount() {
       this.inputFirstname = this.firstName === "" ? true : false;
       this.inputLastname = this.lastName === "" ? true : false;
-      this.inputBOD = this.DOB === "" ? true : false;
       this.inputUsername = this.username === "" ? true : false;
       this.inputPassword = this.password === "" ? true : false;
       this.inputConfirm = this.confirmPassword === "" ? true : false;
@@ -166,7 +151,6 @@ export default {
       if (
         this.inputFirstname ||
         this.inputLastname ||
-        this.inputBOD ||
         this.inputUsername ||
         this.inputPassword ||
         this.inputConfirm
@@ -179,38 +163,40 @@ export default {
     },
 
     async addCustomer() {
-      const formData = new FormData();
-      let data = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        DOB: this.DOB,
-        username: this.username,
-        password: this.password,
-      };
-      const json = JSON.stringify(data);
-      const blob = new Blob([json], {
-        type: "application/json",
-      });
-      formData.append("data", blob);
-
-      axios
-        .post(`${this.url}`, formData)
-        .then((res) => {
-          if (res.status === 200) {
-            this.customer = [...this.customer, data];
-            this.firstName = "";
-            this.lastName = "";
-            this.username = "";
-            this.password = "";
-            this.confirmPassword = "";
-            this.DOB = "";
-            alert("Successfully applied!");
-            this.$emit("toggleDone");
-          }
-        })
-        .catch((err) => {
-          alert(err.response.data);
+        const formData = new FormData();
+        let data = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          username: this.username,
+          password: this.password,
+        };
+        const json = JSON.stringify(data);
+        const blob = new Blob([json], {
+          type: "application/json",
         });
+        formData.append("data", blob);
+
+        axios
+          .post(`${this.url}`, formData, {
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              this.customer = [...this.customer, data];
+              this.firstName = "";
+              this.lastName = "";
+              this.username = "";
+              this.password = "";
+              this.confirmPassword = "";
+              alert("Successfully applied!");
+              this.$emit("toggleDone");
+            }
+          })
+          .catch((err) => {
+            alert(err.response.data);
+          });
     },
   },
 
@@ -265,7 +251,7 @@ p {
 .line {
   display: flex;
   flex-direction: row;
-  @apply lg:mx-20 lg:mt-12 lg:mb-5;
+  @apply lg:mx-20 lg:mt-5 lg:mb-5;
 }
 .line::before,
 .line::after {
