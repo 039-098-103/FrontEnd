@@ -131,6 +131,7 @@ export default {
       picture: null,
       check: false,
       url: "https://www.jwbrand.company/backend/api",
+      // url: "http://localhost:3000/api",
       inputName: false,
       inputPrice: false,
       inputColor: false,
@@ -210,6 +211,7 @@ export default {
     },
 
     addProduct() {
+      console.log(this.colorsSelect);
       const formData = new FormData();
       let data = {
         productName: this.productName,
@@ -218,6 +220,7 @@ export default {
         bagTypeId: this.selectType,
         Color: this.colorsSelect,
       };
+      console.log(data);
       const json = JSON.stringify(data);
       const blob = new Blob([json], {
         type: "application/json",
@@ -231,7 +234,11 @@ export default {
           },
         })
         .then((res) => {
-          res.status === 200 ? alert("Sucessfully Added") : alert("Error");
+          if(res.status === 200){
+           alert("Sucessfully Added") 
+           return this.$router.push("/stock");
+          }
+           alert("Error");
         });
     },
   },

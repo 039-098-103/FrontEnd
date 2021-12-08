@@ -72,6 +72,7 @@ export default {
     return {
       customer: [],
       url: "https://www.jwbrand.company/backend/api/customer/accountInfo",
+      // url: "http://localhost:3000/api/customer/accountInfo",
       firstName: "",
       lastName: "",
       DOB: null,

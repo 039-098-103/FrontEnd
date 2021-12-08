@@ -61,6 +61,7 @@ export default {
     return {
       search: "",
       url: "https://www.jwbrand.company/backend/api",
+      // url: "http://localhost:3000/api",
       products: [],
       imageName: "",
       price: null,
@@ -87,6 +88,7 @@ export default {
 
     getProductImg(imageName) {
       return "https://www.jwbrand.company/backend/" + imageName;
+      // return "http://localhost:3000/" + imageName;
     },
   },
 

@@ -27,15 +27,13 @@
 
       <div class="edit flex justify-center">
         <input
+        readonly
           v-model="username"
           type="text"
           placeholder="Change username"
           class="px-5 py-1 inline my-2"
         />
       </div>
-      <sup v-show="inputUsername" class="text-red-500 justify-end flex mt-4">
-        Please enter username!</sup
-      >
 
       <div class="edit flex justify-center ">
         <input
@@ -100,6 +98,7 @@ export default {
       username: "",
       password: null,
       url: "https://www.jwbrand.company/backend/api/admin",
+      // url: "http://localhost:3000/api/admin",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,
@@ -123,11 +122,9 @@ export default {
     submitAccount() {
       this.inputFirstname = this.firstName === "" ? true : false;
       this.inputLastname = this.lastName === "" ? true : false;
-      this.inputUsername = this.username === "" ? true : false;
       if (
         this.inputFirstname ||
-        this.inputLastname ||
-        this.inputUsername
+        this.inputLastname
       ) {
         return;
       }
@@ -136,12 +133,19 @@ export default {
 
     async submitEdit() {
       const formData = new FormData();
-      let data = {
+      var data = {
         firstName: this.firstName,
         lastName: this.lastName,
-        username: this.username,
         password: this.password,
       };
+      if (this.password === undefined) {
+        data = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          DOB: this.DOB,
+          password: "",
+        };
+      }
       const json = JSON.stringify(data);
       const blob = new Blob([json], {
         type: "application/json",
@@ -155,25 +159,9 @@ export default {
         })
         .then((res) => {
           if (res.status === 200) {
-            this.admin = this.admin.map((adminEdit) =>
-              adminEdit.username === this.username
-                ? {
-                    ...adminEdit,
-                    firstName: this.firstName,
-                    lastName: this.lastName,
-                    username: this.username,
-                    password: this.password,
-                  }
-                : adminEdit
-            );
-            (this.firstName = ""),
-              (this.lastName = ""),
-              (this.DOB = null),
-              (this.password = ""),
-              (this.username = ""),
-              (this.submitEdit = null);
             alert("Edit success");
             this.$emit("toggleDone");
+            this.$router.go();
           }
         })
         .catch((err) => {

@@ -34,21 +34,16 @@
           class="px-5 py-1 inline my-2 xl:w-56"
         />
       </div>
-      <sup v-show="inputBOD" class="text-red-500 justify-end flex mt-4">
-        Please enter birthday!</sup
-      >
 
       <div class="edit flex justify-center">
         <input
+          readonly
           v-model="username"
           type="text"
           placeholder="Change username"
           class="px-5 py-1 inline my-2"
         />
       </div>
-      <sup v-show="inputUsername" class="text-red-500 justify-end flex mt-4">
-        Please enter username!</sup
-      >
 
       <div class="edit flex justify-center ">
         <input
@@ -115,6 +110,7 @@ export default {
       username: "",
       password: "",
       url: "https://www.jwbrand.company/backend/api/admin",
+      // url: "http://localhost:3000/api/admin",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,
@@ -167,15 +163,13 @@ export default {
         firstName: this.firstName,
         lastName: this.lastName,
         DOB: this.DOB,
-        username: this.username,
         password: this.password,
       };
-      if (this.password == undefined) {
+      if (this.password === undefined) {
         data = {
           firstName: this.firstName,
           lastName: this.lastName,
           DOB: this.DOB,
-          username: this.username,
           password: "",
         };
       }
@@ -192,26 +186,9 @@ export default {
         })
         .then((res) => {
           if (res.status === 200) {
-            this.admin = this.admin.map((adminEdit) =>
-              adminEdit.username === this.username
-                ? {
-                    ...adminEdit,
-                    firstName: this.firstName,
-                    lastName: this.lastName,
-                    DOB: this.DOB,
-                    username: this.username,
-                    password: this.password,
-                  }
-                : adminEdit
-            );
-            (this.firstName = ""),
-              (this.lastName = ""),
-              (this.DOB = null),
-              (this.password = ""),
-              (this.username = ""),
-              (this.submitEdit = null);
             alert("Edit success");
             this.$emit("toggleDone");
+            this.$router.go();
           }
         })
         .catch((err) => {
