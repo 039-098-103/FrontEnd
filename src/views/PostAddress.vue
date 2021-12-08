@@ -26,25 +26,24 @@
       :key="item.cartId"
       class="orderlist grid grid-cols-3 mt-5"
     >
-        <div class="box-image ">
-          <img
-            :src="getProductImg(item.imageName)"
-            class="image shadow rounded-md"
-          />
+      <div class="box-image ">
+        <img
+          :src="getProductImg(item.imageName)"
+          class="image shadow rounded-md"
+        />
+      </div>
+
+      <div class="list col-span-2 ml-5 text-xs">
+        <div class="md:flex md:justify-center">
+          {{ item.productName }}
         </div>
-
-        <div class="list col-span-2 ml-5 text-xs">
-          <div class="md:flex md:justify-center">
-            {{ item.productName }}
-          </div>
-          <div class="flex md:justify-center">
-            <div class="flex items-center mr-2">Color</div>
-            <div
-              class="colors my-2"
-              :style="{ background: item.colorName }"
-            ></div>
-          </div>
-
+        <div class="flex md:justify-center">
+          <div class="flex items-center mr-2">Color</div>
+          <div
+            class="colors my-2"
+            :style="{ background: item.colorName }"
+          ></div>
+        </div>
       </div>
     </div>
 
@@ -63,6 +62,8 @@ export default {
     return {
       url: "https://jwbrand.company/backend/api/customer/checkout",
       item: "https://jwbrand.company/backend/api/customer/getCart",
+      // url: "http://localhost:3000/api/customer/checkout",
+      // item: "http://localhost:3000/api/customer/getCart",
       address: "",
       inputAddress: false,
       listItem: [],
@@ -72,6 +73,7 @@ export default {
   methods: {
     getProductImg(productId) {
       return "https://jwbrand.company/backend/" + productId;
+      // return "http://localhost:3000/api" + productId;
     },
 
     submit() {
@@ -90,42 +92,37 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data);
           return (this.listItem = res.data);
         });
     },
 
     async postAddress() {
-      try {
-        const formData = new FormData();
-        let data = {
-          address: this.address,
-          Cart: this.listItem,
-        };
-        const json = JSON.stringify(data);
-        const blob = new Blob([json], {
-          type: "application/json",
-        });
-        formData.append("data", blob);
+      const formData = new FormData();
+      let data = {
+        address: this.address,
+        Cart: this.listItem,
+      };
+      const json = JSON.stringify(data);
+      const blob = new Blob([json], {
+        type: "application/json",
+      });
+      formData.append("data", blob);
 
-        axios
-          .post(this.url, formData, {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              alert("Successfully added!");
-              return this.$router.push("/order");
-            }
-          })
-          .catch((err) => {
-            alert(err.response.data);
-          });
-      } catch (error) {
-        console.log(`Could not save! ${error}`);
-      }
+      axios
+        .post(this.url, formData, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            alert("Successfully added!");
+            return this.$router.push("/order");
+          }
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
     },
   },
 
@@ -164,16 +161,16 @@ textarea {
 .address {
   @apply md:mx-32;
 }
-.list{
+.list {
   @apply md:ml-0 md:mt-2;
 }
-.image{
-  @apply md:w-40 ;
+.image {
+  @apply md:w-40;
 }
-.box-image{
- @apply  md:flex md:justify-center;
+.box-image {
+  @apply md:flex md:justify-center;
 }
-button{
+button {
   @apply md:mb-20 md:text-base;
 }
 </style>

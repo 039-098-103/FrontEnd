@@ -14,13 +14,12 @@
         <div class="name text-sm font-bold mt-5 flex justify-center">
           {{ product.productName }}
         </div>
-        <div class="flex justify-center my-1" >
+        <div class="flex justify-center my-1">
           <label
             class="colors checkbox"
             v-for="product in product.Color"
             :key="product.colorId"
             :style="{ background: product.colorName }"
-            
           >
             <input
               type="radio"
@@ -28,7 +27,6 @@
               v-model="color"
             />
           </label>
-          
         </div>
         <div class="price mb-5 text-sm font-semibold flex justify-center">
           {{ product.price }} $
@@ -60,8 +58,8 @@ export default {
   data() {
     return {
       url: "https://jwbrand.company/backend/api",
+      // url: "http://localhost:3000/api",
       product: "",
-      // imageName: "",
       color: null,
       inputColor: false,
     };
@@ -69,48 +67,47 @@ export default {
 
   methods: {
     getProductImg(imageName) {
-      console.log(imageName);
       return "https://jwbrand.company/backend/" + imageName;
+      // return "http://localhost:3000/" + imageName;
     },
 
-    add(){
-      this.inputColor = this.color === null ? true : false
-      if(this.inputColor){
+    add() {
+      this.inputColor = this.color === null ? true : false;
+      if (this.inputColor) {
         return alert(`please select color`);
       }
       this.goToCart();
     },
 
     goToCart() {
-      try {
-        console.log(this.color);
-        axios
-          .post(`${this.url}/customer/addToCart/${this.color}`,{}, {
+      console.log(this.color);
+      axios
+        .post(
+          `${this.url}/customer/addToCart/${this.color}`,
+          {},
+          {
             headers: {
               Authorization: localStorage.getItem("token"),
             },
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              alert("Successfully added to cart");
-            }
-          })
-          .catch((err) => {
-            if (err.response.status === 403) {
-              alert("Please log in to order.");
-              this.$router.push("/Login");
-            }
-            // alert(err.response.data);
-          });
-      } catch (error) {
-        console.log(`Could not save! ${error}`);
-      }
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            alert("Successfully added to cart");
+            this.$router.push("/cart");
+          }
+        })
+        .catch((err) => {
+          if (err.response.status === 403) {
+            alert("Please log in to order.");
+            this.$router.push("/Login");
+          }
+        });
     },
   },
 
   mounted() {
     axios.get(`${this.url}/getProduct/${this.productId}`).then((res) => {
-      console.log(res.data);
       return (this.product = res.data);
     });
   },

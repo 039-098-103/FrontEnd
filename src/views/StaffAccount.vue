@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-loginAd h-screen mt-0">
+  <div class="mt-0">
+    <div class="background bg-loginAd fixed top-0 w-screen h-screen">
+    </div>
     <navStaff/>
 
     <div class="layout text-white">
@@ -84,6 +86,7 @@ export default {
     return {
       staff: [],
       url: "https://jwbrand.company/backend/api/staff/getInfo",
+      //  url: "http://localhost:3000/api/staff/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,
@@ -110,7 +113,6 @@ export default {
     },
 
     async getStaff() {
-      try {
         axios
           .get(this.url, {
             headers: {
@@ -123,9 +125,7 @@ export default {
           .catch((err) => {
             alert(err.response.data);
           });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
+
     },
 
     formatDate(date) {
@@ -169,5 +169,8 @@ button {
 .info {
   @apply md:mt-5
   lg:justify-center lg:flex;
+}
+.background{
+  z-index: -10;
 }
 </style>

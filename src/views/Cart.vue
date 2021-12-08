@@ -61,6 +61,7 @@
       :cartId="cartItem"
       @toggleOpen="toggleOpen"
       @toggleDone="toggleDone"
+      
     >
     </editCart>
   </div>
@@ -106,6 +107,7 @@ export default {
 
     getProductImg(productId) {
       return "https://jwbrand.company/backend/" + productId;
+      // return "http://localhost:3000/" + productId;
     },
 
     async deleteOrder(cartItemId) {
@@ -136,20 +138,8 @@ export default {
         },
       })
       .then((res) => {
-        console.log(res.data);
         return (this.cart = res.data);
       });
-  },
-
-  computed: {
-    totalAmount: function() {
-      var sum = 0;
-      this.cart.forEach((e) => {
-        sum += e.price;
-      });
-      console.log(sum);
-      return this.total == sum;
-    },
   },
 };
 </script>
@@ -178,9 +168,6 @@ export default {
   @apply md:flex md:items-end md:text-base
   lg:text-lg lg:justify-start;
 }
-/* .price{
-  @apply md:grid-cols-1;
-} */
 .checkout {
   @apply md:mb-20 md:mt-20 md:justify-center md:flex md:col-span-3 md:text-base
   xl:text-lg;

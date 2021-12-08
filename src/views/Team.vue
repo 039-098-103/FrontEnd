@@ -43,14 +43,10 @@
 </template>
 
 <style scoped>
-/* @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;600&display=swap"); */
-
 img {
   @apply w-40 h-40 shadow;
 }
 h1 {
-  /* font-family: "Rajdhani", sans-serif; */
   @apply text-xs font-semibold mt-2 flex justify-center 
   lg:text-base;
 }
@@ -58,13 +54,10 @@ h2 {
   @apply text-xs flex justify-center md:text-sm lg:text-base;
 }
 h6 {
-  /* font-family: "Rajdhani", sans-serif; */
   font-size: 12px;
   @apply md:text-sm lg:text-base;
 }
 p {
-  /* font-family: "Rajdhani", sans-serif; */
-  /* width: 600; */
   @apply sm:text-xl md:text-2xl lg:text-3xl;
 }
 .box {

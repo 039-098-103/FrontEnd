@@ -75,6 +75,7 @@ export default {
   data() {
     return {
       url: "https://jwbrand.company/backend/api/staff/getOrderList",
+      // url: "http://localhost:3000/api/staff/getOrderList",
       orders: [],
       search: "",
     };
@@ -97,14 +98,12 @@ export default {
           })
           .then((res) => {
             this.orders = res.data;
-            console.log(res.data);
           })
           .catch((err) => {
             if (err.response.status === 403) {
               alert("you are not log-in");
               this.$router.push("/worker");
             }
-            console.log(err.response.data);
           });
       } catch (error) {
         console.log(`Could not get! ${error}`);
@@ -114,7 +113,6 @@ export default {
 
   async created() {
     this.orders = await this.getOrders();
-    console.log(this.orders);
   },
 
   computed: {

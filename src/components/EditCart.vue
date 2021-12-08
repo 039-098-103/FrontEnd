@@ -58,6 +58,7 @@ export default {
     return {
       item: [],
       url: "https://jwbrand.company/backend/api",
+      // url: "https://localhost:3000/api",
       inputColor: false,
       productName: "",
       price: "",
@@ -70,16 +71,14 @@ export default {
   methods: {
     getData() {
       axios.get(`${this.url}/getProduct/${this.productId}`).then((res) => {
-        console.log(res.data);
-        //   return (this.item = res.data);
         this.item = res.data;
-        console.log(this.item);
       });
     },
 
     getProductImg(imageName) {
       console.log(imageName);
       return "https://jwbrand.company/backend/" + imageName;
+      // return "http://localhost:3000/" + imageName;
     },
 
     cancel() {
@@ -117,9 +116,6 @@ export default {
   async created() {
     this.item = await this.getData();
     this.product = await this.getColor();
-    // this.productName = this.editCart.productName;
-    // this.productDes = this.editCart.productDes;
-    // this.price = this.editCart.price;
   },
 
   mounted() {},

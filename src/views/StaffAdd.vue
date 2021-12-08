@@ -132,6 +132,7 @@ export default {
       picture: null,
       check: false,
       url: "https://jwbrand.company/backend/api",
+      // url: "http://localhost:3000/api",
       inputName: false,
       inputPrice: false,
       inputColor: false,
@@ -197,7 +198,6 @@ export default {
         this.productPrice <= 0 && this.productPrice < 999.99 ? true : false;
       this.inputColor = this.colorsSelect.length == 0 ? true : false;
       this.inputType = this.selectType === null ? true : false;
-      console.log(this.colorsSelect);
       this.inputDescription = this.productDescription === "" ? true : false;
       if (
         this.inputName ||
@@ -208,12 +208,10 @@ export default {
       ) {
         return;
       }
-      console.log("loo");
       this.addProduct();
     },
 
     addProduct() {
-      console.log(this.selectType)
       const formData = new FormData();
       let data = {
         productName: this.productName,
@@ -235,7 +233,6 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data)
           res.status === 200 ? alert("Sucessfully Added") : alert("Error");
         });
     },

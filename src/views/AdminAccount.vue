@@ -1,7 +1,6 @@
 <template>
   <div class="h-screen mt-0">
-    <div class="background bg-loginAd fixed top-0 w-screen h-screen">
-    </div>
+    <div class="background bg-loginAd fixed top-0 w-screen h-screen"></div>
     <navAdmin></navAdmin>
 
     <div class="layout text-white">
@@ -84,7 +83,8 @@ export default {
   data() {
     return {
       admin: [],
-       url: "https://jwbrand.company/backend/api/admin/getInfo",
+      url: "https://jwbrand.company/backend/api/admin/getInfo",
+      //  url: "http://localhost:3000/api/admin/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,
@@ -111,22 +111,18 @@ export default {
     },
 
     async getAdmin() {
-      try {
-        axios
-          .get(this.url, {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            this.admin = res.data;
-          })
-          .catch((err) => {
-            alert(err.response.data);
-          });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
+      axios
+        .get(this.url, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          this.admin = res.data;
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
     },
 
     formatDate(date) {
@@ -143,19 +139,6 @@ export default {
 </script>
 
 <style scoped>
-/* .head {
-  @apply xl:mt-20 xl:text-3xl
-  lg:mt-16 lg:text-2xl
-  md:mt-12 md:text-xl
-  sm:mt-10 sm:text-lg;
-}
-.bg {
-  @apply py-5 px-7 rounded-sm shadow w-1/2
-  xl:mt-14 xl:py-10 xl:px-16
-  lg:py-10 lg:px-10 lg:w-1/3
-  md:shadow-md
-  sm:py-6 sm:px-8 sm:rounded-md sm:w-2/4;
-} */
 .detail {
   @apply text-xs mt-2
   lg:mt-2 
@@ -185,7 +168,7 @@ button {
   @apply md:mt-5
   lg:justify-center lg:flex;
 }
-.background{
+.background {
   z-index: -10;
 }
 </style>

@@ -11,7 +11,9 @@
       <div>
         <div v-if="hiddenEdit == false">
           <div class="detail flex justify-center mb-1">
-            <p class="user font-bold">{{ this.customer.firstName }} {{ this.customer.lastName }}</p>
+            <p class="user font-bold">
+              {{ this.customer.firstName }} {{ this.customer.lastName }}
+            </p>
           </div>
 
           <div class="info">
@@ -69,7 +71,8 @@ export default {
   data() {
     return {
       customer: [],
-      url: "https://jwbrand.company/backend/apicustomer/accountInfo",
+      url: "https://jwbrand.company/backend/api/customer/accountInfo",
+      // url: "http://localhost:3000/api/customer/accountInfo",
       firstName: "",
       lastName: "",
       DOB: null,
@@ -91,40 +94,34 @@ export default {
     },
 
     async getCustomer() {
-      try {
-        console.log("Help");
-        axios
-          .get(this.url, {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            this.customer = res.data;
-            console.log(res.data);
-          })
-          .catch((err) => {
-            if (err.response.status === 403) {
-              return this.token;
-            }
-            alert(err.response.data);
-          });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
+      console.log("Help");
+      axios
+        .get(this.url, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          this.customer = res.data;
+          console.log(res.data);
+        })
+        .catch((err) => {
+          if (err.response.status === 403) {
+            return this.token;
+          }
+          alert(err.response.data);
+        });
     },
 
     logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
-      console.log("logout");
       return this.$router.push("/login");
     },
   },
 
   async created() {
     this.customer = await this.getCustomer();
-    console.log("Hello");
   },
 };
 </script>

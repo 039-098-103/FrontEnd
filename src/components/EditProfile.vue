@@ -126,8 +126,8 @@ export default {
       DOB: null,
       username: "",
       password: "",
-      // url: "http://52.187.115.71:3000/admin",
       url: "https://jwbrand.company/backend/api/admin",
+      // url: "https://localhost:3000/api/admin",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,
@@ -160,9 +160,7 @@ export default {
       // <edit @handleCancel="ชื่อ method ที่ไว้ใช่เปลี่ยนค่า true false ในการเเสดง ไม่เเสดง"></edit>
       this.$emit("toggleOpen");
     },
-    // done(){
-    //   alert(`Edit Success`)
-    // },
+    
     submitAccount() {
       this.inputFirstname = this.firstName === "" ? true : false;
       this.inputLastname = this.lastName === "" ? true : false;

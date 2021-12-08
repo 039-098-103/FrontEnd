@@ -2,8 +2,7 @@
   <navAdmin></navAdmin>
 
   <div class=" h-full lg:h-screen">
-    <div class="background bg-loginAd fixed top-0 w-screen h-screen">
-    </div>
+    <div class="background bg-loginAd fixed top-0 w-screen h-screen"></div>
     <div class="title flex justify-center md:justify-start z-10">
       <div class="posit mt-20">
         <p class="head font-bold">Officer</p>
@@ -68,7 +67,9 @@ export default {
     return {
       staffs: [],
       url: "https://jwbrand.company/backend/api/admin",
+      // url: "http://localhost:3000/api/admin",
       login: "https://jwbrand.company/backend/api/worker/auth",
+      // login: "http://localhost:3000/api/worker/auth",
       search: "",
       admin: [],
       pass: "",
@@ -77,47 +78,36 @@ export default {
 
   methods: {
     async getAdmin() {
-      try {
-        axios
-          .get(`${this.userAdmin}`, {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            this.admin = res.data;
-          })
-          .catch((err) => {
-            alert(err.response.data);
-          });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
+      axios
+        .get(`${this.userAdmin}`, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          this.admin = res.data;
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
     },
 
     async getStaffs() {
-      try {
-        axios
-          .get(`${this.url}/getStaffList`, {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            this.staffs = res.data;
-          })
-          .catch((err) => {
-            // alert(err.response.data);
-            if (err.response.status === 403) {
-              // console.log("you are not log-in");
-              alert("you are not log-in");
-              this.$router.push("/worker");
-            }
-            console.log(err.response.data);
-          });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
+      axios
+        .get(`${this.url}/getStaffList`, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          this.staffs = res.data;
+        })
+        .catch((err) => {
+          if (err.response.status === 403) {
+            alert("you are not log-in");
+            this.$router.push("/worker");
+          }
+        });
     },
 
     async deleteStaff(username) {
@@ -134,11 +124,10 @@ export default {
               this.staffs = this.staffs.filter(
                 (list) => list.username !== username
               );
-              alert(`Delete Success`)
+              alert(`Delete Success`);
             }
           })
           .catch((err) => {
-            console.log(err)
             alert(err.response.data);
           });
       }
@@ -215,7 +204,7 @@ input::placeholder {
   md:mb-5 md:mx-7 md:justify-end
   my-5 mt-10;
 }
-.background{
+.background {
   z-index: -10;
 }
 </style>

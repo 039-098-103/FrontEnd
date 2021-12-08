@@ -11,8 +11,8 @@
       <div class="head flex justify-end font-semibold ">Price</div>
     </div>
     <div v-for="order in orders" :key="order.oderId" class="text-xs mt-5">
-      <div class="sub mb-2">
-        {{ formatDate(order.deliveryDate) }}
+      <div class="sub mb-2 font-semibold">
+        Date to receive: {{ formatDate(order.deliveryDate) }}
       </div>
       
       <div
@@ -48,6 +48,7 @@ export default {
   data() {
     return {
       url: "https://jwbrand.company/backend/api/customer/getOrders",
+      // url: "http://localhost:3000/api/customer/getOrders",
       orders: [],
     };
   },
@@ -68,7 +69,6 @@ export default {
         },
       })
       .then((res) => {
-        console.log(res.data);
         return (this.orders = res.data);
       });
   },

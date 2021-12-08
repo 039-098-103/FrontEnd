@@ -75,18 +75,6 @@
         </div>
       </div>
 
-      <!-- <div class="edit flex justify-center ">
-        <input
-          type="password"
-          class="input px-5 py-1 inline my-2"
-          v-model="confirmPassword"
-          placeholder="Confirm Password"
-        />
-        <sup v-show="inputConfirm" class="text-red-500 justify-end flex mt-4">
-          Please confirm password!</sup
-        >
-      </div> -->
-
       <div class="mt-8">
         <div class="flex justify-center w-full mb-2 ">
           <button
@@ -125,8 +113,8 @@ export default {
       DOB: null,
       username: "",
       password: null,
-     
       url: "https://jwbrand.company/backend/api/staff",
+      // url: "http://localhost:3000/api/staff",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,
@@ -140,16 +128,6 @@ export default {
     };
   },
   methods: {
-    // selectDate() {
-    //   function calculate_age(dob) {
-    //     var diff_ms = Date.now() - dob.getTime();
-    //     var age_dt = new Date(diff_ms);
-    //     return Math.abs(age_dt.getUTCFullYear() - 1970);
-    //   }
-    //   console.log(calculate_age(new Date(1982, 11, 4)));
-    //   console.log(calculate_age(new Date(1962, 1, 1)));
-    // },
-
     async showPass() {
       this.showPassword = !this.showPassword;
     },

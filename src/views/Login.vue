@@ -65,13 +65,13 @@ export default {
       user: "",
       pass: "",
       url: "https://jwbrand.company/backend/api/auth",
+      // url: "http://localhost:3000/api/auth",
       customer: [],
       hidden: false,
     };
   },
 
   methods: {
-    
     colseSignUp() {
       this.hidden = false;
     },
@@ -91,18 +91,13 @@ export default {
               localStorage.setItem("role", res.data.role);
               return this.$router.push("/allProduct");
             }
-            console.log(res.data.token);
           })
           .catch((err) => {
             alert(err.response.data);
           });
       }
     },
-  },
-
-  async created() {
-
-  },
+  }
 };
 </script>
 

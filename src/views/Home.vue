@@ -11,7 +11,7 @@
     </div>
 
     <div v-if="products" class="image mt-5 grid grid-cols-2">
-      <div class="box-l pl-8 pr-2">
+      <div class="">
         <div class="flex justify-center">
           <img :src="getProductImg(products[3].imageName)" class="shadow" />
         </div>
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div class="box-r pr-8 pl-2">
+      <div class="">
         <div class="flex justify-center">
           <img :src="getProductImg(products[11].imageName)" class=" shadow" />
         </div>
@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <div class="box-l px-8 pr-2">
+      <div class="">
         <div class="flex justify-center">
           <img :src="getProductImg(products[8].imageName)" class="shadow" />
         </div>
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <div class="box-r pr-8 pl-2">
+      <div class="">
         <div class="flex justify-center">
           <img :src="getProductImg(products[5].imageName)" class="shadow" />
         </div>
@@ -91,7 +91,7 @@
         </div>
       </div>
 
-      <div class="box-l pl-8 pr-2">
+      <div class="">
         <div class="flex justify-center">
           <img :src="getProductImg(products[9].imageName)" class="shadow" />
         </div>
@@ -111,7 +111,7 @@
         </div>
       </div>
 
-      <div class="box-r pr-8 pl-2 ">
+      <div class=" ">
         <div class="flex justify-center">
           <img :src="getProductImg(products[1].imageName)" class=" shadow" />
         </div>
@@ -142,7 +142,6 @@
 
 <script>
 import axios from "axios";
-// import ProductDataService from "../service/ProductDataService";
 export default {
   name: "products",
   components: {},
@@ -151,6 +150,7 @@ export default {
     return {
       search: "",
       url: "https://jwbrand.company/backend/api",
+      // url: "http://localhost:3000/api",
       products: [],
       imageName: "",
       price: null,
@@ -165,17 +165,6 @@ export default {
   },
 
   methods: {
-    //   async getProduct() {
-    //     try {
-    //       const res = await fetch(this.url);
-    //       const data = await res.json();
-    //       return data;
-    //     } catch (error) {
-    //       console.log(`Could not get! ${error}`);
-    //     }
-    //   },
-    // },
-
     async getProduct() {
       try {
         axios.get(`${this.url}/getProduct`).then((res) => {
@@ -183,24 +172,15 @@ export default {
         });
         axios.get(`${this.url}/getColors`).then((res) => {
           this.colors = res.data;
-          console.log(this.products);
-          console.log(this.colors[3]);
         });
-        // .catch((err) => {
-        //   // alert(err.response.data);
-        //   if(err.response.status === 403){
-        //     console.log('you are not log-in')
-        //     this.$router.push('/')
-        //   }
-        //   console.log(err.response.data)
-        // });
       } catch (error) {
         console.log(`Could not get! ${error}`);
       }
     },
 
     getProductImg(imageName) {
-      return "http://localhost:3000/" + imageName;
+      // return "http://localhost:3000/" + imageName;
+      return "https://jwbrand.company/backend/" + imageName;
     },
   },
 
@@ -244,12 +224,6 @@ export default {
 }
 .center {
   @apply flex justify-center;
-}
-.box-l {
-  @apply md:pr-0 pl-0;
-}
-.box-r {
-  @apply md:pr-0 pl-0;
 }
 .new-in{
   @apply md:mx-24 md:mb-10

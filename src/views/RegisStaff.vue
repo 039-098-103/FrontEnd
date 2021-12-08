@@ -178,8 +178,8 @@ export default {
       confirmPassword: "",
       position: "",
       alertPassword: false,
-      // url: "http://52.187.115.71:3000/admin",
       url: "https://jwbrand.company/backend/api/admin",
+      // url: "http://localhost:3000/api/admin",
       staffs: [],
       type: "password",
       btnText: "Show Password",
@@ -222,7 +222,6 @@ export default {
     },
 
     async addStaff() {
-      try {
         const formData = new FormData();
         let data = {
           firstName: this.firstName,
@@ -261,9 +260,7 @@ export default {
           .catch((err) => {
             alert(err.response.data);
           });
-      } catch (error) {
-        console.log(`Could not save! ${error}`);
-      }
+
     },
   },
   mounted() {
