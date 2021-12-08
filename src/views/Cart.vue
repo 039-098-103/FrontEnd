@@ -78,6 +78,8 @@ export default {
     return {
       url: "https://www.jwbrand.company/backend/api/customer/getCart",
       remove: "https://www.jwbrand.company/backend/api/customer/removeFromCart",
+      // url: "http://localhost:3000/api/customer/getCart",
+      // remove: "http://localhost:3000/api/customer/removeFromCart",
       cart: [],
       total: "",
       hiddenEdit: false,
@@ -105,6 +107,8 @@ export default {
 
     getProductImg(productId) {
       return "https://www.jwbrand.company/backend/" + productId;
+      // return "http://localhost:3000/" + productId;
+      
     },
 
     async deleteOrder(cartItemId) {

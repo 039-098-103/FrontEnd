@@ -84,6 +84,7 @@ export default {
     return {
       admin: [],
        url: "https://www.jwbrand.company/backend/api/admin/getInfo",
+      //  url: "http://localhost:3000/api/admin/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,

@@ -31,7 +31,7 @@
 
           <div v-if="login" class="signin mt-5">
             <button class="login bg-red-500 px-20 rounded-full">
-              <p class="px-3 py-2 text-black">SIGN IN</p>
+              <p class="px-3 py-2 text-white">SIGN IN</p>
             </button>
           </div>
 
@@ -45,7 +45,6 @@
       </div>
 
       <div v-else>
-
         <Register @toggleOpen = colseSignUp></Register>
       </div>
     </div>
@@ -65,6 +64,7 @@ export default {
       user: "",
       pass: "",
       url: "https://www.jwbrand.company/backend/api/auth",
+      // url: "http://localhost:3000/api/auth",
       customer: [],
       hidden: false,
     };

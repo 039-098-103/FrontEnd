@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div v-if="hamburgerBar" class="menuNav w-full bg-white fixed">
+  <div v-if="hamburgerBar" class="menuNav w-full bg-white z-50 fixed">
     <div class="fixed py-5 grid grid-cols-3 w-screen ">
       <div class="items-center justify-start flex" @click="showHamburger()">
         <i class="icons fas fa-bars fa-lg"></i>
@@ -32,7 +32,7 @@
       </p>
     </div>
 
-    <div class="flex justify-center ">
+    <div class="flex justify-center">
       <div class="">
         <router-link to="/allProduct">
           <p class="pb-5 pt-10 mt-20 menu">All</p>
@@ -73,21 +73,18 @@ export default {
     },
   },
 
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-
-  // destroyed() {
-  //   window.removeEventListener("scroll", this.handleScroll);
+  // created() {
+  //   window.addEventListener("scroll", this.handleScroll);
   // },
 
-  mounted() {
-    window.addEventListener("scroll", this.handleScroll);
-    this.handleScroll;
-    var element = document.querySelector(".similar-adventures");
-    var top = element.offsetTop;
-    window.scrollTo(0, top);
-  },
+
+  // mounted() {
+  //   window.addEventListener("scroll", this.handleScroll);
+  //   this.handleScroll;
+  //   var element = document.querySelector(".similar-adventures");
+  //   var top = element.offsetTop;
+  //   window.scrollTo(0, top);
+  // },
 };
 </script>
 

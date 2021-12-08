@@ -33,7 +33,7 @@
         />
       </div>
 
-      <div class="list col-span-2 ml-5 text-xs">
+      <div class="list col-span-2 ml-5 text-xs lg:pt-5">
         <div class="md:flex md:justify-center">
           {{ item.productName }}
         </div>
@@ -60,6 +60,8 @@ export default {
     return {
       url: "https://www.jwbrand.company/backend/api/customer/checkout",
       item: "https://www.jwbrand.company/backend/api/customer/getCart",
+      // url: "http://localhost:3000/api/customer/checkout",
+      // item: "http://localhost:3000/api/customer/getCart",
       address: "",
       inputAddress: false,
       listItem: [],
@@ -69,6 +71,7 @@ export default {
   methods: {
     getProductImg(productId) {
       return "https://www.jwbrand.company/backend/" + productId;
+      // return "http://localhost:3000/" + productId;
     },
 
     submit() {

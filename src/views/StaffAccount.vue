@@ -84,6 +84,7 @@ export default {
     return {
       staff: [],
       url: "https://www.jwbrand.company/backend/api/staff/getInfo",
+      // url: "http://localhost:3000/api/staff/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,

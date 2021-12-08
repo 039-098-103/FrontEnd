@@ -94,6 +94,8 @@ const routes = [{
       const login = localStorage.getItem("token");
       if (!login && role != "Customer") {
         next("/login");
+      } else if (role === "Staff" || role === "Admin") {
+        next("/login");
       } else {
         next();
       }
@@ -108,6 +110,8 @@ const routes = [{
       const role = localStorage.getItem("role");
       const login = localStorage.getItem("token");
       if (!login && role != "Customer") {
+        next("/login");
+      } else if (role === "Staff" || role === "Admin") {
         next("/login");
       } else {
         next();
@@ -139,6 +143,17 @@ const routes = [{
     path: '/order',
     name: 'Order',
     component: Order,
+    beforeEnter: (to, from, next) => {
+      const role = localStorage.getItem("role");
+      const login = localStorage.getItem("token");
+      if (role === "Staff" || role === "Admin") {
+        next("/login");
+      }else if(!login && role != "Customer"){
+        next("/login")
+      } else {
+        next();
+      }
+    }
   }
 ]
 

@@ -39,6 +39,7 @@
 
       <div class="edit flex justify-center">
         <input
+        readonly
           v-model="username"
           type="text"
           placeholder="Change username"
@@ -80,7 +81,7 @@
           <button
             class="bg-red-500 text-white"
             type="submit"
-            @click="submitEdit"
+            @click="submitAccount"
           >
             SAVE EDIT
           </button>
@@ -114,6 +115,7 @@ export default {
       username: "",
       password: null,
       url: "https://www.jwbrand.company/backend/api/staff",
+      // url: "http://localhost:3000/api/staff",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,
@@ -139,14 +141,12 @@ export default {
       this.inputFirstname = this.firstName === "" ? true : false;
       this.inputLastname = this.lastName === "" ? true : false;
       this.inputBOD = this.DOB === "" ? true : false;
-      this.inputUsername = this.username === "" ? true : false;
       this.alertPassword =
         this.password !== this.confirmPassword ? true : false;
       if (
         this.inputFirstname ||
         this.inputLastname ||
         this.inputBOD ||
-        this.inputUsername ||
         this.inputPassword ||
         this.inputConfirm
       ) {
@@ -163,7 +163,6 @@ export default {
         firstName: this.firstName,
           lastName: this.lastName,
           DOB: this.DOB,
-          username: this.username,
           password: this.password,
       };
       if (this.password == undefined) {
@@ -171,7 +170,6 @@ export default {
           firstName: this.firstName,
           lastName: this.lastName,
           DOB: this.DOB,
-          username: this.username,
           password: "",
         };
       }
@@ -188,26 +186,9 @@ export default {
         })
         .then((res) => {
           if (res.status === 200) {
-            this.staff = this.staff.map((staffEdit) =>
-              staffEdit.username === this.username
-                ? {
-                    ...staffEdit,
-                    firstName: this.firstName,
-                    lastName: this.lastName,
-                    DOB: this.DOB,
-                    username: this.username,
-                    password: this.password,
-                  }
-                : staffEdit
-            );
-            (this.firstName = ""),
-              (this.lastName = ""),
-              (this.DOB = null),
-              (this.password = ""),
-              (this.username = ""),
-              (this.submitEdit = null);
             alert("Edit success");
             this.$emit("done");
+            this.$router.go();
           }
         })
         .catch((err) => {

@@ -119,10 +119,10 @@ export default {
     return {
       hidden: true,
       url: "https://www.jwbrand.company/backend/api/customer/register",
+      // url: "http://localhost:3000/api/customer/register",
       customer: [],
       inputFirstname: false,
       inputLastname: false,
-      inputBOD: false,
       inputUsername: false,
       inputPassword: false,
       inputConfirm: false,
@@ -198,24 +198,6 @@ export default {
             alert(err.response.data);
           });
     },
-  },
-
-  mounted() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    if (dd < 10) {
-      dd = "0" + dd;
-    }
-
-    if (mm < 10) {
-      mm = "0" + mm;
-    }
-
-    today = yyyy + "-" + mm + "-" + dd;
-    document.getElementById("date").setAttribute("max", today);
   },
 };
 </script>

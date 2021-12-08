@@ -58,6 +58,7 @@ export default {
   data() {
     return {
       url: "https://www.jwbrand.company/backend/api",
+      // url: "http://localhost:3000/api",
       product: "",
       color: null,
       inputColor: false,
@@ -67,6 +68,7 @@ export default {
   methods: {
     getProductImg(imageName) {
       return "https://www.jwbrand.company/backend/" + imageName;
+      // return "http://localhost:3000/" + imageName;
     },
 
     add() {
@@ -146,7 +148,7 @@ export default {
   border: 2px solid red;
 }
 .detail {
-  @apply md:grid-cols-2 md:pt-2 md:my-0;
+  @apply md:grid-cols-2 md:pt-32 md:my-0;
 }
 .name {
   @apply lg:text-lg;
