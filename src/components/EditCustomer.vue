@@ -99,8 +99,7 @@ export default {
       lastName: "",
       username: "",
       password: null,
-      url: "https://jwbrand.company/backend/api/admin",
-      // url: "https://localhost:3000/api/admin",
+      url: "https://www.jwbrand.company/backend/api/admin",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,
@@ -190,11 +189,10 @@ export default {
   },
 
   async created() {
-    // this.admin = await this.getData();
-    this.firstName = this.editCustomer.firstName;
-    this.lastName = this.editCustomer.lastName;
-    this.password = this.editCustomer.password;
-    this.username = this.editCustomer.username;
+    this.firstName = this.editAdmin.firstName;
+    this.lastName = this.editAdmin.lastName;
+    this.password = this.editAdmin.password;
+    this.username = this.editAdmin.username;
   },
 };
 </script>

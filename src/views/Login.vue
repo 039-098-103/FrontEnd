@@ -64,8 +64,7 @@ export default {
     return {
       user: "",
       pass: "",
-      url: "https://jwbrand.company/backend/api/auth",
-      // url: "http://localhost:3000/api/auth",
+      url: "https://www.jwbrand.company/backend/api/auth",
       customer: [],
       hidden: false,
     };
@@ -93,7 +92,7 @@ export default {
             }
           })
           .catch((err) => {
-            alert(err.response.data);
+            alert(err);
           });
       }
     },

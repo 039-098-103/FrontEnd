@@ -16,7 +16,6 @@
           </div>
         </div>
 
-        <!-- <div v-for="staff in staff" :key="staff.username"> -->
           <div v-if="hiddenEdit == false">
             <div class="detail flex justify-center mb-1">
               <p class="user font-bold">
@@ -67,7 +66,6 @@
             ></editStaff>
           </div>
         </div>
-      <!-- </div> -->
 
       <div class="lg:col-span-6">
         <img src="../../src/assets/orange.jpg" class="lg:block hidden" />
@@ -85,8 +83,7 @@ export default {
   data() {
     return {
       staff: [],
-      url: "https://jwbrand.company/backend/api/staff/getInfo",
-      //  url: "http://localhost:3000/api/staff/getInfo",
+      url: "https://www.jwbrand.company/backend/api/staff/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,
@@ -100,7 +97,6 @@ export default {
     logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
-      console.log("logout");
       return this.$router.push("/worker");
     },
 
@@ -125,7 +121,6 @@ export default {
           .catch((err) => {
             alert(err.response.data);
           });
-
     },
 
     formatDate(date) {

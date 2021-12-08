@@ -83,8 +83,7 @@ export default {
   data() {
     return {
       admin: [],
-      url: "https://jwbrand.company/backend/api/admin/getInfo",
-      //  url: "http://localhost:3000/api/admin/getInfo",
+       url: "https://www.jwbrand.company/backend/api/admin/getInfo",
       firstName: "",
       lastName: "",
       DOB: null,
@@ -98,7 +97,6 @@ export default {
     logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
-      console.log("logout");
       return this.$router.push("/worker");
     },
 
@@ -151,7 +149,6 @@ export default {
 .username {
   color: white;
   font-size: 30px;
-  /* @apply pt-10; */
 }
 .layout {
   @apply flex justify-center

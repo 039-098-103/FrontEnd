@@ -113,8 +113,7 @@ export default {
       DOB: null,
       username: "",
       password: null,
-      url: "https://jwbrand.company/backend/api/staff",
-      // url: "http://localhost:3000/api/staff",
+      url: "https://www.jwbrand.company/backend/api/staff",
       show: true,
       hiddenEdit: true,
       inputFirstname: false,
@@ -229,7 +228,6 @@ export default {
     this.DOB = this.editStaff.DOB;
     this.password = this.editStaff.password;
     this.username = this.editStaff.username;
-    console.log(this.editStaff)
   },
 };
 </script>

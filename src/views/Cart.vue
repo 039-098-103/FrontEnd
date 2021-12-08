@@ -76,10 +76,8 @@ export default {
 
   data() {
     return {
-      // url: "http://localhost:3000/api/customer/getCart",
-      // remove: "http://localhost:3000/api/customer/removeFromCart",
-      url: "https://jwbrand.company/backend/api/customer/getCart",
-      remove: "https://jwbrand.company/backend/api/customer/removeFromCart",
+      url: "https://www.jwbrand.company/backend/api/customer/getCart",
+      remove: "https://www.jwbrand.company/backend/api/customer/removeFromCart",
       cart: [],
       total: "",
       hiddenEdit: false,
@@ -106,8 +104,7 @@ export default {
     },
 
     getProductImg(productId) {
-      return "https://jwbrand.company/backend/" + productId;
-      // return "http://localhost:3000/" + productId;
+      return "https://www.jwbrand.company/backend/" + productId;
     },
 
     async deleteOrder(cartItemId) {
@@ -138,7 +135,7 @@ export default {
         },
       })
       .then((res) => {
-        return (this.cart = res.data);
+        this.cart = res.data
       });
   },
 };

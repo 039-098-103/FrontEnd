@@ -55,17 +55,15 @@ export default {
       user: "",
       pass: "",
       showError: false,
-      url: "https://jwbrand.company/backend/api/worker/auth",
-      // url: "http://localhost:3000/api/worker/auth",
+      url: "https://www.jwbrand.company/backend/api/worker/auth",
     };
   },
   created() {
     let check = localStorage.getItem("token");
-    console.log(check);
     if (!check) {
       return;
     } else {
-      return this.$router.push("/adminLogin");
+      return this.$router.push("/worker");
     }
   },
 
@@ -83,13 +81,11 @@ export default {
             if (res.status === 200) {
               localStorage.setItem("token", res.data.token);
               localStorage.setItem("role", res.data.role);
-              // console.log(res.data.role);
               if (res.data.role == "Admin") {
                 return this.$router.push("/adminHome");
               } else {
                 return this.$router.push("/staffHome");
               }
-              // console.log(res.data.token);
             }
           })
           .catch((err) => {
@@ -102,7 +98,6 @@ export default {
 </script>
 
 <style scoped>
-/* @import '~material-icons/iconfont/material-icons.scss'; */
 .brand {
   font-family: "Bebas Neue", cursive;
   color: white;

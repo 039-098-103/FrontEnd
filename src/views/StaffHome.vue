@@ -74,8 +74,7 @@ export default {
 
   data() {
     return {
-      url: "https://jwbrand.company/backend/api/staff/getOrderList",
-      // url: "http://localhost:3000/api/staff/getOrderList",
+      url: "https://www.jwbrand.company/backend/api/staff/getOrderList",
       orders: [],
       search: "",
     };
@@ -89,7 +88,6 @@ export default {
     },
 
     async getOrders() {
-      try {
         axios
           .get(this.url, {
             headers: {
@@ -105,9 +103,6 @@ export default {
               this.$router.push("/worker");
             }
           });
-      } catch (error) {
-        console.log(`Could not get! ${error}`);
-      }
     },
   },
 

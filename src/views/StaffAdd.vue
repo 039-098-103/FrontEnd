@@ -6,7 +6,6 @@
       <p class="head">NEW IN</p>
     </div>
 
-    <!-- {{ image }} -->
     <div class="addProduct grid grid-cols-1 py-1 justify-items-stretch mx-14">
       <label
         class="upPic bg-white flex-col items-center ursor-pointer rounded-lg shadow-lg"
@@ -131,8 +130,7 @@ export default {
     return {
       picture: null,
       check: false,
-      url: "https://jwbrand.company/backend/api",
-      // url: "http://localhost:3000/api",
+      url: "https://www.jwbrand.company/backend/api",
       inputName: false,
       inputPrice: false,
       inputColor: false,

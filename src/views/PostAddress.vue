@@ -48,9 +48,7 @@
     </div>
 
     <div class="flex justify-center mt-8 text-xs" @click="submit">
-      <!-- <router-link to="/order"> -->
       <button class="bg-black text-white py-1 px-2">Place Order</button>
-      <!-- </router-link> -->
     </div>
   </div>
 </template>
@@ -60,10 +58,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      url: "https://jwbrand.company/backend/api/customer/checkout",
-      item: "https://jwbrand.company/backend/api/customer/getCart",
-      // url: "http://localhost:3000/api/customer/checkout",
-      // item: "http://localhost:3000/api/customer/getCart",
+      url: "https://www.jwbrand.company/backend/api/customer/checkout",
+      item: "https://www.jwbrand.company/backend/api/customer/getCart",
       address: "",
       inputAddress: false,
       listItem: [],
@@ -72,8 +68,7 @@ export default {
 
   methods: {
     getProductImg(productId) {
-      return "https://jwbrand.company/backend/" + productId;
-      // return "http://localhost:3000/api" + productId;
+      return "https://www.jwbrand.company/backend/" + productId;
     },
 
     submit() {

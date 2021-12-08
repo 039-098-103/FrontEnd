@@ -115,12 +115,10 @@
 <script>
 import axios from "axios";
 export default {
-
   data() {
     return {
       hidden: true,
-      url: "https://jwbrand.company/backend/api/customer/register",
-      // url: "http://localhost:3000/api/customer/register",
+      url: "https://www.jwbrand.company/backend/api/customer/register",
       customer: [],
       inputFirstname: false,
       inputLastname: false,
@@ -165,7 +163,6 @@ export default {
     },
 
     async addCustomer() {
-      try {
         const formData = new FormData();
         let data = {
           firstName: this.firstName,
@@ -200,9 +197,6 @@ export default {
           .catch((err) => {
             alert(err.response.data);
           });
-      } catch (error) {
-        console.log(`Could not save! ${error}`);
-      }
     },
   },
 

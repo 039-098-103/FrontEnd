@@ -66,10 +66,8 @@ export default {
   data() {
     return {
       staffs: [],
-      url: "https://jwbrand.company/backend/api/admin",
-      // url: "http://localhost:3000/api/admin",
-      login: "https://jwbrand.company/backend/api/worker/auth",
-      // login: "http://localhost:3000/api/worker/auth",
+      url: "https://www.jwbrand.company/backend/api/admin",
+      login: "https://www.jwbrand.company/backend/api/worker/auth",
       search: "",
       admin: [],
       pass: "",
@@ -119,7 +117,6 @@ export default {
             },
           })
           .then((res) => {
-            console.log(res.data);
             if (res.status === 200) {
               this.staffs = this.staffs.filter(
                 (list) => list.username !== username

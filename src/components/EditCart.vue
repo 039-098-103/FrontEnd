@@ -57,8 +57,7 @@ export default {
   data() {
     return {
       item: [],
-      url: "https://jwbrand.company/backend/api",
-      // url: "https://localhost:3000/api",
+      url: "https://www.jwbrand.company/backend/api",
       inputColor: false,
       productName: "",
       price: "",
@@ -76,9 +75,7 @@ export default {
     },
 
     getProductImg(imageName) {
-      console.log(imageName);
-      return "https://jwbrand.company/backend/" + imageName;
-      // return "http://localhost:3000/" + imageName;
+      return "https://www.jwbrand.company/backend/" + imageName;
     },
 
     cancel() {
@@ -115,7 +112,6 @@ export default {
 
   async created() {
     this.item = await this.getData();
-    this.product = await this.getColor();
   },
 
   mounted() {},
@@ -123,23 +119,4 @@ export default {
 </script>
 
 <style scoped>
-/* .checkbox {
-  display: flex;
-  cursor: pointer;
-  border-radius: 50px;
-  @apply mb-2 lg:mb-4;
-}
-
-.checkbox > input {
-  appearance: none;
-  outline: none;
-  transition-duration: 0.3s;
-  cursor: pointer;
-  border-radius: 50px;
-  @apply w-6 h-4 sm:w-4 md:w-5 lg:w-8 lg:h-5;
-}
-
-.checkbox > input:checked {
-  border: 2px solid red;
-} */
 </style>

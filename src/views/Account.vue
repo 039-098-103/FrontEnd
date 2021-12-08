@@ -71,8 +71,7 @@ export default {
   data() {
     return {
       customer: [],
-      url: "https://jwbrand.company/backend/api/customer/accountInfo",
-      // url: "http://localhost:3000/api/customer/accountInfo",
+      url: "https://www.jwbrand.company/backend/api/customer/accountInfo",
       firstName: "",
       lastName: "",
       DOB: null,
@@ -94,7 +93,6 @@ export default {
     },
 
     async getCustomer() {
-      console.log("Help");
       axios
         .get(this.url, {
           headers: {
@@ -140,9 +138,7 @@ button {
   sm:ml-1;
 }
 .username {
-  /* color: white; */
   font-size: 30px;
-  /* @apply pt-10; */
 }
 .layout {
   @apply flex justify-center

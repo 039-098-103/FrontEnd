@@ -149,8 +149,7 @@ export default {
   data() {
     return {
       search: "",
-      url: "https://jwbrand.company/backend/api",
-      // url: "http://localhost:3000/api",
+      url: "https://www.jwbrand.company/backend/api",
       products: [],
       imageName: "",
       price: null,
@@ -179,8 +178,7 @@ export default {
     },
 
     getProductImg(imageName) {
-      // return "http://localhost:3000/" + imageName;
-      return "https://jwbrand.company/backend/" + imageName;
+      return "https://www.jwbrand.company/backend/" + imageName;
     },
   },
 
@@ -206,8 +204,6 @@ export default {
   @apply justify-center;
 }
 .showImage {
-  /* width: 100px;
-  height: 100px; */
   @apply w-28 h-28 md:w-52 md:h-52 md:items-center md:flex lg:w-80 lg:h-80;
 }
 .product {
