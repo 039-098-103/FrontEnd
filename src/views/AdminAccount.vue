@@ -35,7 +35,7 @@
                 <div class="detail pt-5">
                   <div class="mb-2">
                     <button
-                      class="bg-white text-black rounded-full w-full py-1"
+                      class="bg-white text-black rounded-full w-full py-1 border-2"
                       @click="hiddenEdit = !hiddenEdit"
                     >
                       <i class="fas fa-user-edit"></i>
@@ -44,7 +44,7 @@
                   </div>
 
                   <div @click="logout()">
-                    <button class="bg-red-500 rounded-full w-full py-1">
+                    <button class="bg-red-500 rounded-full w-full py-1 text-white">
                       <i class="fas fa-sign-out-alt"></i>
                       LOG OUT
                     </button>
