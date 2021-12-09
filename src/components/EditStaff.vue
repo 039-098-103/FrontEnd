@@ -43,7 +43,7 @@
           v-model="username"
           type="text"
           placeholder="Change username"
-          class="px-5 py-1 inline my-2"
+          class="px-5 py-1 inline my-2 text-gray-600"
         />
       </div>
       <sup v-show="inputUsername" class="text-red-500 justify-end flex mt-4">

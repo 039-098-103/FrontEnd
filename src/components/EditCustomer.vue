@@ -25,13 +25,13 @@
         Please enter lastname!</sup
       >
 
-      <div class="edit flex justify-center text-gray-500">
+      <div class="edit flex justify-center ">
         <input
         readonly
           v-model="username"
           type="text"
           placeholder="Change username"
-          class="px-5 py-1 inline my-2"
+          class="px-5 py-1 inline my-2 text-gray-500"
         />
       </div>
 
@@ -97,7 +97,7 @@ export default {
       lastName: "",
       username: "",
       password: null,
-      url: "https://www.jwbrand.company/backend/api/admin",
+      url: "https://www.jwbrand.company/backend/api/customer",
       // url: "http://localhost:3000/api/admin",
       show: true,
       hiddenEdit: true,
@@ -152,7 +152,7 @@ export default {
       });
       formData.append("data", blob);
       axios
-        .patch(`${this.url}/update`, formData, {
+        .patch(`${this.url}/editInfo`, formData, {
           headers: {
             Authorization: localStorage.getItem("token"),
           },
