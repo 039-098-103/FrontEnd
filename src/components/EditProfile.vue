@@ -40,7 +40,7 @@
           readonly
           v-model="username"
           type="text"
-          class="px-5 py-1 inline my-2 text-gray-600"
+          class="px-5 py-1 inline my-2 text-gray-500"
         />
       </div>
 

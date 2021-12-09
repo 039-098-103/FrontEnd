@@ -25,7 +25,7 @@
               <div class="detail pt-5">
                 <div class="mb-2">
                   <button
-                    class="bg-white text-black rounded-full w-full py-1"
+                    class="bg-white text-black rounded-full w-full py-1 border-2"
                     @click="hiddenEdit = !hiddenEdit"
                   >
                     <i class="fas fa-user-edit"></i>
