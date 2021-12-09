@@ -40,8 +40,7 @@
           readonly
           v-model="username"
           type="text"
-          placeholder="Change username"
-          class="px-5 py-1 inline my-2"
+          class="px-5 py-1 inline my-2 text-gray-600"
         />
       </div>
 

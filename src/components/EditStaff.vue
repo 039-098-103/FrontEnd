@@ -165,7 +165,7 @@ export default {
           DOB: this.DOB,
           password: this.password,
       };
-      if (this.password == undefined) {
+      if (this.password === undefined) {
         data = {
           firstName: this.firstName,
           lastName: this.lastName,

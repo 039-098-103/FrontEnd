@@ -177,10 +177,10 @@ export default {
   },
 
   async created() {
-    this.firstName = this.editAdmin.firstName;
-    this.lastName = this.editAdmin.lastName;
-    this.password = this.editAdmin.password;
-    this.username = this.editAdmin.username;
+    this.firstName = this.editCustomer.firstName;
+    this.lastName = this.editCustomer.lastName;
+    this.password = this.editCustomer.password;
+    this.username = this.editCustomer.username;
   },
 };
 </script>
