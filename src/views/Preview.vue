@@ -73,8 +73,11 @@ export default {
 
     add() {
       this.inputColor = this.color === null ? true : false;
+      const role = localStorage.getItem("role");
       if (this.inputColor) {
         return alert(`please select color`);
+      }else if(role === "Admin" || role === "Staff"){
+        return this.$router.push("/worker");
       }
       this.goToCart();
     },

@@ -25,7 +25,18 @@ import Stock from '../views/StaffStock.vue'
 const routes = [{
     path: '/worker',
     name: 'Worker',
-    component: Worker
+    component: Worker,
+    beforeEnter: (to, from, next) => {
+      const role = localStorage.getItem("role");
+      const login = localStorage.getItem("token");
+      if (login && role === "Admin") {
+        next("/adminHome");
+      } else if (login && role === "Staff") {
+        next("/staffHome");
+      } else {
+        next();
+      }
+    }
   },
   {
     path: '/adminHome',
