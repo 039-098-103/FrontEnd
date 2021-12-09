@@ -25,7 +25,7 @@
 
             <div class="info">
               <div>
-                <div class="detail flex justify-start text-gray-600">
+                <div class="detail flex justify-start ">
                   <p class="">Username : {{ admin.username }}</p>
                 </div>
                 <div class="detail flex justify-start">
