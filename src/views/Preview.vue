@@ -74,16 +74,16 @@ export default {
     add() {
       this.inputColor = this.color === null ? true : false;
       const role = localStorage.getItem("role");
+      if(role === "Admin" || role === "Staff"){
+        return this.$router.push("/login");
+      }
       if (this.inputColor) {
         return alert(`please select color`);
-      }else if(role === "Admin" || role === "Staff"){
-        return this.$router.push("/worker");
       }
       this.goToCart();
     },
 
     goToCart() {
-      console.log(this.color);
       axios
         .post(
           `${this.url}/customer/addToCart/${this.color}`,
