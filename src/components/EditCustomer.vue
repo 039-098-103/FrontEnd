@@ -25,7 +25,7 @@
         Please enter lastname!</sup
       >
 
-      <div class="edit flex justify-center">
+      <div class="edit flex justify-center text-gray-500">
         <input
         readonly
           v-model="username"
